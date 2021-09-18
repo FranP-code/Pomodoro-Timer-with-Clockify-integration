@@ -1,0 +1,88 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+}
+
+.header-main-page {
+  background-color: #62D2A2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 17vh;
+}
+.header-main-page h1 {
+  color: #ffffff;
+  font-size: 7vh;
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.header-main-page h3 {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 2vh;
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.header-main-page h3 .selectable {
+  user-select: all;
+}
+.header-main-page h3 .selectable a,
+.header-main-page h3 .selectable a:link,
+.header-main-page h3 .selectable a:visited,
+.header-main-page h3 .selectable a:hover,
+.header-main-page h3 .selectable a:active {
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: inherit;
+}
+.header-main-page h3 .selectable a::selection {
+  background-color: #ffe83d;
+  color: #000000;
+}
+
+.banner-login {
+  background-color: #D17262;
+  color: white;
+  font-family: "Rambla", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 5vw;
+  height: 7vh;
+}
+.banner-login p {
+  margin: 0;
+  padding: 0;
+}
+.banner-login .button-container {
+  width: 20vw;
+  display: flex;
+  justify-content: space-around;
+}
+.banner-login .button-container button {
+  background: none;
+  border: none;
+  width: 8vw;
+  font-size: 2.6vh;
+  font-weight: bold;
+  color: #ffffff;
+  height: 6vh;
+}
+.banner-login .button-container .register {
+  border: solid 1px #ffffff;
+  border-radius: 24px;
+}
+.banner-login .button-container .login {
+  background-color: #00000057;
+  border-radius: 24px;
+}
+
+/*# sourceMappingURL=styles.css.map */

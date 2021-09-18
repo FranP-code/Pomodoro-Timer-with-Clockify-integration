@@ -1,0 +1,41 @@
+html, body { 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+}
+
+@mixin titleFont {
+    font-family: 'Raleway', sans-serif;
+}
+
+@mixin bodyFont {
+    font-family: 'Rambla', sans-serif;
+}
+
+@mixin normalizeTitle {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+@mixin normalizeBody {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin normalizeButton {
+    background: none;
+    border: none;
+    width: 8vw;
+}
+
+$main-color: #62D2A2;
+$second-color: #1FAB89;
+$light-color: #9DF3C4;
+$lightest-color: #D7FBE8;
+
+@import 'header';
+@import 'banner-login';

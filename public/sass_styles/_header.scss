@@ -1,0 +1,50 @@
+
+.header-main-page {
+    background-color: $main-color;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 17vh;
+
+    h1 {
+        color: #ffffff;
+
+        font-size: 7vh;
+        @include titleFont();
+        @include normalizeTitle();
+    }
+    
+    h3 {
+        color: rgba(255, 255, 255, 0.75);
+
+        font-size: 2vh;
+        @include titleFont();
+        @include normalizeTitle();
+
+        .selectable {
+            user-select: all;
+    
+    
+            a,
+            a:link,
+            a:visited,
+            a:hover,
+            a:active {
+                color: inherit;
+                text-decoration: inherit;
+                font-weight: inherit;
+    
+            }
+    
+            a {
+                &::selection {
+                    background-color:#ffe83d;
+                    color: #000000
+                }
+            }
+        }
+    }
+}

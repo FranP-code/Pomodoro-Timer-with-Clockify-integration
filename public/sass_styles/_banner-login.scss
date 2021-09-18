@@ -1,0 +1,50 @@
+.banner-login {
+    background-color: #D17262;
+    color: white;
+
+    @include bodyFont();
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0px 5vw;
+
+    height: 7vh;
+
+    
+    p {
+        @include normalizeBody();
+    }
+
+    .button-container {
+
+        width: 20vw;
+
+        display: flex;
+        justify-content: space-around;
+    
+        button {
+            @include normalizeButton();
+
+            font-size: 2.6vh;
+            font-weight: bold;
+            color: #ffffff;
+
+            height: 6vh;
+
+        }
+
+        .register {
+            border: solid 1px  #ffffff;
+            border-radius: 24px;
+        }
+
+        .login {
+            background-color: #00000057;
+            border-radius: 24px;
+        }
+
+    }
+     
+}
