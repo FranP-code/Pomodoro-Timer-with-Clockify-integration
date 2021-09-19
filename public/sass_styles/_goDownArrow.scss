@@ -1,9 +1,11 @@
 .go-down {
     height: 7vh;
-    width: 100vw;
+    width: 100%;
     
     display: flex;
     justify-content: center;
+
+    cursor: pointer;
     
     svg {
         height: 6vh;

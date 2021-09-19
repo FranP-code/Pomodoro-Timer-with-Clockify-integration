@@ -1,52 +1,16 @@
 import React from 'react'
+import StyleSelectionChildren from './StyleSelectionChildren'
 
-const StyleSelector = () => {
+const StyleSelector = (props) => {
     return (
-        <div className="style-selector">
+        <div className={`style-selector ${props.displayHidden ? 'style-selector-hidden': 'style-selector-show'}`} >
             <h2>Select Style</h2>
-
-            <div className="style-container">
-                <span class="checkbox__input">
-                    <input id="input-1" type="checkbox"></input>
-                    <span className="checkbox_control"></span>
-                </span>
-                <label for="input-1">
-                    <span className="title">Title</span>
-                    <span className="times">Times|Times</span>
-                </label>
-            </div>
-
-            <div className="style-container">
-                <span class="checkbox__input">
-                    <input id="input-2" type="checkbox"></input>
-                    <span className="checkbox_control"></span>
-                </span>
-                <label for="input-2">
-                    <span className="title">Title</span>
-                    <span className="times">Times|Times</span>
-                </label>
-            </div>
-
-            <div className="style-container">
-                <span class="checkbox__input">
-                    <input id="input-3" type="checkbox"></input>
-                    <span className="checkbox_control"></span>
-                </span>
-                <label for="input-3">
-                    <span className="title">Title</span>
-                    <span className="times">Times|Times</span>
-                </label>
-            </div>
-
-            <div className="style-container">
-                <span class="checkbox__input">
-                    <input id="input-4" type="checkbox"></input>
-                    <span className="checkbox_control"></span>
-                </span>
-                <label for="input-4">
-                    <span className="title">Title</span>
-                    <span className="times">Times|Times</span>
-                </label>
+        
+            <div className="style-selection-container">
+                <StyleSelectionChildren number={1} title={"Title 1"} times={"Times|Times"}/>
+                <StyleSelectionChildren number={2} title={"Title 2"} times={"Times|Times"}/>
+                <StyleSelectionChildren number={3} title={"Title 3"} times={"Times|Times"}/>
+                <StyleSelectionChildren number={4} title={"Title 4"} times={"Times|Times"}/>
             </div>
         </div>
     )

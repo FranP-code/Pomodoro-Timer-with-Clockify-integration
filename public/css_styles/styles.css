@@ -134,49 +134,51 @@
   padding-bottom: 12vh;
   position: absolute;
   top: 29vh;
-  left: 77vw;
+  left: 75vw;
   box-shadow: 1px 6px 15px #00000020;
   z-index: 50;
+  transition: 0.2s ease-in-out;
 }
 .style-selector h2 {
   font-family: "Rambla", sans-serif;
   color: #1FAB89;
   font-size: 30pt;
   text-align: center;
+  margin-left: -3vw;
   margin-top: 1vh;
   margin-bottom: 3vh;
 }
-.style-selector .style-container {
+.style-selector .style-selection-container .style-container {
   display: flex;
   height: 10vh;
   align-items: center;
 }
-.style-selector .style-container label {
+.style-selector .style-selection-container .style-container label {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.style-selector .style-container label .title {
+.style-selector .style-selection-container .style-container label .title {
   font-family: "Rambla", sans-serif;
   font-size: 13pt;
 }
-.style-selector .style-container label .times {
+.style-selector .style-selection-container .style-container label .times {
   font-family: "Rambla", sans-serif;
   color: #1FAB89;
   font-size: 13pt;
 }
-.style-selector input {
+.style-selector .style-selection-container input {
   width: 65px;
   opacity: 0;
 }
-.style-selector .checkbox__input {
+.style-selector .style-selection-container .checkbox__input {
   display: grid;
   grid-template-areas: "checkbox";
 }
-.style-selector .checkbox__input > * {
+.style-selector .style-selection-container .checkbox__input > * {
   grid-area: checkbox;
 }
-.style-selector .checkbox_control {
+.style-selector .style-selection-container .checkbox_control {
   display: inline-grid;
   width: 45px;
   height: 45px;
@@ -185,21 +187,74 @@
   border-radius: 100%;
   transition: ease-in-out 0.2s;
 }
-.style-selector .checkbox__input input:checked + .checkbox_control {
+.style-selector .style-selection-container .checkbox__input input:checked + .checkbox_control {
   background-color: #9DF3C4;
+}
+
+.style-selector-show {
+  opacity: 100%;
+}
+
+.style-selector-hidden {
+  opacity: 0%;
 }
 
 .go-down {
   height: 7vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 .go-down svg {
   height: 6vh;
 }
 .go-down svg path {
   fill: #aaaaaa;
+}
+
+#about-this {
+  height: 95vh;
+  padding: 0px 3vw;
+  padding-top: 5vh;
+}
+#about-this .titles {
+  display: flex;
+}
+#about-this .titles h3 {
+  width: 50%;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-size: 22pt;
+}
+#about-this .titles h3 .line-through {
+  text-decoration: line-through;
+  text-decoration-thickness: 5px;
+  text-decoration-color: #73b7ff;
+}
+#about-this .information {
+  display: flex;
+}
+#about-this .information ul {
+  width: 50%;
+}
+#about-this .information ul li h4 {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: "Rambla", sans-serif;
+  font-size: 18pt;
+}
+#about-this .information ul li p {
+  margin: 0;
+  padding: 0;
+  font-family: "Rambla", sans-serif;
+  font-size: 13pt;
+  margin-left: 2vw;
+  margin-top: 1vh;
 }
 
 html, body {

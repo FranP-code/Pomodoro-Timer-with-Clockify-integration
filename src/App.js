@@ -1,8 +1,8 @@
+import AboutThis from "./components/AboutThis";
 import BannerLogin from "./components/BannerLogin";
 import GoDownArrow from "./components/GoDownArrow";
 import Header from "./components/Header";
 import MainPomodoro from "./components/MainPomodoro";
-import StyleSelector from "./components/StyleSelector";
 
 function App() {
   return (
@@ -10,8 +10,8 @@ function App() {
       <Header />
       <BannerLogin />
       <MainPomodoro />
-      <StyleSelector />
       <GoDownArrow />
+      <AboutThis />
     </>
   );
 }

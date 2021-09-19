@@ -1,0 +1,51 @@
+#about-this {
+    height: 95vh;
+
+    padding: 0px 3vw;
+    padding-top: 5vh;
+
+    .titles {
+        
+        display: flex;
+
+        h3 {
+            width: 50%;
+
+            @include titleFont;
+            @include normalizeTitle;
+
+            font-size: 22pt;
+
+            .line-through {
+                text-decoration: line-through;
+                text-decoration-thickness: 5px;
+                text-decoration-color: #73b7ff; 
+            }
+        }
+    }
+
+    .information {
+
+        display: flex;
+
+        ul {
+            width: 50%;
+
+            li {
+                h4 {
+                    @include normalizeTitle;
+                    @include bodyFont;
+                    font-size: 18pt;
+                }
+
+                p {
+                    @include normalizeBody;
+                    @include bodyFont;
+                    font-size: 13pt;
+                    margin-left: 2vw;
+                    margin-top: 1vh;
+                }
+            }
+        }
+    }
+}
