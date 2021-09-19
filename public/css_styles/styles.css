@@ -1,12 +1,3 @@
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  height: 100%;
-}
-
 .header-main-page {
   background-color: #62D2A2;
   display: flex;
@@ -19,6 +10,7 @@ body {
   color: #ffffff;
   font-size: 7vh;
   font-family: "Raleway", sans-serif;
+  font-weight: 700;
   margin: 0;
   padding: 0;
   user-select: none;
@@ -27,6 +19,7 @@ body {
   color: rgba(255, 255, 255, 0.75);
   font-size: 2vh;
   font-family: "Raleway", sans-serif;
+  font-weight: 700;
   margin: 0;
   padding: 0;
   user-select: none;
@@ -83,6 +76,140 @@ body {
 .banner-login .button-container .login {
   background-color: #00000057;
   border-radius: 24px;
+}
+
+.main-pomodoro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 68vh;
+}
+.main-pomodoro .timer {
+  display: flex;
+  justify-content: center;
+  font-family: "Rambla", sans-serif;
+  font-weight: bold;
+  font-size: 130pt;
+  color: #1FAB89;
+}
+.main-pomodoro .style-display {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Rambla", sans-serif;
+}
+.main-pomodoro .style-display h4 {
+  font-size: 24pt;
+  margin: 0;
+  padding: 0;
+  color: #1FAB89;
+}
+.main-pomodoro .style-display h3 {
+  font-size: 30pt;
+  margin: 0;
+  padding: 0;
+  color: #1FAB89;
+  cursor: pointer;
+  user-select: none;
+}
+.main-pomodoro .start-pomodoro {
+  background: none;
+  border: none;
+  width: 8vw;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  margin-top: 6vh;
+  width: 30vw;
+  height: 8vh;
+  background: #1FAB89;
+  border-radius: 24px;
+  font-size: 5vh;
+  color: white;
+}
+
+.style-selector {
+  width: calc(20vw - 1px);
+  padding-left: 3vw;
+  padding-bottom: 12vh;
+  position: absolute;
+  top: 29vh;
+  left: 77vw;
+  box-shadow: 1px 6px 15px #00000020;
+  z-index: 50;
+}
+.style-selector h2 {
+  font-family: "Rambla", sans-serif;
+  color: #1FAB89;
+  font-size: 30pt;
+  text-align: center;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+}
+.style-selector .style-container {
+  display: flex;
+  height: 10vh;
+  align-items: center;
+}
+.style-selector .style-container label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.style-selector .style-container label .title {
+  font-family: "Rambla", sans-serif;
+  font-size: 13pt;
+}
+.style-selector .style-container label .times {
+  font-family: "Rambla", sans-serif;
+  color: #1FAB89;
+  font-size: 13pt;
+}
+.style-selector input {
+  width: 65px;
+  opacity: 0;
+}
+.style-selector .checkbox__input {
+  display: grid;
+  grid-template-areas: "checkbox";
+}
+.style-selector .checkbox__input > * {
+  grid-area: checkbox;
+}
+.style-selector .checkbox_control {
+  display: inline-grid;
+  width: 45px;
+  height: 45px;
+  border: 3px solid #62D2A2;
+  border-radius: 0.25em;
+  border-radius: 100%;
+  transition: ease-in-out 0.2s;
+}
+.style-selector .checkbox__input input:checked + .checkbox_control {
+  background-color: #9DF3C4;
+}
+
+.go-down {
+  height: 7vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.go-down svg {
+  height: 6vh;
+}
+.go-down svg path {
+  fill: #aaaaaa;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  background-color: #ffffff;
 }
 
 /*# sourceMappingURL=styles.css.map */

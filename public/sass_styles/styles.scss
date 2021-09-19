@@ -1,14 +1,8 @@
-html, body { 
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    height: 100%;
-}
 
 @mixin titleFont {
     font-family: 'Raleway', sans-serif;
+    font-weight: 700;
 }
 
 @mixin bodyFont {
@@ -32,6 +26,8 @@ body {
     width: 8vw;
 }
 
+$background-color: #ffffff;
+
 $main-color: #62D2A2;
 $second-color: #1FAB89;
 $light-color: #9DF3C4;
@@ -39,3 +35,16 @@ $lightest-color: #D7FBE8;
 
 @import 'header';
 @import 'banner-login';
+@import 'mainPomodoro';
+@import 'styleSelector';
+@import 'goDownArrow';
+
+html, body { 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    background-color: $background-color;
+}

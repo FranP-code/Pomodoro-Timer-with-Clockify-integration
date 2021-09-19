@@ -1,0 +1,15 @@
+.go-down {
+    height: 7vh;
+    width: 100vw;
+    
+    display: flex;
+    justify-content: center;
+    
+    svg {
+        height: 6vh;
+        path {
+            fill: rgb(170, 170, 170);
+            // CREDITS TO https://stackoverflow.com/a/49627345
+        }
+    }
+}
