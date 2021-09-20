@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
+import HeaderButton from './HeaderButton'
 
 const Header = () => {
+    //<HeaderButton/>
     return (
         <header className="header-main-page">
             <h1>Pomodoro Timer</h1>

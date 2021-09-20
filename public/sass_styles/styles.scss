@@ -26,6 +26,15 @@
     width: 8vw;
 }
 
+@mixin svgStyle {
+    cursor: pointer;
+        
+    path {
+        fill: rgb(170, 170, 170);
+        // CREDITS TO https://stackoverflow.com/a/49627345
+    }
+}
+
 $background-color: #ffffff;
 
 $main-color: #62D2A2;
@@ -39,6 +48,7 @@ $lightest-color: #D7FBE8;
 @import 'styleSelector';
 @import 'goDownArrow';
 @import 'aboutThis';
+@import 'historyButton';
 
 html, body { 
     margin: 0;

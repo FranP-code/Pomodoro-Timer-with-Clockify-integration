@@ -204,10 +204,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  cursor: pointer;
 }
 .go-down svg {
   height: 6vh;
+  width: 6vh;
+  cursor: pointer;
 }
 .go-down svg path {
   fill: #aaaaaa;
@@ -255,6 +256,44 @@
   font-size: 13pt;
   margin-left: 2vw;
   margin-top: 1vh;
+}
+
+.history-button {
+  background: none;
+  border: none;
+  width: 8vw;
+  height: 9vh;
+  width: 9vh;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 6vh;
+  border-radius: 100%;
+  background-color: #9DF3C4;
+}
+.history-button svg {
+  cursor: pointer;
+  width: 6vh;
+  height: 6vh;
+}
+.history-button svg path {
+  fill: #aaaaaa;
+}
+.history-button svg path {
+  fill: rgba(80, 80, 80, 0.556);
+}
+.history-button:hover {
+  animation: spin 0.4s ease-in-out;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 html, body {
