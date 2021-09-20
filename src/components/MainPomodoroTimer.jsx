@@ -7,6 +7,14 @@ const MainPomodoroTimer = (props) => {
     const [seconds, setSeconds] = useState('60')
     
     const setTimeStyle = () => {
+
+        if (props.style === 'Can I play, Daddy?') {
+            const minutes = 10
+            const seconds = 0
+            
+            setMinutes(minutes)
+            setSeconds(seconds)
+        }
         
         if (props.style === 'Regular'){
             
@@ -16,6 +24,22 @@ const MainPomodoroTimer = (props) => {
             setMinutes(minutes)
             setSeconds(seconds)
 
+        }
+
+        if (props.style === 'Creative work') {
+            const minutes = 50
+            const seconds = 0
+            
+            setMinutes(minutes)
+            setSeconds(seconds)
+        }
+
+        if (props.style === 'Last minute delivery') {
+            const minutes = 90
+            const seconds = 0
+            
+            setMinutes(minutes)
+            setSeconds(seconds)
         }
         
     }

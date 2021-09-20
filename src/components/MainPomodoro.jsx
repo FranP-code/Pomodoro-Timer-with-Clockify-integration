@@ -16,8 +16,6 @@ const MainPomodoro = () => {
         setDisplayHidden(!displayHidden)
     }
 
-    console.log(timerOn)
-
     return (
         <>
             <div className="main-pomodoro">
@@ -39,7 +37,7 @@ const MainPomodoro = () => {
                 }</button>
             </div>
 
-            <StyleSelector displayHidden={displayHidden}/>
+            <StyleSelector displayHidden={displayHidden} style={style} setStyle={setStyle}/>
         </>
         
 

@@ -97,8 +97,10 @@
 
         .style-selector-show {
             opacity: 100%;
+            pointer-events: auto;
         }
 
         .style-selector-hidden {
             opacity: 0%;
+            pointer-events: none;
         }
