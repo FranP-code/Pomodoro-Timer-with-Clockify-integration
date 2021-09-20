@@ -1,6 +1,9 @@
 import React from 'react'
 
 const AboutThis = () => {
+
+    console.log('ABOUT THIS DEPLOYED')
+    
     return (
         <div id="about-this">
             <div className="titles">

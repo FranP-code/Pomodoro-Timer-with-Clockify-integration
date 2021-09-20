@@ -1,6 +1,9 @@
 import React from 'react'
 
 const BannerLogin = () => {
+
+    console.log('BANNER LOGIN DEPLOYED')
+
     return (
         <div className="banner-login">
             <p>Access to integrate and save your progress with Clockify!</p>

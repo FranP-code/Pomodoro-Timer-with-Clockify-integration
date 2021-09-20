@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
+import MainPomodoroTimer from './MainPomodoroTimer'
 import StyleSelector from './StyleSelector'
 
 const MainPomodoro = () => {
 
-    const [minutes, setMinutes] = useState('61')
-    const [seconds, setSeconds] = useState('60')
+    console.log('MAIN POMODORO DEPLOYED')
 
     const [style, setStyle] = useState('Regular')
     const [displayHidden, setDisplayHidden] = useState(true)
+    const [timerOn, setTimerOn] = useState(false)
 
     const showStyles = () => {
         console.log('Styles Deployed')
@@ -15,14 +16,13 @@ const MainPomodoro = () => {
         setDisplayHidden(!displayHidden)
     }
 
+    console.log(timerOn)
+
     return (
         <>
             <div className="main-pomodoro">
-                <div className="timer">
-                    <div className="minutes">{minutes}</div>
-                    <div className="separator">:</div>
-                    <div className="seconds">{seconds}</div>
-                </div>
+
+                <MainPomodoroTimer style={style} timerOn={timerOn}/>
 
                 <div className="style-display">
                     <h4>
@@ -33,7 +33,10 @@ const MainPomodoro = () => {
                     </h3>
                 </div>
 
-                <button class="start-pomodoro">START</button>
+                <button class="start-pomodoro" onClick={() => setTimerOn(!timerOn)}>{
+                    timerOn ? 'STOP' : 'START'
+
+                }</button>
             </div>
 
             <StyleSelector displayHidden={displayHidden}/>

@@ -3,6 +3,9 @@ import HeaderButton from './HeaderButton'
 
 const Header = () => {
     //<HeaderButton/>
+
+    console.log("HEADER DEPLOYED")
+    
     return (
         <header className="header-main-page">
             <h1>Pomodoro Timer</h1>
