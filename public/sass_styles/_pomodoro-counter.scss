@@ -1,0 +1,45 @@
+.pomodoro-counter {
+
+
+    position: absolute;
+    top: 29vh;
+
+    ul {
+
+        li {
+            display: flex;
+
+            @include bodyFont;
+
+            list-style-type: none;
+            margin-top: 2vh;
+
+            font-size: 15pt;
+
+            color: #00000070;
+
+            .separator {
+                user-select: none;
+                margin: 0px 0.5vw;
+            }
+            
+            .quantity {
+                @include titleFont;
+
+                user-select: none;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                height: 30px;
+                width: 30px;
+
+                border-radius: 100%;
+
+                color: $second-color;
+                background-color: $light-color;
+            }
+        }
+    }
+}

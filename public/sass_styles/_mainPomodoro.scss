@@ -33,6 +33,8 @@
             @include normalizeBody;
             
             color: $second-color;
+            user-select: none;
+
         }
 
         h3 {

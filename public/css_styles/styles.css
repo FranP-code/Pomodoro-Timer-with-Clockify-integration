@@ -104,6 +104,7 @@
   margin: 0;
   padding: 0;
   color: #1FAB89;
+  user-select: none;
 }
 .main-pomodoro .style-display h3 {
   font-size: 30pt;
@@ -296,6 +297,36 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.pomodoro-counter {
+  position: absolute;
+  top: 29vh;
+}
+.pomodoro-counter ul li {
+  display: flex;
+  font-family: "Rambla", sans-serif;
+  list-style-type: none;
+  margin-top: 2vh;
+  font-size: 15pt;
+  color: #00000070;
+}
+.pomodoro-counter ul li .separator {
+  user-select: none;
+  margin: 0px 0.5vw;
+}
+.pomodoro-counter ul li .quantity {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  color: #1FAB89;
+  background-color: #9DF3C4;
 }
 
 html, body {

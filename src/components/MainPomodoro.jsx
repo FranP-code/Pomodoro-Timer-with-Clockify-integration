@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import MainPomodoroTimer from './MainPomodoroTimer'
+import PomodoroCounter from './PomodoroCounter'
 import StyleSelector from './StyleSelector'
 
 const MainPomodoro = () => {
@@ -9,6 +10,8 @@ const MainPomodoro = () => {
     const [style, setStyle] = useState('Regular')
     const [displayHidden, setDisplayHidden] = useState(true)
     const [timerOn, setTimerOn] = useState(false)
+
+    //const [counter, setCounter] 
 
     const showStyles = () => {
         console.log('Styles Deployed')
@@ -38,6 +41,7 @@ const MainPomodoro = () => {
             </div>
 
             <StyleSelector displayHidden={displayHidden} style={style} setStyle={setStyle}/>
+            <PomodoroCounter />
         </>
         
 
