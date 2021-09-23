@@ -11,13 +11,9 @@ const MainPomodoro = () => {
     const [displayHidden, setDisplayHidden] = useState(true)
     const [timerOn, setTimerOn] = useState(false)
 
-    const [counter, setCounter] = useState(
-        {
-            pomodoros: 0,
-            rests: 0,
-            longRests: 0
-        }
-    )
+    const [pomodoros, setPomodoros] = useState(0)
+    const [rests, setRests] = useState(0)
+    const [longRests, setLongRests] = useState(0)
 
     const showStyles = () => {
         console.log('Styles Deployed')
@@ -29,7 +25,23 @@ const MainPomodoro = () => {
         <>
             <div className="main-pomodoro">
 
-                <MainPomodoroTimer style={style} setTimerOn={setTimerOn} timerOn={timerOn} counter={counter} setCounter={setCounter}/>
+                <MainPomodoroTimer
+                
+                style={style}
+
+                timerOn={timerOn}
+                setTimerOn={setTimerOn}
+                
+                pomodoros={pomodoros}
+                setPomodoros={setPomodoros}
+
+                rests={rests}
+                setRests={setRests}
+
+                longRests={longRests}
+                setLongRests={setLongRests}
+                />
+
 
                 <div className="style-display">
                     <h4>
@@ -47,7 +59,7 @@ const MainPomodoro = () => {
             </div>
 
             <StyleSelector displayHidden={displayHidden} style={style} setStyle={setStyle}/>
-            <PomodoroCounter counter={counter}/>
+            <PomodoroCounter pomodoros={pomodoros} rests={rests} longRests={longRests}/>
         </>
         
 

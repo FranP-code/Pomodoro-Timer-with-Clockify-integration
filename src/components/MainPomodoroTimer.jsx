@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Countdown from 'react-countdown'
 
 const MainPomodoroTimer = (props) => {
 
@@ -7,6 +8,8 @@ const MainPomodoroTimer = (props) => {
 
     const [breakTime, setBreakTime] = useState(undefined)
     const [weAreInBreakTime, setWeAreInBreakTime] = useState(false)
+
+    const [restCounter, setRestCounter] = useState(0)
 
     const setTimeStyle = () => {
 
@@ -34,7 +37,7 @@ const MainPomodoroTimer = (props) => {
         if (props.style === 'Regular'){
             
             const minutes = 0
-            const seconds = 5
+            const seconds = 2
             
             setMinutes(minutes)
             setSeconds(seconds)
@@ -43,11 +46,11 @@ const MainPomodoroTimer = (props) => {
                 {
                     normal: {
                         minutes: 0,
-                        seconds: 10
+                        seconds: 1
                     },
                     extended: {
                         minutes: 15,
-                        seconds: 0  
+                        seconds: 1  
                     }
                 }
             )
@@ -98,76 +101,108 @@ const MainPomodoroTimer = (props) => {
         
     }
 
-    
     React.useEffect (
         setTimeStyle, []
         
     )
 
+    const startTimer = (velocity = 1) => {
+        return setTimeout(() => {
+            
+            if (seconds === 0) {
+
+                setSeconds(59) 
+                setMinutes((minutes - 1))
+
+            }
+            
+            else {
+                setSeconds((seconds - 1))
+            }
+
+        }, (1000 / velocity))
+    }
+
     React.useEffect ( () => {
         let idTimeOut
 
-        if (weAreInBreakTime && props.timerOn && minutes >= 0 && seconds > 0) {
+        if (props.timerOn) {
 
-            idTimeOut = setTimeout(() => {
+            if(!weAreInBreakTime) {
+                
+                if (minutes === 0 && seconds === 0) {
+                    
+                    if (restCounter !== 3){
+
+                        setTimeout( () => {
+                            props.setPomodoros(props.pomodoros + 1)
+
+                            setRestCounter((restCounter + 1))
     
-                if (seconds === 0) {
+                            setMinutes(breakTime.normal.minutes)
+                            setSeconds(breakTime.normal.seconds)
+
+                            setWeAreInBreakTime(true)
+                            
+                        }, 1000)
+                        
+                    }
+
+                    if (restCounter === 3) {
+                        
+                        setTimeout( () => {
+
+                            props.setPomodoros(props.pomodoros + 1)
     
-                    setSeconds(59)
-                    console.log(seconds)
-                    setMinutes(minutes - 1)
-    
-                } else {
-                    const computedSeconds = seconds - 1
-                    setSeconds(computedSeconds)
+                            setMinutes(breakTime.extended.minutes)
+                            setSeconds(breakTime.extended.seconds)
+
+                            setWeAreInBreakTime(true)
+                            
+                        }, 1000)
+                    }
                 }
-    
-            }, 1000)
-             
-        } else if (weAreInBreakTime && props.timerOn && minutes === 0 && seconds === 0) {
-            
-            setTimeout( () => {
-                setWeAreInBreakTime(false)
-                props.setTimerOn(false)
-                setTimeStyle()
 
-            }, 1000)
-        }
 
-        if (props.timerOn && !weAreInBreakTime && minutes >= 0 && seconds > 0) {
-            
-            idTimeOut = setTimeout(() => {
-    
-                if (seconds === 0) {
-    
-                    setSeconds(59)
-                    console.log(seconds)
-                    setMinutes(minutes - 1)
-    
-                } else {
-                    const computedSeconds = seconds - 1
-                    setSeconds(computedSeconds)
-                }
-    
-            }, 1000)
-             
-        }
-        
-        else if (props.timerOn && !weAreInBreakTime){
-
-            setTimeout( () => {
-                setMinutes(breakTime.normal.minutes)
-                setSeconds(breakTime.normal.seconds)
-                setWeAreInBreakTime(true)
-
-            }, 1000)
-            
-        }
-
-        return () => {
-            clearInterval(idTimeOut)
+                if (minutes >= 0 || seconds > 0) {
+                
+                    idTimeOut = startTimer()
+                    
+                 }
             }
-        }
+
+            if(weAreInBreakTime) {
+
+                if (minutes === 0 && seconds === 0) {
+                    
+                    setTimeout( () => {
+
+                        if (restCounter === 4) {
+                            props.setLongRests(props.longRests + 1)
+                            setRestCounter(0)
+
+                        } else {
+                            props.setRests(props.rests + 1)
+                        }
+                        setWeAreInBreakTime(false)
+                        props.setTimerOn(false)
+                        setTimeStyle()
+                        
+                    }, 1000)
+                }
+                
+                if (minutes >= 0 || seconds > 0) {
+    
+                    idTimeOut = startTimer()
+                    
+                }
+            }
+
+            return () => {
+                clearInterval(idTimeOut)
+                }
+            }
+        }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds]
     )
 
     const formatMinutes =  () => {
