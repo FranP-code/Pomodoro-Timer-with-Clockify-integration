@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Countdown from 'react-countdown'
 
 const MainPomodoroTimer = (props) => {
 
@@ -103,7 +102,6 @@ const MainPomodoroTimer = (props) => {
 
     React.useEffect (
         setTimeStyle, []
-        
     )
 
     const startTimer = (velocity = 1) => {
@@ -123,6 +121,48 @@ const MainPomodoroTimer = (props) => {
         }, (1000 / velocity))
     }
 
+    const setBreak = (normal = 0, extended = 0) => {
+        if (normal && extended) {
+            console.error('FATAL ERROR, 2 TRUE VALUES SENDED IN THE SETBREAK FUNCTION')
+            return
+        }
+
+        if (normal) {
+            setMinutes(breakTime.normal.minutes)
+            setSeconds(breakTime.normal.seconds)
+        }
+
+        if (extended) {
+            setMinutes(breakTime.extended.minutes)
+            setSeconds(breakTime.extended.seconds)
+        }
+    }
+
+    const setPomodoroCounter = (counter = false) => {
+        if (!counter) {
+            console.error('NOT PARAMETER PASSED')
+        }
+        
+        if (counter === "Pomodoros") {
+            props.setPomodoros(props.pomodoros + 1)
+            return
+        }
+
+        if (counter === "Rest") {
+            props.setRests(props.rests + 1)
+            return
+        }
+
+        if (counter === "Long Rest") {
+            props.setLongRests(props.longRests + 1)
+            return
+        }
+
+        if (counter) {
+            console.error('PARAMETER NOT VALID');
+        }
+    }
+
     React.useEffect ( () => {
         let idTimeOut
 
@@ -135,13 +175,11 @@ const MainPomodoroTimer = (props) => {
                     if (restCounter !== 3){
 
                         setTimeout( () => {
-                            props.setPomodoros(props.pomodoros + 1)
+                            setPomodoroCounter('Pomodoros')
 
                             setRestCounter((restCounter + 1))
-    
-                            setMinutes(breakTime.normal.minutes)
-                            setSeconds(breakTime.normal.seconds)
 
+                            setBreak(1, 0)
                             setWeAreInBreakTime(true)
                             
                         }, 1000)
@@ -151,12 +189,9 @@ const MainPomodoroTimer = (props) => {
                     if (restCounter === 3) {
                         
                         setTimeout( () => {
+                            setPomodoroCounter('Pomodoros')
 
-                            props.setPomodoros(props.pomodoros + 1)
-    
-                            setMinutes(breakTime.extended.minutes)
-                            setSeconds(breakTime.extended.seconds)
-
+                            setBreak(0, 1)
                             setWeAreInBreakTime(true)
                             
                         }, 1000)
@@ -178,12 +213,13 @@ const MainPomodoroTimer = (props) => {
                     setTimeout( () => {
 
                         if (restCounter === 4) {
-                            props.setLongRests(props.longRests + 1)
+                            setPomodoroCounter('Long rest')
                             setRestCounter(0)
 
                         } else {
-                            props.setRests(props.rests + 1)
+                            setPomodoroCounter('Rest')
                         }
+
                         setWeAreInBreakTime(false)
                         props.setTimerOn(false)
                         setTimeStyle()
