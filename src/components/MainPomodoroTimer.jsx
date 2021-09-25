@@ -10,6 +10,8 @@ const MainPomodoroTimer = (props) => {
 
     const [restCounter, setRestCounter] = useState(0)
 
+    const [timerActivity, setTimerActivity] = useState(false)
+
     const setTimeStyle = () => {
 
         if (props.style === 'Can I play, Daddy?') {
@@ -36,7 +38,7 @@ const MainPomodoroTimer = (props) => {
         if (props.style === 'Regular'){
             
             const minutes = 0
-            const seconds = 2
+            const seconds = 5
             
             setMinutes(minutes)
             setSeconds(seconds)
@@ -45,11 +47,11 @@ const MainPomodoroTimer = (props) => {
                 {
                     normal: {
                         minutes: 0,
-                        seconds: 1
+                        seconds: 15
                     },
                     extended: {
-                        minutes: 15,
-                        seconds: 1  
+                        minutes: 0,
+                        seconds: 20  
                     }
                 }
             )
@@ -138,7 +140,7 @@ const MainPomodoroTimer = (props) => {
         }
     }
 
-    const setPomodoroCounter = (counter = false) => {
+    const setPomodoroCounter = (counter = false, mode) => {
         if (!counter) {
             console.error('NOT PARAMETER PASSED')
         }
@@ -167,10 +169,12 @@ const MainPomodoroTimer = (props) => {
         let idTimeOut
 
         if (props.timerOn) {
+            setTimerActivity(true)
 
             if(!weAreInBreakTime) {
                 
                 if (minutes === 0 && seconds === 0) {
+                    setTimerActivity(false)
                     
                     if (restCounter !== 3){
 
@@ -190,6 +194,7 @@ const MainPomodoroTimer = (props) => {
                         
                         setTimeout( () => {
                             setPomodoroCounter('Pomodoros')
+                            setRestCounter((restCounter + 1))
 
                             setBreak(0, 1)
                             setWeAreInBreakTime(true)
@@ -207,13 +212,14 @@ const MainPomodoroTimer = (props) => {
             }
 
             if(weAreInBreakTime) {
-
+                
                 if (minutes === 0 && seconds === 0) {
+                    setTimerActivity(false)
                     
                     setTimeout( () => {
 
                         if (restCounter === 4) {
-                            setPomodoroCounter('Long rest')
+                            setPomodoroCounter('Long Rest')
                             setRestCounter(0)
 
                         } else {
@@ -222,6 +228,7 @@ const MainPomodoroTimer = (props) => {
 
                         setWeAreInBreakTime(false)
                         props.setTimerOn(false)
+                        
                         setTimeStyle()
                         
                     }, 1000)
@@ -230,14 +237,46 @@ const MainPomodoroTimer = (props) => {
                 if (minutes >= 0 || seconds > 0) {
     
                     idTimeOut = startTimer()
-                    
+    
                 }
             }
 
             return () => {
                 clearInterval(idTimeOut)
                 }
+
+            } else if (props.timerOn === false && timerActivity === true){
+
+                if (!weAreInBreakTime) {
+                    setPomodoroCounter('Pomodoros')
+                    setRestCounter((restCounter + 1))
+
+                }
+
+                if (weAreInBreakTime) {
+
+                    console.log(restCounter)
+
+                    if (restCounter === 4) {
+                        console.log('AA3')
+
+                        setPomodoroCounter('Long Rest')
+                        setRestCounter(0)
+
+                    } else {
+                    console.log('AA2')
+
+                        setPomodoroCounter('Rest')
+                    }
+
+                    setWeAreInBreakTime(false)
+                }
+
+                setTimeStyle()
+                
+                setTimerActivity(false)
             }
+
         }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds]
     )
 

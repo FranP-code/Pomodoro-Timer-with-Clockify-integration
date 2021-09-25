@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import MainPomodoroTimer from './MainPomodoroTimer'
+import MainPomodoroTimer, {setTim} from './MainPomodoroTimer'
 import PomodoroCounter from './PomodoroCounter'
 import StyleSelector from './StyleSelector'
 
