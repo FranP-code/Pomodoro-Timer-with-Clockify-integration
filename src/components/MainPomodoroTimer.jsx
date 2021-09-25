@@ -33,12 +33,17 @@ const MainPomodoroTimer = (props) => {
                     }
                 }
             )
+
+            return {
+                minutes, seconds, breakTime
+            }
+
         }
         
         if (props.style === 'Regular'){
             
-            const minutes = 0
-            const seconds = 5
+            const minutes = 3
+            const seconds = 0
             
             setMinutes(minutes)
             setSeconds(seconds)
@@ -55,6 +60,10 @@ const MainPomodoroTimer = (props) => {
                     }
                 }
             )
+
+            return {
+                minutes, seconds, breakTime
+            }
 
         }
 
@@ -77,6 +86,11 @@ const MainPomodoroTimer = (props) => {
                     }
                 }
             )
+
+            return {
+                minutes, seconds, breakTime
+            }
+
         }
 
         if (props.style === 'Last minute delivery') {
@@ -98,6 +112,11 @@ const MainPomodoroTimer = (props) => {
                     }
                 }
             )
+
+            return {
+                minutes, seconds, breakTime
+            }
+
         }
         
     }
@@ -247,9 +266,15 @@ const MainPomodoroTimer = (props) => {
 
             } else if (props.timerOn === false && timerActivity === true){
 
+            
                 if (!weAreInBreakTime) {
-                    setPomodoroCounter('Pomodoros')
-                    setRestCounter((restCounter + 1))
+
+                        if (minutes < ( setTimeStyle().minutes / 2) ) {
+                            setPomodoroCounter('Pomodoros')
+                            setRestCounter((restCounter + 1))
+                            
+                        }
+                        
 
                 }
 
@@ -272,8 +297,6 @@ const MainPomodoroTimer = (props) => {
                     setWeAreInBreakTime(false)
                 }
 
-                setTimeStyle()
-                
                 setTimerActivity(false)
             }
 
