@@ -333,6 +333,55 @@
   background-color: #9DF3C4;
 }
 
+.identify-container {
+  display: flex;
+  justify-content: center;
+}
+.identify-container .identify {
+  width: 70vw;
+}
+.identify-container .identify .options-container {
+  display: flex;
+}
+.identify-container .identify .options-container .option {
+  width: 35vw;
+  display: flex;
+  justify-content: space-around;
+  padding: 5vh 0px;
+  background-color: #1FAB89;
+}
+.identify-container .identify .options-container .option h2 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  color: #ffffff;
+}
+.identify-container .identify .form-container {
+  display: flex;
+  justify-content: center;
+}
+.identify-container .identify .form-container form {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1vh;
+}
+.identify-container .identify .form-container form input {
+  height: 4vh;
+  width: 60%;
+  margin-bottom: 1vh;
+  border: none;
+  border-bottom: 1px solid #969696;
+  outline: none;
+}
+.identify-container .identify .form-container form input[type=submit] {
+  width: 50%;
+  border: #969696 solid 1px;
+}
+
 html, body {
   margin: 0;
   padding: 0;

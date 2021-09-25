@@ -36,6 +36,8 @@
 }
 
 $background-color: #ffffff;
+$border-color: #969696;
+
 
 $main-color: #62D2A2;
 $second-color: #1FAB89;
@@ -50,6 +52,7 @@ $lightest-color: #D7FBE8;
 @import 'aboutThis';
 @import 'historyButton';
 @import 'pomodoro-counter';
+@import 'identify';
 
 html, body { 
     margin: 0;
