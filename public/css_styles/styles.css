@@ -6,6 +6,9 @@
   justify-content: center;
   height: 17vh;
 }
+.header-main-page a {
+  text-decoration: none;
+}
 .header-main-page h1 {
   color: #ffffff;
   font-size: 7vh;
@@ -68,6 +71,7 @@
   font-weight: bold;
   color: #ffffff;
   height: 6vh;
+  cursor: pointer;
 }
 .banner-login .button-container .register {
   border: solid 1px #ffffff;

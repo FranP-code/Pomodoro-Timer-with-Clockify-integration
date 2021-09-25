@@ -8,8 +8,8 @@ const BannerLogin = () => {
         <div className="banner-login">
             <p>Access to integrate and save your progress with Clockify!</p>
             <div className="button-container">
-                <button className="register">Register</button>
-                <button className="login">Login</button>
+                <button className="register" onClick={() => {window.location = '/identify?act=r'}}>Register</button>
+                <button className="login" onClick={() => {window.location = '/identify?act=l'}}>Login</button>
             </div>
         </div>
     )
