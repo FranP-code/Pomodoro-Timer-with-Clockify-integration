@@ -17,12 +17,21 @@
                 padding: 5vh 0px;
                 background-color: $second-color;
 
+                cursor: pointer;
+
+                transition: 0.4s ease-in-out;
+
                 h2 {
                     @include titleFont();
                     @include normalizeTitle();
 
                     color: #ffffff;
                 }
+            }
+
+            .active-option {
+                cursor: initial;
+                background-color: $second-color-darker;
             }
         }
 

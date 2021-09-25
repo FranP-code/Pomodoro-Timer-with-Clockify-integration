@@ -349,6 +349,8 @@
   justify-content: space-around;
   padding: 5vh 0px;
   background-color: #1FAB89;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
 }
 .identify-container .identify .options-container .option h2 {
   font-family: "Raleway", sans-serif;
@@ -357,6 +359,10 @@
   padding: 0;
   user-select: none;
   color: #ffffff;
+}
+.identify-container .identify .options-container .active-option {
+  cursor: initial;
+  background-color: #15745c;
 }
 .identify-container .identify .form-container {
   display: flex;

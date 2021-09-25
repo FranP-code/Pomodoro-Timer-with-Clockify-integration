@@ -6,7 +6,7 @@ const RegisterForm = () => {
             <input type="email" placeholder="Email"></input>
             <input type="password" placeholder="Password"></input>
             <input type="password" placeholder="Confirm Password"></input>
-            <input type="submit"></input>
+            <input type="submit" value="Register"></input>
         </form>
     )
 }
