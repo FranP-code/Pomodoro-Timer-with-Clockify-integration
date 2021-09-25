@@ -4,7 +4,11 @@ import RegisterForm from './Identify Childrens/RegisterForm'
 
 
 const Identify = () => {
-    const [act, setAct] = useState('register')
+    const [act, setAct] = useState('')
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const defineLogin = () => {
         if (act !== 'login') {
@@ -16,6 +20,48 @@ const Identify = () => {
         if (act !== 'register') {
             setAct('register')
         }
+    }
+
+    const sendForm = (e) => {
+        e.preventDefault()
+
+        if (!email.trim()) {
+            alert('EMAIL EMPTY')
+            return
+        }
+
+        if (!password.trim()) {
+            alert('PASSWORD EMPTY')
+            return
+        }
+
+        if (act === 'register') {
+
+            if (!confirmPassword.trim()) {
+                alert('CONFIRM PASSWORD PLEASE')
+                return
+            }
+
+            e.target.reset()
+            setEmail('')
+            setPassword('')
+            setConfirmPassword('')
+
+            //SEND TO FIREBASE
+            return
+        }
+
+        if (act === 'login') {
+
+            e.target.reset()
+            setEmail('')
+            setPassword('')
+
+            //SEND TO FIREBASE
+            return
+        }
+
+        alert('ACTION NOT VALID')
     }
     
     React.useEffect( () => {
@@ -56,7 +102,7 @@ const Identify = () => {
                     className={
                         act === 'register' ? 'option active-option': 'option'
                     }
-                    
+
                     onClick={() => {
                         defineRegister()
                     }}
@@ -69,10 +115,10 @@ const Identify = () => {
 
                 <div className="form-container">
                 {
-                    act === 'login' ? <LoginForm action={act}/> : null    
+                    act === 'login' ? <LoginForm setEmail={setEmail} setPassword={setPassword} sendForm={sendForm}/> : null    
                 }
                 {
-                    act === 'register' ? <RegisterForm action={act}/> : null
+                    act === 'register' ? <RegisterForm setEmail={setEmail} setPassword={setPassword} setConfirmPassword={setConfirmPassword} sendForm={sendForm}/> : null
                 }
                 </div>
             </div>

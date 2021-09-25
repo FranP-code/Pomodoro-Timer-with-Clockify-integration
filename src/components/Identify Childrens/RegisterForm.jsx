@@ -1,12 +1,37 @@
 import React from 'react'
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
     return (
-        <form>
-            <input type="email" placeholder="Email"></input>
-            <input type="password" placeholder="Password"></input>
-            <input type="password" placeholder="Confirm Password"></input>
-            <input type="submit" value="Register"></input>
+        <form onSubmit={props.sendForm}>
+            <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => {
+                    props.setEmail(e.target.value)
+                }}
+            />
+
+            <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => {
+                    props.setPassword(e.target.value)
+                }}
+
+            />
+
+            <input
+                type="password"
+                placeholder="Confirm Password"
+                onChange={(e) => {
+                    props.setConfirmPassword(e.target.value)
+                }}
+            />
+
+            <input
+                type="submit"
+                value="Register"
+            />
         </form>
     )
 }
