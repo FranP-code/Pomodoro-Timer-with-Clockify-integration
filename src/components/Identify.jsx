@@ -6,6 +6,7 @@ import {firebase} from './Firebase/firebase'
 import {withRouter} from 'react-router-dom'
 
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
 
 
 const Identify = (props) => {
@@ -24,11 +25,33 @@ const Identify = (props) => {
 
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password)
+            console.log(response)
+            console.log(response.user)
+
+            const uid = response.user.uid
+
+            addNewUserToFirebase(uid)
 
         } catch (error) {
             console.log(error)
             setMessage(error.message)
             console.log(message)
+        }
+    }
+
+    const addNewUserToFirebase = async (uid) => {
+        
+        try {
+            
+            const db = getFirestore(firebase)
+
+            await setDoc(doc(db, 'users', uid), {
+
+                keyClockify: ''
+            })
+
+        } catch (error) {
+            alert(error)
         }
     }
 
@@ -39,7 +62,7 @@ const Identify = (props) => {
             console.log(response)
             console.log(response.user)
 
-            props.history.push('/config-account')
+            //props.history.push('/config-account')
 
         } catch (error) {
             console.log(error)
