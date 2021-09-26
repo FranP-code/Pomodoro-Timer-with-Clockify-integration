@@ -2,9 +2,10 @@ import React from 'react'
 
 const DarkMode = () => {
     return (
-        <input type="checkbox" className=".dark-mode_toogle-switch">
-            
-        </input>
+        <div className="dark-mode">
+            <input type="checkbox" id="dark-mode_toogle-switch"/>
+            <label for="dark-mode_toogle-switch"></label>
+        </div>
     )
 }
 

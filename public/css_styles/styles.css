@@ -388,6 +388,46 @@
   border: #969696 solid 1px;
 }
 
+.dark-mode {
+  position: absolute;
+  left: calc(100% - 5vw);
+}
+.dark-mode #dark-mode_toogle-switch {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.dark-mode label {
+  display: block;
+  width: 4vw;
+  height: 4vh;
+  background-color: #D7FBE8;
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 0 0 20px #477a8550;
+}
+.dark-mode label::after {
+  content: "";
+  width: 3.5vh;
+  height: 3.5vh;
+  background-color: #b632eb;
+  position: absolute;
+  border-radius: 100%;
+  top: 0.25vh;
+  left: 0.25vh;
+  transition: 0.5s;
+}
+.dark-mode input:checked + label:after {
+  left: calc(100% - 0.25vh);
+  transform: translateX(-100%);
+  background-color: #D7FBE8;
+}
+.dark-mode input:checked + label {
+  background-color: #b632eb;
+}
+
 html, body {
   margin: 0;
   padding: 0;
