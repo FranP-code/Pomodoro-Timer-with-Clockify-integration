@@ -2,13 +2,50 @@ import React, {useState} from 'react'
 import LoginForm from './Identify Childrens/LoginForm'
 import RegisterForm from './Identify Childrens/RegisterForm'
 
+import {firebase} from './Firebase/firebase'
+import {withRouter} from 'react-router-dom'
 
-const Identify = () => {
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+
+
+const Identify = (props) => {
+    
     const [act, setAct] = useState('')
-
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    
+    const [message, setMessage] = React.useState('')
+
+    const auth = getAuth()
+
+    const register = async () => {
+
+        try {
+            const response = await createUserWithEmailAndPassword(auth, email, password)
+
+        } catch (error) {
+            console.log(error)
+            setMessage(error.message)
+            console.log(message)
+        }
+    }
+
+    const login = async () => {
+
+        try {
+            const response = await signInWithEmailAndPassword(auth, email, password)
+            console.log(response)
+            console.log(response.user)
+
+            props.history.push('/config-account')
+
+        } catch (error) {
+            console.log(error)
+            alert('USER OR PASSWORD NOT VALID')
+        }
+    }
 
     const defineLogin = () => {
         if (act !== 'login') {
@@ -35,6 +72,11 @@ const Identify = () => {
             return
         }
 
+        if (password.trim().length < 8) {
+            alert('PASSWORD TOO SHORT')
+            return
+        }
+
         if (act === 'register') {
 
             if (!confirmPassword.trim()) {
@@ -42,22 +84,27 @@ const Identify = () => {
                 return
             }
 
+            if (password !== confirmPassword) {
+                alert("PASSWORDS DOESN'T MATCH")
+                return                
+            }
+            register()  
+
             e.target.reset()
             setEmail('')
             setPassword('')
             setConfirmPassword('')
 
-            //SEND TO FIREBASE
             return
         }
 
         if (act === 'login') {
 
+            login()
+
             e.target.reset()
             setEmail('')
             setPassword('')
-
-            //SEND TO FIREBASE
             return
         }
 
@@ -126,4 +173,4 @@ const Identify = () => {
     )
 }
 
-export default Identify
+export default withRouter(Identify)

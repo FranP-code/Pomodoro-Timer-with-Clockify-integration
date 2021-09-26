@@ -12,16 +12,24 @@ import {
 } from "react-router-dom";
 
 import Identify from "./components/Identify";
+import Account from "./components/Account";
 
 function App() {
   return (
     <Router>
       <>
         <Header />
+        
         <Switch>
+
+          <Route path="/config-account">
+              <Account />
+          </Route>
+
           <Route path="/identify">
             <Identify />
           </Route>
+
           <Route path="/">
             <BannerLogin />
             <MainPomodoro />
