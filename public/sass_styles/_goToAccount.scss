@@ -1,0 +1,53 @@
+.go-to-account {
+    
+    width: 3vw;
+    height: 3vw;
+
+    position: absolute;
+
+    left: 5vw;
+
+    background-color: $second-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100%;
+
+    .go-to-account-text {
+
+        @include titleFont();
+        text-decoration: none;
+        user-select: none;
+
+        color: #ffffff;
+    }
+}
+
+.close-session {
+    width: 6vw;
+    height: 3vw;
+
+    position: absolute;
+
+    left: 10vw;
+
+    background-color: $second-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5%;
+
+    .close-session-text {
+
+        @include titleFont();
+        text-decoration: none;
+
+        user-select: none;
+
+        color: #ffffff;
+    }
+}

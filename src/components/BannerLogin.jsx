@@ -1,31 +1,13 @@
-import React, {useState} from 'react'
-import {firebase} from './Firebase/firebase'
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
+import React from 'react'
 
-const BannerLogin = () => {
+const BannerLogin = (props) => {
 
     console.log('BANNER LOGIN DEPLOYED')
-
-    const [signIn, setSignIn] = useState('')
-
-    const auth = getAuth()
-
-    onAuthStateChanged(auth, (user) => {
-
-        if (user) {
-            setSignIn(true)
-        } else {
-            setSignIn(false)
-        }
-
-    })
-
 
     return (
         <>
             {
-                !signIn ? 
+                !props.signIn ? 
 
                     <div className="banner-login">
                         <p>Access to integrate and save your progress with Clockify!</p>

@@ -5,7 +5,7 @@ import RegisterForm from './Identify Childrens/RegisterForm'
 import {firebase} from './Firebase/firebase'
 import {withRouter} from 'react-router-dom'
 
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
 
 
@@ -133,6 +133,15 @@ const Identify = (props) => {
 
         alert('ACTION NOT VALID')
     }
+
+    const signOutFromApp = () => {
+
+        signOut(auth)
+            .then(() => {
+                
+                //! 'YOU CLOSE SESSION' MESSAGE CODE
+            })
+    }
     
     React.useEffect( () => {
         const urlInfo = new URLSearchParams(window.location.search)
@@ -142,6 +151,10 @@ const Identify = (props) => {
             setAct('register')
         } else {
             setAct('login')
+        }
+
+        if (action === 'clss') {
+            signOutFromApp()
         }
     }, [])
 
