@@ -1,0 +1,119 @@
+.account-container {
+
+    #message {
+        padding-left: 5vw;
+
+        background-color: #ff6a6a;
+
+        h1 {
+            @include titleFont();
+            @include normalizeTitle();
+
+            color: #ffffff;
+            padding: 2vh 0px;
+        }
+    }
+
+    .successfully {
+        background-color: #75b7ff !important;
+        
+        h1 {color: #3a3a3a !important;}
+    }
+
+    .next-step {
+
+        .disabled {
+            user-select: none;
+            cursor: initial;
+            pointer-events: none;
+            opacity: 30%;
+        }
+        
+        .next-step-title {
+            padding-left: 5vw;
+    
+            padding-top: 5vh;
+    
+            background-color: $light-color;
+    
+            h1, h2 {
+    
+                @include normalizeTitle();
+                @include titleFont();
+    
+                color: $second-color;
+
+                padding-bottom: 3vh;
+            }
+        }
+
+        form {
+            width: 50vw;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding-top: 1vh;
+
+            
+            input {
+                height: 4vh;
+                width: 60%;
+
+                margin-bottom: 1vh;
+
+                border: none;
+                border-bottom: 1px solid $border-color;
+                outline: none;
+
+            }
+
+            input[type=submit] {
+                width: 50%;
+                border: $border-color solid 1px;
+            }
+        }
+
+        .flex-container-change-api-container {
+            padding-left: 5vw;
+
+            .change-api-container {
+                width: 50vw;
+                background-color: $lightest-color;
+
+                display: flex;
+                flex-direction: column;
+
+                padding-top: 1vh;
+
+                border-radius: 5%;
+
+                .api-preview-container {
+
+
+                    .title {
+                        @include normalizeTitle();
+                        @include titleFont();
+                    }
+
+                    .api-preview {
+                        font-weight: bold;
+                    }
+                }
+
+                #change-API-button {
+                    height: 4vh;
+                    width:  20vw;
+
+                    margin-bottom: 1vh;
+
+                    border: none;
+                    outline: none;
+
+                    border: $border-color solid 1px;
+                }
+            }
+        }
+    }
+}

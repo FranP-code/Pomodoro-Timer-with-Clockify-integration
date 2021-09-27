@@ -62,7 +62,7 @@ const Identify = (props) => {
             console.log(response)
             console.log(response.user)
 
-            //props.history.push('/config-account')
+            props.history.push('/config-account')
 
         } catch (error) {
             console.log(error)

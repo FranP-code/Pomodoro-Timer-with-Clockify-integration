@@ -25,7 +25,7 @@ const Message = (props) => {
     }, [])
 
     return (
-        <div>
+        <div id="message" className={props.message === 'API UPLOADED' ? 'successfully' : null}>
             <h1>{message}</h1>
         </div>
     )

@@ -428,6 +428,94 @@
   background-color: #b632eb;
 }
 
+.account-container #message {
+  padding-left: 5vw;
+  background-color: #ff6a6a;
+}
+.account-container #message h1 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  color: #ffffff;
+  padding: 2vh 0px;
+}
+.account-container .successfully {
+  background-color: #75b7ff !important;
+}
+.account-container .successfully h1 {
+  color: #3a3a3a !important;
+}
+.account-container .next-step .disabled {
+  user-select: none;
+  cursor: initial;
+  pointer-events: none;
+  opacity: 30%;
+}
+.account-container .next-step .next-step-title {
+  padding-left: 5vw;
+  padding-top: 5vh;
+  background-color: #9DF3C4;
+}
+.account-container .next-step .next-step-title h1, .account-container .next-step .next-step-title h2 {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  color: #1FAB89;
+  padding-bottom: 3vh;
+}
+.account-container .next-step form {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1vh;
+}
+.account-container .next-step form input {
+  height: 4vh;
+  width: 60%;
+  margin-bottom: 1vh;
+  border: none;
+  border-bottom: 1px solid #969696;
+  outline: none;
+}
+.account-container .next-step form input[type=submit] {
+  width: 50%;
+  border: #969696 solid 1px;
+}
+.account-container .next-step .flex-container-change-api-container {
+  padding-left: 5vw;
+}
+.account-container .next-step .flex-container-change-api-container .change-api-container {
+  width: 50vw;
+  background-color: #D7FBE8;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1vh;
+  border-radius: 5%;
+}
+.account-container .next-step .flex-container-change-api-container .change-api-container .api-preview-container .title {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+}
+.account-container .next-step .flex-container-change-api-container .change-api-container .api-preview-container .api-preview {
+  font-weight: bold;
+}
+.account-container .next-step .flex-container-change-api-container .change-api-container #change-API-button {
+  height: 4vh;
+  width: 20vw;
+  margin-bottom: 1vh;
+  border: none;
+  outline: none;
+  border: #969696 solid 1px;
+}
+
 html, body {
   margin: 0;
   padding: 0;

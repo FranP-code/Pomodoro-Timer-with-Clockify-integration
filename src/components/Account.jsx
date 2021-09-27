@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {firebase} from './Firebase/firebase'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import { doc, updateDoc, getFirestore } from "firebase/firestore";
+import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
 import Message from './Account Childrens/Message';
 
 const Account = () => {
@@ -25,6 +25,10 @@ const Account = () => {
             setSignIn(false)
         }
 
+    })
+
+    React.useEffect( () => {
+        checkApiKey()
     })
 
     const submitApiKey = async (e) => {
@@ -102,61 +106,113 @@ const Account = () => {
             return false
         }
     }
+
+    const checkApiKey = async () => {
+
+        try {
+            const db = await getFirestore(firebase)
+            const referenceDocument = await doc(db, 'users', userUID)
+            const document = await getDoc(referenceDocument)
+            const data = await document.data()
+
+            await applyApiState(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const applyApiState = (data) => {
+        if (data.keyClockify !== '') {
+
+            setActualState('API UPLOADED')
+            setApiKey(data.keyClockify)
+            setFristThreeApiKey(apiKey[0] + apiKey[1] + apiKey[2])
+        }
+    }
+
+    const deleteApiKey = async () => {
+
+        try {
+            const db = await getFirestore(firebase)
+            const referenceDocument = await doc(db, 'users', userUID)
+    
+            await updateDoc(referenceDocument, {
+                keyClockify: ''
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+        
+        setActualState('')
+        setApiKey('aa')
+        setApiKey('')
+    }
     
     return (
-        <div>
+        <div className="account-container">
             {
                 actualState === 'API NOT VALID' || actualState === 'API NOT UPLOADED' || actualState === 'API UPLOADED' ? <Message message={actualState}/> : null
             }
             {
                 signIn ?
-                    <div>
-                        <h1>One more step...</h1>
-                        <h2>Insert your Clockify API here</h2>
-                        <form
-                            onSubmit={submitApiKey}
-                            className=
-                            {
-                                actualState === 'API UPLOADED' ? 'disabled' : null
-                            }
-                        >
-                            <input
-                                type="text"
-                                onChange=
-                                {
-                                    (e) => {setApiKey(e.target.value)}
-                                }
-                            />
+                    <div className="next-step">
+                        <div className={actualState === 'API UPLOADED' ? 'disabled' : null}>
+                            <div className="next-step-title">
+                                <h1>One more step...</h1>
+                                <h2>Insert your <a href="https://clockify.me/help/faq/where-can-find-api-information">Clockify API</a> here</h2>
+                            </div>
 
-                            <input
-                                type="submit"
-                            />
-                        </form>
+                            <form
+                                onSubmit={submitApiKey}
+                            >
+                                <input
+                                    type="text"
+                                    onChange=
+                                    {
+                                        (e) => {setApiKey(e.target.value)}
+                                    }
+                                    placeholder="API Key"
+                                    value=
+                                    {
+                                        actualState === '' ? apiKey : ''
+                                    }
+                                />
+
+                                <input
+                                    type="submit"
+                                    value="Send API"
+                                />
+                            </form>
+                        </div>
+
                         {
                             actualState === 'API UPLOADED' ?
 
-                            <div>
+                            <div className="flex-container-change-api-container">
+                                <div className="change-api-container">
+                                    
+                                    <label
+                                        for="change-API-button">
+                                            <div className="api-preview-container">
+                                                <p className="title">
+                                                    Change the API Key
+                                                </p>
+                                                <p className="api-preview">
+                                                    {fristThreeApiKey}*******************
+                                                </p>
+                                            </div>
+                                        
+                                    </label>
                                 
-                                <label
-                                    for="change-API-button">
-                                        <div>
-                                            <p>
-                                                Change the API Key
-                                            </p>
-                                            <p>
-                                                {fristThreeApiKey}*******************
-                                            </p>
-                                        </div>
-                                    
-                                </label>
-                            
-                                <button
-                                    id="change-API-button"
-                                    onClick={() => setActualState('')}
-                                    > Change
-                                    
-                                </button>
+                                    <button
+                                        id="change-API-button"
+                                        onClick={() => deleteApiKey()}
+                                        > Change
+                                        
+                                    </button>
 
+                                </div>
                             </div>
                             : null
                         }
