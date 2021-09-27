@@ -82,6 +82,10 @@
   border-radius: 24px;
 }
 
+.blank {
+  opacity: 0%;
+}
+
 .main-pomodoro {
   display: flex;
   flex-direction: column;

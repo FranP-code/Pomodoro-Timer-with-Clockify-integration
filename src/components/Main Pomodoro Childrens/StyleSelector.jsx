@@ -1,5 +1,5 @@
 import React from 'react'
-import StyleSelectionChildren from './StyleSelectionChildren'
+import StyleSelectionChildren from './Style Selector Children/StyleSelectionChildren'
 
 const StyleSelector = (props) => {
     return (

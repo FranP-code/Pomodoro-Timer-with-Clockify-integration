@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import MainPomodoroTimer, {setTim} from './MainPomodoroTimer'
-import PomodoroCounter from './PomodoroCounter'
-import StyleSelector from './StyleSelector'
+import MainPomodoroTimer, {setTim} from './Main Pomodoro Childrens/MainPomodoroTimer'
+import PomodoroCounter from './Main Pomodoro Childrens/PomodoroCounter'
+import StyleSelector from './Main Pomodoro Childrens/StyleSelector'
 
 const MainPomodoro = () => {
 
