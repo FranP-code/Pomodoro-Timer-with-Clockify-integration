@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 
 const MainPomodoroTimer = (props) => {
 
-    const [minutes, setMinutes] = useState('61')
-    const [seconds, setSeconds] = useState('60')
+    const [minutes, setMinutes] = useState('25')
+    const [seconds, setSeconds] = useState('0')
 
     const [breakTime, setBreakTime] = useState(undefined)
     const [weAreInBreakTime, setWeAreInBreakTime] = useState(false)
@@ -11,6 +11,8 @@ const MainPomodoroTimer = (props) => {
     const [restCounter, setRestCounter] = useState(0)
 
     const [timerActivity, setTimerActivity] = useState(false)
+
+    const [actualStyle, setActualStyle] = useState('Regular')
 
     const setTimeStyle = () => {
 
@@ -34,6 +36,8 @@ const MainPomodoroTimer = (props) => {
                 }
             )
 
+            setActualStyle(props.style)
+
             return {
                 minutes, seconds, breakTime
             }
@@ -42,7 +46,7 @@ const MainPomodoroTimer = (props) => {
         
         if (props.style === 'Regular'){
             
-            const minutes = 3
+            const minutes = 25
             const seconds = 0
             
             setMinutes(minutes)
@@ -51,15 +55,17 @@ const MainPomodoroTimer = (props) => {
             setBreakTime(
                 {
                     normal: {
-                        minutes: 0,
-                        seconds: 15
+                        minutes: 5,
+                        seconds: 0
                     },
                     extended: {
-                        minutes: 0,
-                        seconds: 20  
+                        minutes: 15,
+                        seconds: 0  
                     }
                 }
             )
+
+            setActualStyle(props.style)
 
             return {
                 minutes, seconds, breakTime
@@ -87,6 +93,8 @@ const MainPomodoroTimer = (props) => {
                 }
             )
 
+            setActualStyle(props.style)
+
             return {
                 minutes, seconds, breakTime
             }
@@ -113,6 +121,8 @@ const MainPomodoroTimer = (props) => {
                 }
             )
 
+            setActualStyle(props.style)
+
             return {
                 minutes, seconds, breakTime
             }
@@ -121,9 +131,12 @@ const MainPomodoroTimer = (props) => {
         
     }
 
-    React.useEffect (
-        setTimeStyle, []
-    )
+    React.useEffect (() => {
+        if (actualStyle !== props.style) {
+            setTimeStyle()
+
+        }
+    })
 
     const startTimer = (velocity = 1) => {
         return setTimeout(() => {
