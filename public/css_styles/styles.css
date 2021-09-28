@@ -490,6 +490,9 @@
   width: 50%;
   border: #969696 solid 1px;
 }
+.account-container .next-step form .disabled {
+  opacity: 0%;
+}
 .account-container .next-step .flex-container-change-api-container {
   padding-left: 5vw;
 }
@@ -518,6 +521,14 @@
   border: none;
   outline: none;
   border: #969696 solid 1px;
+}
+
+.loading-container {
+  width: 100%;
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .go-to-account {

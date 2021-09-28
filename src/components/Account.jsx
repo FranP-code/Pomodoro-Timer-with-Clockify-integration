@@ -3,6 +3,7 @@ import {firebase} from './Firebase/firebase'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
 import Message from './Account Childrens/Message';
+import loadingGif from './img/loading.gif'
 
 const Account = () => {
 
@@ -11,6 +12,8 @@ const Account = () => {
     const [fristThreeApiKey, setFristThreeApiKey] = useState('')
 
     const [actualState, setActualState] = useState('')
+    const [loading, setLoading] = useState(true)
+    const [processing, setProcessing] = useState(false)
 
     const auth = getAuth()
 
@@ -32,6 +35,8 @@ const Account = () => {
     })
 
     const submitApiKey = async (e) => {
+        setProcessing(true)
+
         e.preventDefault()
         e.target.reset()
 
@@ -46,14 +51,18 @@ const Account = () => {
 
                 setActualState('API UPLOADED')
                 setFristThreeApiKey(apiKey[0] + apiKey[1] + apiKey[2])
+                
+                setProcessing(false)
             } else {
 
                 setActualState('API NOT UPLOADED')
+                setProcessing(false)
             }
 
         } else {
             
             setActualState('API NOT VALID')
+            setProcessing(false)
         }
 
         setApiKey('')
@@ -116,6 +125,8 @@ const Account = () => {
             const data = await document.data()
 
             await applyApiState(data)
+            await setLoading(false)
+
         } catch (error) {
             console.log(error)
         }
@@ -148,6 +159,14 @@ const Account = () => {
         setApiKey('aa')
         setApiKey('')
     }
+
+    if (loading) {
+        return (
+            <div className="loading-container">
+                <img src={loadingGif} alt="" />
+            </div>
+        )
+    }
     
     return (
         <div className="account-container">
@@ -165,6 +184,7 @@ const Account = () => {
 
                             <form
                                 onSubmit={submitApiKey}
+                                className={processing ? 'disabled' : null}
                             >
                                 <input
                                     type="text"
@@ -173,10 +193,7 @@ const Account = () => {
                                         (e) => {setApiKey(e.target.value)}
                                     }
                                     placeholder="API Key"
-                                    value=
-                                    {
-                                        actualState === '' ? apiKey : ''
-                                    }
+
                                 />
 
                                 <input
