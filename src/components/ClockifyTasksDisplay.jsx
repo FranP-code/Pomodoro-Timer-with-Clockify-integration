@@ -15,6 +15,9 @@ const ClockifyTasksDisplay = (props) => {
     const [workspaces, setWorkspaces] = useState([])
     const [workspacesReady, setWorkspacesReady] = useState(false)
 
+    const [projects, setProjects] = useState([])
+    const [projectsDone, setProjectsDone] = useState(false)
+
     const getApiKey = async () => {
 
         try {
@@ -41,7 +44,7 @@ const ClockifyTasksDisplay = (props) => {
         }
     }
 
-    const makeRequest = async (apiClockify) => {
+    const makeRequestWorkspaces = async (apiClockify) => {
         try {
             const request = {
                 method: "GET",
@@ -52,6 +55,8 @@ const ClockifyTasksDisplay = (props) => {
             }
             const response = await fetch(`https://api.clockify.me/api/v1/workspaces/`, request)
             const data = await response.json()
+
+            setApiKey(apiClockify)
     
             return await data 
     
@@ -66,11 +71,10 @@ const ClockifyTasksDisplay = (props) => {
         
         console.log(apiKey)
 
-        const data = await makeRequest(key)
+        const data = await makeRequestWorkspaces(key)
 
         if (data.code !== 1000) {
-            setWorkspaces([])
-            let workspacesCopy = await workspaces
+            let workspacesCopy = []
             
             await data.forEach(workspace => {
                 
@@ -109,19 +113,69 @@ const ClockifyTasksDisplay = (props) => {
 
     }, [props, onAuthStateChanged, setUserUID, userUID])
 
+    const makeRequestProjects = async (e) => {
+
+        try {
+            const request = {
+                method: "GET",
+                headers: {
+                    'X-Api-Key': apiKey,
+                    "content-type": "application/json"
+                }
+            }
+            const response = await fetch(`https://api.clockify.me/api/v1/workspaces/${e}/projects`, request)
+            const data = await response.json()
+
+            console.log(data)
+            
+            setProjectsDone(true)
+
+            return await data
+    
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const defineProjects = async (e) => {
+
+        const data = await makeRequestProjects(e)
+
+        await setProjects(data)
+        
+        if (projects) {
+            
+            console.log(projects)
+            setProjectsDone(true)
+        }
+        
+    }
 
 
 
     return (
         <div>
-            <select>
+            <select onChange={(e) => {defineProjects(e.target.value)}}>
                 <option value="0">Select a Workspace</option>
                 {
                     workspacesReady ? 
                         workspaces.map( (workspace) => {
                             return <option value={workspace.id} key={workspace.id}>{workspace.name}</option>
-                        }) 
+                        })
                     : null
+                }
+            </select>
+            <select>
+                {
+                    projectsDone ?
+                        projects.map( (project) => {
+
+                            if (!project.archived){
+                                return <option value={project.id} key={project.id}>{project.name}</option>
+
+                            }
+                        })
+                    :null
                 }
             </select>
         </div>
