@@ -11,7 +11,9 @@ const ClockifyTasksDisplay = (props) => {
 
     const [userUID, setUserUID] = useState('')
     const [apiKey, setApiKey] = useState('')
+
     const [workspaces, setWorkspaces] = useState([])
+    const [workspacesReady, setWorkspacesReady] = useState(false)
 
     const getApiKey = async () => {
 
@@ -67,20 +69,21 @@ const ClockifyTasksDisplay = (props) => {
         const data = await makeRequest(key)
 
         if (data.code !== 1000) {
+            setWorkspaces([])
             let workspacesCopy = await workspaces
-    
+            
             await data.forEach(workspace => {
                 
                 workspacesCopy.push(workspace)
                 
             });
-    
+            
             await setWorkspaces(workspacesCopy)
     
-            console.log(workspaces)
-
+            setWorkspacesReady(true)
         }
-
+        
+        console.log(workspaces)
     }
     
     React.useEffect( () => {
@@ -111,7 +114,16 @@ const ClockifyTasksDisplay = (props) => {
 
     return (
         <div>
-            
+            <select>
+                <option value="0">Select a Workspace</option>
+                {
+                    workspacesReady ? 
+                        workspaces.map( (workspace) => {
+                            return <option value={workspace.id} key={workspace.id}>{workspace.name}</option>
+                        }) 
+                    : null
+                }
+            </select>
         </div>
     )
 }
