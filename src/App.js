@@ -18,6 +18,7 @@ import {
 
 import Identify from "./components/Identify";
 import Account from "./components/Account";
+import ClockifyTasksDisplay from './components/ClockifyTasksDisplay';
 
 function App() {
 
@@ -56,7 +57,12 @@ function App() {
             <BannerLogin 
               signIn={signIn}
             />
-            <MainPomodoro />
+            <MainPomodoro 
+              signIn={signIn}
+            />
+            <ClockifyTasksDisplay
+              signIn={signIn}
+            />
             <GoDownArrow />
             <AboutThis />
           </Route>

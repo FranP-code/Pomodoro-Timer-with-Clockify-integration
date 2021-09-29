@@ -2,8 +2,10 @@ import React, {useState} from 'react'
 import MainPomodoroTimer, {setTim} from './Main Pomodoro Childrens/MainPomodoroTimer'
 import PomodoroCounter from './Main Pomodoro Childrens/PomodoroCounter'
 import StyleSelector from './Main Pomodoro Childrens/StyleSelector'
+import { makeRequest } from './Clockify/clockify'
+import ClockifyTasksDisplay from './ClockifyTasksDisplay'
 
-const MainPomodoro = () => {
+const MainPomodoro = (props) => {
 
     console.log('MAIN POMODORO DEPLOYED')
 
