@@ -569,6 +569,33 @@
   color: #ffffff;
 }
 
+.clockify-tasks-display {
+  width: 20vw;
+  position: absolute;
+  top: 60vh;
+  left: 2.5vw;
+}
+.clockify-tasks-display.loading-container {
+  width: 20vw;
+  height: auto;
+}
+.clockify-tasks-display.disabled {
+  user-select: none;
+  cursor: initial;
+  pointer-events: none;
+  opacity: 30%;
+}
+.clockify-tasks-display .workspace-selector, .clockify-tasks-display .project-selector {
+  width: 15vw;
+  height: 3vw;
+}
+.clockify-tasks-display .workspace-selector.disabled, .clockify-tasks-display .project-selector.disabled {
+  user-select: none;
+  cursor: initial;
+  pointer-events: none;
+  opacity: 30%;
+}
+
 html, body {
   margin: 0;
   padding: 0;

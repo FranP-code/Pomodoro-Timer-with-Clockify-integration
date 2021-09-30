@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { firebase } from './Firebase/firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
-
+import loadingGif from './img/loading.gif'
 
 const ClockifyTasksDisplay = (props) => {
     
@@ -17,6 +17,11 @@ const ClockifyTasksDisplay = (props) => {
 
     const [projects, setProjects] = useState([])
     const [projectsDone, setProjectsDone] = useState(false)
+
+    const [workspaceID, setWorspaceID] = useState(0)
+    const [projectID, setProjectID] = useState(0)
+
+    const [loading, setLoading] = useState(true)
 
     const getApiKey = async () => {
 
@@ -85,6 +90,7 @@ const ClockifyTasksDisplay = (props) => {
             await setWorkspaces(workspacesCopy)
     
             setWorkspacesReady(true)
+            setLoading(false)
         }
         
         console.log(workspaces)
@@ -127,8 +133,6 @@ const ClockifyTasksDisplay = (props) => {
             const data = await response.json()
 
             console.log(data)
-            
-            setProjectsDone(true)
 
             return await data
     
@@ -138,6 +142,16 @@ const ClockifyTasksDisplay = (props) => {
     }
 
     const defineProjects = async (e) => {
+
+        if (e === 0) {
+            setProjectsDone(false)
+            setProjects([])
+
+        } else {
+            setProjectsDone(true)
+        }
+        
+        setWorspaceID(e)
 
         const data = await makeRequestProjects(e)
 
@@ -151,11 +165,18 @@ const ClockifyTasksDisplay = (props) => {
         
     }
 
+    if (loading) {
+        return (
+            <div className="clockify-tasks-display loading-container">
+                <img src={loadingGif} alt=""/>
+            </div>
+        )
+    }
 
 
     return (
-        <div>
-            <select onChange={(e) => {defineProjects(e.target.value)}}>
+        <div className={props.timerOn ? 'clockify-tasks-display disabled' : 'clockify-tasks-display'}>
+            <select onChange={(e) => {defineProjects(e.target.value)}} className='workspace-selector'>
                 <option value="0">Select a Workspace</option>
                 {
                     workspacesReady ? 
@@ -165,9 +186,9 @@ const ClockifyTasksDisplay = (props) => {
                     : null
                 }
             </select>
-            <select>
+            <select className={workspaceID !== 0 ? 'project-selector' : 'project-selector disabled'}>
                 {
-                    projectsDone ?
+                    projectsDone && projects !== undefined ?
                         projects.map( (project) => {
 
                             if (!project.archived){
@@ -175,7 +196,7 @@ const ClockifyTasksDisplay = (props) => {
 
                             }
                         })
-                    :null
+                    : null
                 }
             </select>
         </div>

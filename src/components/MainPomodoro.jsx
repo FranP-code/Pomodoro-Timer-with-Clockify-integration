@@ -11,7 +11,6 @@ const MainPomodoro = (props) => {
 
     const [style, setStyle] = useState('Regular')
     const [displayHidden, setDisplayHidden] = useState(true)
-    const [timerOn, setTimerOn] = useState(false)
 
     const [pomodoros, setPomodoros] = useState(0)
     const [rests, setRests] = useState(0)
@@ -31,8 +30,8 @@ const MainPomodoro = (props) => {
                 
                 style={style}
 
-                timerOn={timerOn}
-                setTimerOn={setTimerOn}
+                timerOn={props.timerOn}
+                setTimerOn={props.setTimerOn}
                 
                 pomodoros={pomodoros}
                 setPomodoros={setPomodoros}
@@ -54,8 +53,8 @@ const MainPomodoro = (props) => {
                     </h3>
                 </div>
 
-                <button class="start-pomodoro" onClick={() => setTimerOn(!timerOn)}>{
-                    timerOn ? 'STOP' : 'START'
+                <button class="start-pomodoro" onClick={() => props.setTimerOn(!props.timerOn)}>{
+                    props.timerOn ? 'STOP' : 'START'
 
                 }</button>
             </div>

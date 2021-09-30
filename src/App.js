@@ -22,6 +22,8 @@ import ClockifyTasksDisplay from './components/ClockifyTasksDisplay';
 
 function App() {
 
+  const [timerOn, setTimerOn] = useState(false)
+
   const [signIn, setSignIn] = useState('')
 
   const auth = getAuth()
@@ -59,9 +61,12 @@ function App() {
             />
             <MainPomodoro 
               signIn={signIn}
+              timerOn={timerOn}
+              setTimerOn={setTimerOn}
             />
             <ClockifyTasksDisplay
               signIn={signIn}
+              timerOn={timerOn}
             />
             <GoDownArrow />
             <AboutThis />

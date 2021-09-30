@@ -1,0 +1,32 @@
+.clockify-tasks-display {
+
+    width: 20vw;
+    position: absolute;
+
+    top: 60vh;
+    left: 2.5vw;
+
+    &.loading-container {
+        width: 20vw;
+        height: auto;
+    }
+
+    &.disabled {
+        user-select: none;
+        cursor: initial;
+        pointer-events: none;
+        opacity: 30%;
+    }
+    
+    .workspace-selector, .project-selector {
+        width: 15vw;
+        height: 3vw;
+
+        &.disabled {
+            user-select: none;
+            cursor: initial;
+            pointer-events: none;
+            opacity: 30%;
+        }
+    }
+}

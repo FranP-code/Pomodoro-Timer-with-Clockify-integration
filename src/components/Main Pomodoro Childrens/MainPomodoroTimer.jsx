@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 
 const MainPomodoroTimer = (props) => {
 
-    const [minutes, setMinutes] = useState('25')
-    const [seconds, setSeconds] = useState('0')
+    const [minutes, setMinutes] = useState(25)
+    const [seconds, setSeconds] = useState(0)
 
     const [breakTime, setBreakTime] = useState(undefined)
     const [weAreInBreakTime, setWeAreInBreakTime] = useState(false)
@@ -144,12 +144,12 @@ const MainPomodoroTimer = (props) => {
             if (seconds === 0) {
 
                 setSeconds(59) 
-                setMinutes((minutes - 1))
+                setMinutes(minutes - 1)
 
             }
             
             else {
-                setSeconds((seconds - 1))
+                setSeconds(seconds - 1)
             }
 
         }, (1000 / velocity))
