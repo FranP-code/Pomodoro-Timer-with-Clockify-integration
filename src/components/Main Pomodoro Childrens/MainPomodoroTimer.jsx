@@ -17,8 +17,8 @@ const MainPomodoroTimer = (props) => {
     const setTimeStyle = () => {
 
         if (props.style === 'Can I play, Daddy?') {
-            const minutes = 10
-            const seconds = 0
+            const minutes = 0
+            const seconds = 10
             
             setMinutes(minutes)
             setSeconds(seconds)
@@ -282,7 +282,7 @@ const MainPomodoroTimer = (props) => {
             
                 if (!weAreInBreakTime) {
 
-                        if (minutes < ( setTimeStyle().minutes / 2) ) {
+                        if (minutes <= ( setTimeStyle().minutes / 2) ) {
                             setPomodoroCounter('Pomodoros')
                             setRestCounter((restCounter + 1))
                             
@@ -302,7 +302,7 @@ const MainPomodoroTimer = (props) => {
                         setRestCounter(0)
 
                     } else {
-                    console.log('AA2')
+                        console.log('AA2')
 
                         setPomodoroCounter('Rest')
                     }
@@ -311,6 +311,8 @@ const MainPomodoroTimer = (props) => {
                 }
 
                 setTimerActivity(false)
+                setTimeStyle()
+
             }
 
         }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds]
