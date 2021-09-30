@@ -20,8 +20,6 @@ const MainPomodoroTimer = (props) => {
     const [alreadyCountingStart, setAlreadyCountingStart] = useState(false) /* TOO MUCH FUCKING STATES https://pbs.twimg.com/media/EoM2rXuW8AMRxZh?format=png&name=large*/
     const [alreadyCountingEnd, setAlreadyCountingEnd] = useState(false)
 
-    const [startTime, setStartTime] = useState('')
-
     const setTimeStyle = () => {
 
         if (props.style === 'Can I play, Daddy?') {
@@ -227,7 +225,8 @@ const MainPomodoroTimer = (props) => {
             if (!weAreInBreakTime) {
 
                 if (!alreadyCountingStart) {
-                    getAndFormatCurrentTime()
+                    const time = getAndFormatCurrentTime()
+                    props.setStartTime(time)
 
                     setAlreadyCountingStart(true)
                 }
@@ -262,9 +261,12 @@ const MainPomodoroTimer = (props) => {
                     }
 
                     if (!alreadyCountingEnd) {
-                        getAndFormatCurrentTime()
-    
+                        const time = getAndFormatCurrentTime()
+
+                        props.setEndTime(time)
                         setAlreadyCountingEnd(true)
+
+                        props.setLetsUpload(true)
                     }
                 }
 
@@ -322,9 +324,12 @@ const MainPomodoroTimer = (props) => {
                             setRestCounter((restCounter + 1))
                                                         
                                 if (!alreadyCountingEnd) {
-                                    getAndFormatCurrentTime()
+                                    const time = getAndFormatCurrentTime() 
 
+                                    props.setEndTime(time)
                                     setAlreadyCountingEnd(true)
+                                    
+                                    props.setLetsUpload(true)
                                 }
                             }
                         }
@@ -353,8 +358,11 @@ const MainPomodoroTimer = (props) => {
                     setTimerActivity(false)
                     setTimeStyle()
                 }
+
+                setAlreadyCountingStart(false)
+                setAlreadyCountingEnd(false)
             }
-        }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds, getAndFormatCurrentTime, setAlreadyCountingEnd, setAlreadyCountingStart, alreadyCountingEnd, alreadyCountingStart]
+        }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds, getAndFormatCurrentTime, setAlreadyCountingEnd, setAlreadyCountingStart, alreadyCountingEnd, alreadyCountingStart, props.setEndTime, props.endTime]
     )
 
     const formatMinutes =  () => {

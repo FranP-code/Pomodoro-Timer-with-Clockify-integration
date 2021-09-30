@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import MainPomodoroTimer from './Main Pomodoro Childrens/MainPomodoroTimer'
 import PomodoroCounter from './Main Pomodoro Childrens/PomodoroCounter'
 import StyleSelector from './Main Pomodoro Childrens/StyleSelector'
-
+import uploadToClockifyTimer from './Clockify/uploadToClockifyTimer'
+import react from 'react'
 
 
 const MainPomodoro = (props) => {
@@ -16,11 +17,34 @@ const MainPomodoro = (props) => {
     const [rests, setRests] = useState(0)
     const [longRests, setLongRests] = useState(0)
 
+    
+
+    const [startTime, setStartTime] = useState('')
+    const [endTime, setEndTime] = useState('')
+
+    const [letsUpload, setLetsUpload] = useState(false)
+
+
     const showStyles = () => {
         console.log('Styles Deployed')
 
         setDisplayHidden(!displayHidden)
     }
+
+    React.useEffect( () => {
+        if (letsUpload) {
+    
+            uploadToClockifyTimer( props.workspaceID, props.projectID, startTime, endTime, props.apiKey)
+    
+            setLetsUpload(false)
+    
+            setStartTime('')
+            setEndTime('')
+        }
+    })
+
+
+
 
     return (
         <>
@@ -50,6 +74,20 @@ const MainPomodoro = (props) => {
                 setProjectID={props.setProjectID}
 
                 apiKey={props.apiKey}
+
+                /*alreadyCountingStart={alreadyCountingStart}
+                setAlreadyCountingStart={setAlreadyCountingStart}
+
+                alreadyCountingEnd={alreadyCountingEnd}
+                setAlreadyCountingEnd={setAlreadyCountingEnd}*/
+                
+                startTime={startTime}
+                setStartTime={setStartTime}
+
+                endtime={endTime}
+                setEndTime={setEndTime}
+
+                setLetsUpload={setLetsUpload}
                 />
 
 
