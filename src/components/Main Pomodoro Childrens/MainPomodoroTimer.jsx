@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+import uploadToClockifyTimer from '../Clockify/uploadToClockifyTimer'
+
 const MainPomodoroTimer = (props) => {
 
     const [minutes, setMinutes] = useState(25)
@@ -233,6 +235,8 @@ const MainPomodoroTimer = (props) => {
                             
                         }, 1000)
                     }
+
+                    uploadToClockifyTimer( props.workspaceID, props.projectID, '2021-10-02T13:00:14Z', '2021-10-02T15:00:14Z', props.apiKey)
                 }
 
 

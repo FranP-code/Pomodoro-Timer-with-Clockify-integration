@@ -26,6 +26,11 @@ function App() {
 
   const [signIn, setSignIn] = useState('')
 
+  const [apiKey, setApiKey] = useState('')
+
+  const [workspaceID, setWorspaceID] = useState(0)
+  const [projectID, setProjectID] = useState(0)
+
   const auth = getAuth()
 
   onAuthStateChanged(auth, (user) => {
@@ -63,10 +68,28 @@ function App() {
               signIn={signIn}
               timerOn={timerOn}
               setTimerOn={setTimerOn}
+
+              workspaceID={workspaceID}
+              setWorspaceID={setWorspaceID}
+
+              projectID={projectID}
+              setProjectID={setProjectID}
+
+              apiKey={apiKey}
             />
+
             <ClockifyTasksDisplay
               signIn={signIn}
               timerOn={timerOn}
+
+              apiKey={apiKey}
+              setApiKey={setApiKey}
+
+              workspaceID={workspaceID}
+              setWorspaceID={setWorspaceID}
+
+              projectID={projectID}
+              setProjectID={setProjectID}
             />
             <GoDownArrow />
             <AboutThis />

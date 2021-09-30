@@ -41,6 +41,15 @@ const MainPomodoro = (props) => {
 
                 longRests={longRests}
                 setLongRests={setLongRests}
+
+
+                workspaceID={props.workspaceID}
+                setWorspaceID={props.setWorspaceID}
+
+                projectID={props.projectID}
+                setProjectID={props.setProjectID}
+
+                apiKey={props.apiKey}
                 />
 
 

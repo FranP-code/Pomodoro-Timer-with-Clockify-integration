@@ -10,16 +10,12 @@ const ClockifyTasksDisplay = (props) => {
     const auth = getAuth()
 
     const [userUID, setUserUID] = useState('')
-    const [apiKey, setApiKey] = useState('')
 
     const [workspaces, setWorkspaces] = useState([])
     const [workspacesReady, setWorkspacesReady] = useState(false)
 
     const [projects, setProjects] = useState([])
     const [projectsDone, setProjectsDone] = useState(false)
-
-    const [workspaceID, setWorspaceID] = useState(0)
-    const [projectID, setProjectID] = useState(0)
 
     const [loading, setLoading] = useState(true)
 
@@ -61,7 +57,7 @@ const ClockifyTasksDisplay = (props) => {
             const response = await fetch(`https://api.clockify.me/api/v1/workspaces/`, request)
             const data = await response.json()
 
-            setApiKey(apiClockify)
+            props.setApiKey(apiClockify)
     
             return await data 
     
@@ -74,7 +70,7 @@ const ClockifyTasksDisplay = (props) => {
 
         const getApiKeyReturn = key
         
-        console.log(apiKey)
+        console.log(props.apiKey)
 
         const data = await makeRequestWorkspaces(key)
 
@@ -125,7 +121,7 @@ const ClockifyTasksDisplay = (props) => {
             const request = {
                 method: "GET",
                 headers: {
-                    'X-Api-Key': apiKey,
+                    'X-Api-Key': props.apiKey,
                     "content-type": "application/json"
                 }
             }
@@ -151,7 +147,7 @@ const ClockifyTasksDisplay = (props) => {
             setProjectsDone(true)
         }
         
-        setWorspaceID(e)
+        props.setWorspaceID(e)
 
         const data = await makeRequestProjects(e)
 
@@ -163,6 +159,11 @@ const ClockifyTasksDisplay = (props) => {
             setProjectsDone(true)
         }
         
+    }
+
+    const selectProject = (e) => {
+
+        props.setProjectID(e)
     }
 
     if (loading) {
@@ -186,7 +187,8 @@ const ClockifyTasksDisplay = (props) => {
                     : null
                 }
             </select>
-            <select className={workspaceID !== 0 ? 'project-selector' : 'project-selector disabled'}>
+            <select onChange={(e) => {selectProject(e.target.value)}} className={props.workspaceID !== 0 ? 'project-selector' : 'project-selector disabled'}>
+                <option value="0">Select a Project</option>
                 {
                     projectsDone && projects !== undefined ?
                         projects.map( (project) => {
