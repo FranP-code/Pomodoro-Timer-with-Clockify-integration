@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 import uploadToClockifyTimer from '../Clockify/uploadToClockifyTimer'
+import getAndFormatCurrentTime from '../Clockify/getAndFormatCurrentTime'
 
 const MainPomodoroTimer = (props) => {
 
@@ -15,6 +16,11 @@ const MainPomodoroTimer = (props) => {
     const [timerActivity, setTimerActivity] = useState(false)
 
     const [actualStyle, setActualStyle] = useState('Regular')
+
+    const [alreadyCountingStart, setAlreadyCountingStart] = useState(false) /* TOO MUCH FUCKING STATES https://pbs.twimg.com/media/EoM2rXuW8AMRxZh?format=png&name=large*/
+    const [alreadyCountingEnd, setAlreadyCountingEnd] = useState(false)
+
+    const [startTime, setStartTime] = useState('')
 
     const setTimeStyle = () => {
 
@@ -199,13 +205,32 @@ const MainPomodoroTimer = (props) => {
         }
     }
 
+    /*React.useEffect( () => {
+
+        if (props.timerOn) {
+            getAndFormatCurrentTime()
+        } 
+        
+        if (!props.timerOn){
+            getAndFormatCurrentTime()
+            //uploadToClockifyTimer( props.workspaceID, props.projectID, '2021-10-02T13:00:14Z', '2021-10-02T15:00:14Z', props.apiKey)
+        }
+
+    })*/
+
     React.useEffect ( () => {
         let idTimeOut
 
         if (props.timerOn) {
             setTimerActivity(true)
 
-            if(!weAreInBreakTime) {
+            if (!weAreInBreakTime) {
+
+                if (!alreadyCountingStart) {
+                    getAndFormatCurrentTime()
+
+                    setAlreadyCountingStart(true)
+                }
                 
                 if (minutes === 0 && seconds === 0) {
                     setTimerActivity(false)
@@ -236,14 +261,17 @@ const MainPomodoroTimer = (props) => {
                         }, 1000)
                     }
 
-                    uploadToClockifyTimer( props.workspaceID, props.projectID, '2021-10-02T13:00:14Z', '2021-10-02T15:00:14Z', props.apiKey)
+                    if (!alreadyCountingEnd) {
+                        getAndFormatCurrentTime()
+    
+                        setAlreadyCountingEnd(true)
+                    }
                 }
 
 
                 if (minutes >= 0 || seconds > 0) {
                 
-                    idTimeOut = startTimer()
-                    
+                    idTimeOut = startTimer()                    
                  }
             }
 
@@ -281,45 +309,52 @@ const MainPomodoroTimer = (props) => {
                 clearInterval(idTimeOut)
                 }
 
-            } else if (props.timerOn === false && timerActivity === true){
-
+            } 
             
-                if (!weAreInBreakTime) {
+            if (!props.timerOn) {
+
+                if ( timerActivity === true) {
+
+                    if (!weAreInBreakTime) {
 
                         if (minutes <= ( setTimeStyle().minutes / 2) ) {
                             setPomodoroCounter('Pomodoros')
                             setRestCounter((restCounter + 1))
-                            
+                                                        
+                                if (!alreadyCountingEnd) {
+                                    getAndFormatCurrentTime()
+
+                                    setAlreadyCountingEnd(true)
+                                }
+                            }
                         }
-                        
 
-                }
+                
 
-                if (weAreInBreakTime) {
+                    if (weAreInBreakTime) {
 
-                    console.log(restCounter)
+                        console.log(restCounter)
 
-                    if (restCounter === 4) {
-                        console.log('AA3')
+                        if (restCounter === 4) {
+                            console.log('AA3')
 
-                        setPomodoroCounter('Long Rest')
-                        setRestCounter(0)
+                            setPomodoroCounter('Long Rest')
+                            setRestCounter(0)
 
-                    } else {
-                        console.log('AA2')
+                        } else {
+                            console.log('AA2')
 
-                        setPomodoroCounter('Rest')
+                            setPomodoroCounter('Rest')
+                        }
+
+                        setWeAreInBreakTime(false)
                     }
 
-                    setWeAreInBreakTime(false)
+                    setTimerActivity(false)
+                    setTimeStyle()
                 }
-
-                setTimerActivity(false)
-                setTimeStyle()
-
             }
-
-        }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds]
+        }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds, getAndFormatCurrentTime, setAlreadyCountingEnd, setAlreadyCountingStart, alreadyCountingEnd, alreadyCountingStart]
     )
 
     const formatMinutes =  () => {
