@@ -3,8 +3,6 @@ import MainPomodoroTimer from './Main Pomodoro Childrens/MainPomodoroTimer'
 import PomodoroCounter from './Main Pomodoro Childrens/PomodoroCounter'
 import StyleSelector from './Main Pomodoro Childrens/StyleSelector'
 import uploadToClockifyTimer from './Clockify/uploadToClockifyTimer'
-import react from 'react'
-
 
 const MainPomodoro = (props) => {
 

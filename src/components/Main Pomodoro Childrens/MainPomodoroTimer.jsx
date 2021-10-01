@@ -216,6 +216,12 @@ const MainPomodoroTimer = (props) => {
 
     })*/
 
+    const getFavicon = () => {
+        const r = document.getElementById('favicon')
+        
+        return r
+    }
+
     React.useEffect ( () => {
         let idTimeOut
 
@@ -223,6 +229,8 @@ const MainPomodoroTimer = (props) => {
             setTimerActivity(true)
 
             if (!weAreInBreakTime) {
+
+                getFavicon().href = './img/working favicon.ico'
 
                 if (!alreadyCountingStart) {
                     const time = getAndFormatCurrentTime()
@@ -279,6 +287,8 @@ const MainPomodoroTimer = (props) => {
 
             if(weAreInBreakTime) {
                 
+                getFavicon().href = './img/rest favicon.ico'
+
                 if (minutes === 0 && seconds === 0) {
                     setTimerActivity(false)
                     
@@ -314,6 +324,8 @@ const MainPomodoroTimer = (props) => {
             } 
             
             if (!props.timerOn) {
+
+                getFavicon().href = './img/favicon.ico'
 
                 if ( timerActivity === true) {
 
