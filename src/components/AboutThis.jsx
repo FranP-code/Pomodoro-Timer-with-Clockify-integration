@@ -8,7 +8,6 @@ const AboutThis = () => {
         <div id="about-this">
             <div className="titles">
                 <h3>About<span className="line-through"> us </span>this</h3>
-                <h3>Credits</h3>
             </div>
             <div className="information">
                 <ul>
@@ -20,14 +19,46 @@ const AboutThis = () => {
                             Because I wanted a pomodoro function that syncs with Clockify, which is a service that I use a lot to track my work.
                         </p>
                     </li>
+                    <li>
+                        <h4>
+                            This is free?
+                        </h4>
+                        <p>
+                            Yes of course!, it is free in every sense of the word. Here is the <a href="https://github.com/FranP-code/Pomodoro-Timer-with-Clockify-integration">source code</a>.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>
+                            How can I contact you?
+                        </h4>
+                        <p>
+                            You can contact me by my email: franpessano1@gmail.com
+                        </p>
+                    </li>
                 </ul>
                 <ul>
                     <li>
                         <h4>
-                            Credit 1
+                            What languages / frameworks you used?
                         </h4>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure suscipit totam magni, maiores facere quisquam est sapiente eligendi saepe repellendus quam blanditiis magnam ipsa doloribus facilis. Expedita eos corrupti dolor!
+                            I just used React.js and Sass together with HTML, CSS and JS.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>
+                            What do you use to store the credentials?
+                        </h4>
+                        <p>
+                            I use Google's Firebase service.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>
+                            You have more projects?
+                        </h4>
+                        <p>
+                            Yes!, all there are in my <a href="http://franp.xyz">personal website</a>.
                         </p>
                     </li>
                 </ul>

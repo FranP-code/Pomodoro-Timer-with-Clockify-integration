@@ -225,15 +225,15 @@
   fill: #aaaaaa;
 }
 
-#about-this {
-  height: 95vh;
+#about-this, #credits {
+  height: 83vh;
   padding: 0px 3vw;
   padding-top: 5vh;
 }
-#about-this .titles {
+#about-this .titles, #credits .titles {
   display: flex;
 }
-#about-this .titles h3 {
+#about-this .titles h3, #credits .titles h3 {
   width: 50%;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
@@ -242,31 +242,37 @@
   user-select: none;
   font-size: 22pt;
 }
-#about-this .titles h3 .line-through {
+#about-this .titles h3 .line-through, #credits .titles h3 .line-through {
   text-decoration: line-through;
-  text-decoration-thickness: 5px;
-  text-decoration-color: #73b7ff;
+  text-decoration-thickness: 3px;
 }
-#about-this .information {
+#about-this .information, #credits .information {
   display: flex;
 }
-#about-this .information ul {
+#about-this .information ul, #credits .information ul {
   width: 50%;
 }
-#about-this .information ul li h4 {
+#about-this .information ul li, #credits .information ul li {
+  margin-top: 3vh;
+}
+#about-this .information ul li h4, #credits .information ul li h4 {
   margin: 0;
   padding: 0;
   user-select: none;
   font-family: "Rambla", sans-serif;
   font-size: 18pt;
 }
-#about-this .information ul li p {
+#about-this .information ul li p, #credits .information ul li p {
   margin: 0;
   padding: 0;
   font-family: "Rambla", sans-serif;
   font-size: 13pt;
   margin-left: 2vw;
   margin-top: 1vh;
+}
+
+#credits {
+  height: 95vh;
 }
 
 .history-button {

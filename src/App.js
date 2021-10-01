@@ -19,6 +19,7 @@ import {
 import Identify from "./components/Identify";
 import Account from "./components/Account";
 import ClockifyTasksDisplay from './components/ClockifyTasksDisplay';
+import Credits from './components/Credits';
 
 function App() {
 
@@ -99,8 +100,15 @@ function App() {
               projectID={projectID}
               setProjectID={setProjectID}
             />
-            <GoDownArrow />
+            <GoDownArrow 
+              direction={'about-this'}
+            />
             <AboutThis />
+
+            <GoDownArrow 
+              direction={'credits'}
+            />
+            <Credits />
           </Route>
         </Switch>
       </>

@@ -1,5 +1,5 @@
-#about-this {
-    height: 95vh;
+#about-this, #credits {
+    height: 83vh;
 
     padding: 0px 3vw;
     padding-top: 5vh;
@@ -18,8 +18,7 @@
 
             .line-through {
                 text-decoration: line-through;
-                text-decoration-thickness: 5px;
-                text-decoration-color: #73b7ff; 
+                text-decoration-thickness: 3px; 
             }
         }
     }
@@ -32,6 +31,9 @@
             width: 50%;
 
             li {
+
+                margin-top: 3vh;
+
                 h4 {
                     @include normalizeTitle;
                     @include bodyFont;
@@ -48,4 +50,8 @@
             }
         }
     }
+}
+
+#credits {
+    height: 95vh;
 }
