@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 
 import uploadToClockifyTimer from '../Clockify/uploadToClockifyTimer'
 import getAndFormatCurrentTime from '../Clockify/getAndFormatCurrentTime'
+import randomText from '../Misc/randomText'
 
 const MainPomodoroTimer = (props) => {
 
@@ -230,13 +231,16 @@ const MainPomodoroTimer = (props) => {
 
             if (!weAreInBreakTime) {
 
+                
                 getFavicon().href = './img/working favicon.ico'
-
+                
                 if (!alreadyCountingStart) {
                     const time = getAndFormatCurrentTime()
                     props.setStartTime(time)
-
+                    
                     setAlreadyCountingStart(true)
+
+                    document.title = randomText('work')
                 }
                 
                 if (minutes === 0 && seconds === 0) {
@@ -275,6 +279,8 @@ const MainPomodoroTimer = (props) => {
                         setAlreadyCountingEnd(true)
 
                         props.setLetsUpload(true)
+
+                        document.title = randomText('rest')
                     }
                 }
 
@@ -324,6 +330,7 @@ const MainPomodoroTimer = (props) => {
             } 
             
             if (!props.timerOn) {
+                document.title = 'Clockify Pomodoro Timer'
 
                 getFavicon().href = './img/favicon.ico'
 
@@ -374,7 +381,7 @@ const MainPomodoroTimer = (props) => {
                 setAlreadyCountingStart(false)
                 setAlreadyCountingEnd(false)
             }
-        }, [props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds, getAndFormatCurrentTime, setAlreadyCountingEnd, setAlreadyCountingStart, alreadyCountingEnd, alreadyCountingStart, props.setEndTime, props.endTime]
+        }, [randomText, props.timerOn, minutes, seconds, breakTime, setMinutes, setSeconds, getAndFormatCurrentTime, setAlreadyCountingEnd, setAlreadyCountingStart, alreadyCountingEnd, alreadyCountingStart, props.setEndTime, props.endTime]
     )
 
     const formatMinutes =  () => {
