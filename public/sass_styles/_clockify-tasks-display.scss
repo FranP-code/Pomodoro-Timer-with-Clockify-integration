@@ -29,4 +29,10 @@
             opacity: 30%;
         }
     }
+
+    select {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }

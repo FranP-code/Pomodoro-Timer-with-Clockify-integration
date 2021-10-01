@@ -595,6 +595,11 @@
   pointer-events: none;
   opacity: 30%;
 }
+.clockify-tasks-display select {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 html, body {
   margin: 0;

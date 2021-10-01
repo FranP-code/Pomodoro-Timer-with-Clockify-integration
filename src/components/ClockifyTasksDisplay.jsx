@@ -166,7 +166,7 @@ const ClockifyTasksDisplay = (props) => {
         props.setProjectID(e)
     }
 
-    if (loading) {
+    if (loading && userUID) {
         return (
             <div className="clockify-tasks-display loading-container">
                 <img src={loadingGif} alt=""/>
@@ -176,32 +176,39 @@ const ClockifyTasksDisplay = (props) => {
 
 
     return (
-        <div className={props.timerOn ? 'clockify-tasks-display disabled' : 'clockify-tasks-display'}>
-            <select onChange={(e) => {defineProjects(e.target.value)}} className='workspace-selector'>
-                <option value="0">Select a Workspace</option>
-                {
-                    workspacesReady ? 
-                        workspaces.map( (workspace) => {
-                            return <option value={workspace.id} key={workspace.id}>{workspace.name}</option>
-                        })
-                    : null
-                }
-            </select>
-            <select onChange={(e) => {selectProject(e.target.value)}} className={props.workspaceID !== 0 ? 'project-selector' : 'project-selector disabled'}>
-                <option value="0">Select a Project</option>
-                {
-                    projectsDone && projects !== undefined ?
-                        projects.map( (project) => {
-
-                            if (!project.archived){
-                                return <option value={project.id} key={project.id}>{project.name}</option>
-
+        <>
+            {
+                userUID ?
+                    <div className={props.timerOn ? 'clockify-tasks-display disabled' : 'clockify-tasks-display'}>
+                        <select onChange={(e) => {defineProjects(e.target.value)}} className='workspace-selector'>
+                            <option value="0">Select a Workspace</option>
+                            {
+                                workspacesReady ? 
+                                    workspaces.map( (workspace) => {
+                                        return <option value={workspace.id} key={workspace.id}>{workspace.name}</option>
+                                    })
+                                : null
                             }
-                        })
-                    : null
-                }
-            </select>
-        </div>
+                        </select>
+                        <select onChange={(e) => {selectProject(e.target.value)}} className={props.workspaceID !== 0 ? 'project-selector' : 'project-selector disabled'}>
+                            <option value="0">Select a Project</option>
+                            {
+                                projectsDone && projects !== undefined ?
+                                    projects.map( (project) => {
+
+                                        if (!project.archived){
+                                            return <option value={project.id} key={project.id}>{project.name}</option>
+
+                                        }
+                                    })
+                                : null
+                            }
+                        </select>
+                    </div>
+                : null
+            }
+        </>
+        
     )
 }
 
