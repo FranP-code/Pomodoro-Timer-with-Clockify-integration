@@ -97,7 +97,7 @@ const MainPomodoro = (props) => {
                     </h3>
                 </div>
 
-                <button class="start-pomodoro" onClick={() => props.setTimerOn(!props.timerOn)}>{
+                <button className="start-pomodoro" onClick={() => props.setTimerOn(!props.timerOn)}>{
                     props.timerOn ? 'STOP' : 'START'
 
                 }</button>

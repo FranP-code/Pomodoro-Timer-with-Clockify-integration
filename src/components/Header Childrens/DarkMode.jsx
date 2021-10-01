@@ -6,7 +6,7 @@ const DarkMode = () => {
             <input type="checkbox" id="dark-mode_toogle-switch" onChange={() => {
                 
             }}/>
-            <label for="dark-mode_toogle-switch"></label>
+            <label htmlFor="dark-mode_toogle-switch"></label>
         </div>
     )
 }
