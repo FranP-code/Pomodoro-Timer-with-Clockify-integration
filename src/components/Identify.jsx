@@ -5,7 +5,7 @@ import RegisterForm from './Identify Childrens/RegisterForm'
 import {firebase} from './Firebase/firebase'
 import {withRouter} from 'react-router-dom'
 
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
 
 
@@ -18,10 +18,17 @@ const Identify = (props) => {
     const [confirmPassword, setConfirmPassword] = useState('')
     
     const [message, setMessage] = React.useState('')
+    const [errorMessage, setErrorMessage] = React.useState(0)
 
     const auth = getAuth()
 
     const register = async () => {
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                return
+            }
+        })
 
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password)
@@ -51,11 +58,17 @@ const Identify = (props) => {
             })
 
         } catch (error) {
-            alert(error)
+            setMessage(error)
         }
     }
 
     const login = async () => {
+        
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                return
+            }
+        })
 
         try {
             const response = await signInWithEmailAndPassword(auth, email, password)
@@ -66,7 +79,7 @@ const Identify = (props) => {
 
         } catch (error) {
             console.log(error)
-            alert('USER OR PASSWORD NOT VALID')
+            setErrorMessage('USER OR PASSWORD NOT VALID')
         }
     }
 
@@ -86,29 +99,29 @@ const Identify = (props) => {
         e.preventDefault()
 
         if (!email.trim()) {
-            alert('EMAIL EMPTY')
+            setErrorMessage('EMAIL EMPTY')
             return
         }
 
         if (!password.trim()) {
-            alert('PASSWORD EMPTY')
+            setErrorMessage('PASSWORD EMPTY')
             return
         }
 
         if (password.trim().length < 8) {
-            alert('PASSWORD TOO SHORT')
+            setErrorMessage('PASSWORD TOO SHORT')
             return
         }
 
         if (act === 'register') {
 
             if (!confirmPassword.trim()) {
-                alert('CONFIRM PASSWORD PLEASE')
+                setErrorMessage('CONFIRM PASSWORD PLEASE')
                 return
             }
 
             if (password !== confirmPassword) {
-                alert("PASSWORDS DOESN'T MATCH")
+                setErrorMessage("PASSWORDS DOESN'T MATCH")
                 return                
             }
             register()  
@@ -117,6 +130,7 @@ const Identify = (props) => {
             setEmail('')
             setPassword('')
             setConfirmPassword('')
+            setErrorMessage(0)
 
             return
         }
@@ -131,7 +145,7 @@ const Identify = (props) => {
             return
         }
 
-        alert('ACTION NOT VALID')
+        setErrorMessage('ACTION NOT VALID')
     }
 
     const signOutFromApp = () => {
@@ -139,6 +153,7 @@ const Identify = (props) => {
         signOut(auth)
             .then(() => {
                 
+                setErrorMessage('YOU CLOSED THE SESSION')
                 //! 'YOU CLOSE SESSION' MESSAGE CODE
             })
     }
@@ -156,12 +171,22 @@ const Identify = (props) => {
         if (action === 'clss') {
             signOutFromApp()
         }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                props.history.push('/')
+            }
+        })
     }, [])
 
 
     return (
         <div className="identify-container">
-            
+            <div className="error-message-container">
+                {
+                    errorMessage ? <p>{errorMessage}</p> : null
+                }
+            </div>
             <div className="identify">
 
                 <nav className="options-container">

@@ -36,4 +36,4 @@ const AboutThis = () => {
     )
 }
 
-export default AboutThis
+export default React.memo(AboutThis)

@@ -1,7 +1,30 @@
 .identify-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     
+    .error-message-container {
+        width: 70vw;
+
+        background-color: #D17262;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            margin: 2vw;
+            color: #ffffff;
+
+            @include titleFont();
+            user-select: none;
+
+            font-size: 22pt;
+
+        }
+
+    }
+
     .identify {
         width: 70vw;
 
