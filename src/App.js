@@ -27,6 +27,7 @@ function App() {
   const [signIn, setSignIn] = useState('')
 
   const [apiKey, setApiKey] = useState('')
+  const [taskName, setTaskName] = useState('')
 
   const [workspaceID, setWorspaceID] = useState(0)
   const [projectID, setProjectID] = useState(0)
@@ -68,6 +69,11 @@ function App() {
               signIn={signIn}
               timerOn={timerOn}
               setTimerOn={setTimerOn}
+              
+              apiKey={apiKey}
+
+              taskName={taskName}
+              setTaskName={setTaskName}
 
               workspaceID={workspaceID}
               setWorspaceID={setWorspaceID}
@@ -75,7 +81,6 @@ function App() {
               projectID={projectID}
               setProjectID={setProjectID}
 
-              apiKey={apiKey}
             />
 
             <ClockifyTasksDisplay
@@ -84,6 +89,9 @@ function App() {
 
               apiKey={apiKey}
               setApiKey={setApiKey}
+
+              taskName={taskName}
+              setTaskName={setTaskName}
 
               workspaceID={workspaceID}
               setWorspaceID={setWorspaceID}

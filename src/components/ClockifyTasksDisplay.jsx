@@ -204,6 +204,13 @@ const ClockifyTasksDisplay = (props) => {
                                 : null
                             }
                         </select>
+                        <input
+                            type="text"
+                            onChange={(e) => {props.setTaskName(e.target.value)}}
+                            value={props.taskName}
+                            placeholder="Add task description"
+                            className={props.projectID !== 0 ? null: 'disabled'}
+                        />
                     </div>
                 : null
             }

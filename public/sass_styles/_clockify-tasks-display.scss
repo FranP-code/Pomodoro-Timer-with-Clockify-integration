@@ -35,4 +35,25 @@
         white-space: nowrap;
         text-overflow: ellipsis;
     }
+
+    input[type=text] {
+        width: 15vw;
+        height: 3vw;
+        
+        @include bodyFont();
+
+        font-size: 12pt;
+
+        outline: none;
+        padding: 1px 2px;
+
+        box-sizing: border-box;
+
+        &.disabled {
+            user-select: none;
+            cursor: initial;
+            pointer-events: none;
+            opacity: 30%;
+        }
+    }
 }

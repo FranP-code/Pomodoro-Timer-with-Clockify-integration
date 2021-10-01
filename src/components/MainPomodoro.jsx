@@ -15,8 +15,6 @@ const MainPomodoro = (props) => {
     const [rests, setRests] = useState(0)
     const [longRests, setLongRests] = useState(0)
 
-    
-
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
 
@@ -32,12 +30,13 @@ const MainPomodoro = (props) => {
     React.useEffect( () => {
         if (letsUpload) {
     
-            uploadToClockifyTimer( props.workspaceID, props.projectID, startTime, endTime, props.apiKey)
+            uploadToClockifyTimer(props.workspaceID, props.projectID, startTime, endTime, props.apiKey, props.taskName)
     
             setLetsUpload(false)
     
             setStartTime('')
             setEndTime('')
+            props.setTaskName('')
         }
     })
 

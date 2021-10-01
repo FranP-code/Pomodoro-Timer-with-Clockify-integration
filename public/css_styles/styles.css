@@ -600,6 +600,21 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.clockify-tasks-display input[type=text] {
+  width: 15vw;
+  height: 3vw;
+  font-family: "Rambla", sans-serif;
+  font-size: 12pt;
+  outline: none;
+  padding: 1px 2px;
+  box-sizing: border-box;
+}
+.clockify-tasks-display input[type=text].disabled {
+  user-select: none;
+  cursor: initial;
+  pointer-events: none;
+  opacity: 30%;
+}
 
 html, body {
   margin: 0;
