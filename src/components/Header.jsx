@@ -18,6 +18,9 @@ const Header = (props) => {
                 signIn={props.signIn}
                 darkMode={props.darkMode} 
                 />
+            <div className="konami-code">
+                {props.KonamiCodeActive ? 'Konami Code ON' : null}
+            </div>
         </header>
     )
 }

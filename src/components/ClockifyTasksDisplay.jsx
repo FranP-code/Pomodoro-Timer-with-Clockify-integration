@@ -5,6 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
 import loadingGifLightTheme from './img/loading-light-theme.png'
 import loadingGifDarkTheme from './img/loading-dark-theme.png'
+import detectKeys from './Misc/detectKeys';
 
 const ClockifyTasksDisplay = (props) => {
     

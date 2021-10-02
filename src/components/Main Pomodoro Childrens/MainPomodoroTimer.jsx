@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import uploadToClockifyTimer from '../Clockify/uploadToClockifyTimer'
 import getAndFormatCurrentTime from '../Clockify/getAndFormatCurrentTime'
 import randomText from '../Misc/randomText'
+import detectKeys from '../Misc/detectKeys'
 
 import bell_x2 from '../sounds/bell-x2.mp3'
 import bell_x3 from '../sounds/bell-x3.mp3'
@@ -19,11 +20,15 @@ const MainPomodoroTimer = (props) => {
 
     const [timerActivity, setTimerActivity] = useState(false)
 
-    const [actualStyle, setActualStyle] = useState('Regular')
+    const [actualStyle, setActualStyle] = useState('')
 
     const [alreadyCountingStart, setAlreadyCountingStart] = useState(false) /* TOO MUCH FUCKING STATES https://pbs.twimg.com/media/EoM2rXuW8AMRxZh?format=png&name=large*/
     const [alreadyCountingEnd, setAlreadyCountingEnd] = useState(false)
 
+    const [controlKonamiCode, setControlKonamiCode] = useState(true)
+    
+    const [velocity, setVelocity] = useState(1) 
+    
     const setTimeStyle = () => {
 
         if (props.style === 'Can I play, Daddy?') {
@@ -141,14 +146,44 @@ const MainPomodoroTimer = (props) => {
         
     }
 
+
+
+
+
     React.useEffect (() => {
         if (actualStyle !== props.style) {
             setTimeStyle()
 
         }
+        
+        if (controlKonamiCode) {
+
+            detectKeys(props.setKonamiCodeActive)
+
+            setControlKonamiCode(false)
+        }
+    
     })
 
-    const startTimer = (velocity = 1) => {
+    const startTimer = () => {
+
+        document.title = minutes + ':' + seconds
+
+        document.addEventListener('visibilitychange', () => {
+
+            if (document.visibilityState === 'hidden') {
+
+                setVelocity(2)
+                console.log(document.visibilityState)
+            }
+
+            if (document.visibilityState === 'visible') {
+
+                setVelocity(1)
+                console.log(document.visibilityState)
+            }
+        });
+
         return setTimeout(() => {
             
             if (seconds === 0) {
@@ -238,7 +273,7 @@ const MainPomodoroTimer = (props) => {
                 getFavicon().href = './img/working favicon.ico'
                 
                 if (!alreadyCountingStart) {
-                    const time = getAndFormatCurrentTime()
+                    const time = getAndFormatCurrentTime(props.KonamiCodeActive)
                     props.setStartTime(time)
                     
                     setAlreadyCountingStart(true)
@@ -278,7 +313,7 @@ const MainPomodoroTimer = (props) => {
                     }
 
                     if (!alreadyCountingEnd) {
-                        const time = getAndFormatCurrentTime()
+                        const time = getAndFormatCurrentTime(props.KonamiCodeActive)
 
                         props.setEndTime(time)
                         setAlreadyCountingEnd(true)
@@ -292,7 +327,7 @@ const MainPomodoroTimer = (props) => {
 
                 if (minutes >= 0 || seconds > 0) {
                 
-                    idTimeOut = startTimer()                    
+                        idTimeOut = startTimer()                    
                  }
             }
 
@@ -350,7 +385,7 @@ const MainPomodoroTimer = (props) => {
                             setRestCounter((restCounter + 1))
                                                         
                                 if (!alreadyCountingEnd) {
-                                    const time = getAndFormatCurrentTime() 
+                                    const time = getAndFormatCurrentTime(props.KonamiCodeActive) 
 
                                     props.setEndTime(time)
                                     setAlreadyCountingEnd(true)

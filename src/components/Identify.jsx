@@ -171,7 +171,7 @@ const Identify = (props) => {
 
         if (action === 'clss') {
             signOutFromApp()
-            props.history.push('/')
+            return
         }
 
         onAuthStateChanged(auth, (user) => {

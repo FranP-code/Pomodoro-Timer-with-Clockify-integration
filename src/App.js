@@ -3,6 +3,8 @@ import {firebase} from './components/Firebase/firebase'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
 
+import detectKeys from './components/Misc/detectKeys';
+
 import AboutThis from "./components/AboutThis";
 import BannerLogin from "./components/BannerLogin";
 import GoDownArrow from "./components/GoDownArrow";
@@ -37,6 +39,8 @@ function App() {
 
   const [darkMode, setDarkmode] = useState(false)
 
+  const [KonamiCodeActive, setKonamiCodeActive] = useState(false)
+
   const auth = getAuth()
 
   onAuthStateChanged(auth, (user) => {
@@ -69,6 +73,8 @@ function App() {
 
           darkMode={darkMode}
           setDarkmode={setDarkmode}
+
+          KonamiCodeActive= {KonamiCodeActive}
         />
         
         <Switch>
@@ -129,6 +135,9 @@ function App() {
               setProjectID={setProjectID}
 
               darkMode={darkMode}
+
+              setKonamiCodeActive = {setKonamiCodeActive}
+              KonamiCodeActive= {KonamiCodeActive}
             />
 
             <GoDownArrow 

@@ -53,6 +53,12 @@
             }
         }
     }
+
+    .konami-code {
+        @include titleFont();
+
+        color: $lightest-color-dark;
+    }
 }
 
 

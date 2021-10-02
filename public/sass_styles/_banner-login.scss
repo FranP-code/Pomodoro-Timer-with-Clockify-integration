@@ -10,7 +10,7 @@
 
     padding: 0px 5vw;
 
-    height: 7vh;
+    height: 8vh;
 
     
     p {
@@ -27,7 +27,7 @@
         button {
             @include normalizeButton();
 
-            font-size: 2.6vh;
+            font-size: 12pt;
             font-weight: bold;
             color: #ffffff;
 

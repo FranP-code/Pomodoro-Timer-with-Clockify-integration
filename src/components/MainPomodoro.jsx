@@ -85,6 +85,10 @@ const MainPomodoro = (props) => {
                 setEndTime={setEndTime}
 
                 setLetsUpload={setLetsUpload}
+
+                setKonamiCodeActive={props.setKonamiCodeActive}
+                KonamiCodeActive= {props.KonamiCodeActive}
+
                 />
 
 
