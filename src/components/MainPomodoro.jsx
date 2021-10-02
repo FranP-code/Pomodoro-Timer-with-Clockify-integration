@@ -6,7 +6,7 @@ import uploadToClockifyTimer from './Clockify/uploadToClockifyTimer'
 
 const MainPomodoro = (props) => {
 
-    console.log('MAIN POMODORO DEPLOYED')
+    
 
     const [style, setStyle] = useState('Regular')
     const [displayHidden, setDisplayHidden] = useState(true)
@@ -22,7 +22,7 @@ const MainPomodoro = (props) => {
 
 
     const showStyles = () => {
-        console.log('Styles Deployed')
+        
 
         setDisplayHidden(!displayHidden)
     }

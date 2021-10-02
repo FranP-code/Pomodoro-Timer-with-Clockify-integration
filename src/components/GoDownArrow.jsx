@@ -6,7 +6,7 @@ const GoDownArrow = (props) => {
         
         const width = window.screen.width
 
-        console.log(width)
+        
 
         if (width <= '991.98') {
             return (
@@ -16,7 +16,7 @@ const GoDownArrow = (props) => {
             )
         }
 
-    console.log('GO DOWN ARROW DEPLOYED')
+    
 
     return (
         <div className="go-down">

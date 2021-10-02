@@ -15,8 +15,8 @@ const randomText = (typeTimer) => {
 
         const selection = Math.random() * (max - min) + min;
 
-        console.log(workPhrases)
-        console.log(selection)
+        
+        
 
         return workPhrases[selection]
     }
@@ -28,8 +28,8 @@ const randomText = (typeTimer) => {
 
         const selection = Math.random() * (max - min) + min;
 
-        console.log(restPhrases)
-        console.log(selection)
+        
+        
 
         return restPhrases[selection]
     }

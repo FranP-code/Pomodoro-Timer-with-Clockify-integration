@@ -2,7 +2,7 @@ import React from 'react'
 
 const BannerLogin = (props) => {
 
-    console.log('BANNER LOGIN DEPLOYED')
+    
 
     return (
         <>

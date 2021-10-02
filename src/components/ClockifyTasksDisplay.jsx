@@ -26,13 +26,13 @@ const ClockifyTasksDisplay = (props) => {
             const db = await getFirestore(firebase)
 
             const reference = await doc(db, 'users', userUID)
-            console.log(reference)
+            
 
             const dataSnap = await getDoc(reference)
             const result = await dataSnap.data()
             
-            console.log(userUID)
-            console.log(result)
+            
+            
 
             if (result.keyClockify) {
 
@@ -41,7 +41,7 @@ const ClockifyTasksDisplay = (props) => {
             
 
         } catch (error) {
-            console.log(error)
+            
         }
     }
 
@@ -62,7 +62,7 @@ const ClockifyTasksDisplay = (props) => {
             return await data 
     
         } catch (error) {
-            console.log(error)
+            
         }
     }
 
@@ -70,7 +70,7 @@ const ClockifyTasksDisplay = (props) => {
 
         const getApiKeyReturn = key
         
-        console.log(props.apiKey)
+        
 
         const data = await makeRequestWorkspaces(key)
 
@@ -89,7 +89,7 @@ const ClockifyTasksDisplay = (props) => {
             setLoading(false)
         }
         
-        console.log(workspaces)
+        
     }
     
     React.useEffect( () => {
@@ -128,12 +128,12 @@ const ClockifyTasksDisplay = (props) => {
             const response = await fetch(`https://api.clockify.me/api/v1/workspaces/${e}/projects`, request)
             const data = await response.json()
 
-            console.log(data)
+            
 
             return await data
     
         } catch (error) {
-            console.log(error)
+            
         }
     }
 
@@ -155,7 +155,7 @@ const ClockifyTasksDisplay = (props) => {
         
         if (projects) {
             
-            console.log(projects)
+            
             setProjectsDone(true)
         }
         

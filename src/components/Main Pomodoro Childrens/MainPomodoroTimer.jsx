@@ -364,16 +364,16 @@ const MainPomodoroTimer = (props) => {
 
                     if (weAreInBreakTime) {
 
-                        console.log(restCounter)
+                        
 
                         if (restCounter === 4) {
-                            console.log('AA3')
+                            
 
                             setPomodoroCounter('Long Rest')
                             setRestCounter(0)
 
                         } else {
-                            console.log('AA2')
+                            
 
                             setPomodoroCounter('Rest')
                         }

@@ -41,7 +41,6 @@ const Account = () => {
         e.target.reset()
 
         const data = await makeRequest()
-        console.log(data)
 
         if (await validateRequest(data)) {
 
@@ -83,7 +82,7 @@ const Account = () => {
             return await data 
 
         } catch (error) {
-            console.log(error)
+            
         }
     }
 
@@ -111,7 +110,7 @@ const Account = () => {
         }
             
         catch (error) {
-            console.log(error)
+            
             return false
         }
     }
@@ -128,7 +127,7 @@ const Account = () => {
             await setLoading(false)
 
         } catch (error) {
-            console.log(error)
+            
         }
     }
 
@@ -152,7 +151,7 @@ const Account = () => {
             })
 
         } catch (error) {
-            console.log(error)
+            
         }
         
         setActualState('')

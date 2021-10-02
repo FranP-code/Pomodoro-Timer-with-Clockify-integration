@@ -32,17 +32,17 @@ const Identify = (props) => {
 
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password)
-            console.log(response)
-            console.log(response.user)
+            
+            
 
             const uid = response.user.uid
 
             addNewUserToFirebase(uid)
 
         } catch (error) {
-            console.log(error)
+            
             setMessage(error.message)
-            console.log(message)
+            
         }
     }
 
@@ -72,13 +72,13 @@ const Identify = (props) => {
 
         try {
             const response = await signInWithEmailAndPassword(auth, email, password)
-            console.log(response)
-            console.log(response.user)
+            
+            
 
             props.history.push('/config-account')
 
         } catch (error) {
-            console.log(error)
+            
             setErrorMessage('USER OR PASSWORD NOT VALID')
         }
     }

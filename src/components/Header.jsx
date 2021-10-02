@@ -4,7 +4,7 @@ import GoToAccount from './Header Childrens/GoToAccount'
 
 const Header = (props) => {
 
-    console.log("HEADER DEPLOYED")
+    
     
     return (
         <header className="header-main-page">
