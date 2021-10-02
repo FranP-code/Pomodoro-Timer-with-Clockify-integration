@@ -9,6 +9,7 @@
     &.loading-container {
         width: 20vw;
         height: auto;
+        background: none;
     }
 
     &.disabled {
@@ -67,7 +68,7 @@
         display: flex;
         justify-content:space-around;
 
-        padding: 0px 5vw;
+        padding: 3vh 5vw;
 
         &.loading-container {
             width: 90%;
@@ -103,4 +104,11 @@
             margin-top: 1vh;
         }
     }
+}
+
+.clockify-tasks-display-container.dark-mode-container {
+
+    background-color: $second-color-dark;
+
+
 }

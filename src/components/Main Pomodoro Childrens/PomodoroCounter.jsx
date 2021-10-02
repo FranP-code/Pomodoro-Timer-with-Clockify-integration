@@ -3,7 +3,7 @@ import React from 'react'
 const PomodoroCounter = (props) => {
 
     return (
-        <div className="pomodoro-counter">
+        <div className={props.darkMode ? 'pomodoro-counter dark-mode-component': 'pomodoro-counter'}>
             <ul>
                 <li>
                     <span className="quantity">{props.pomodoros}</span><span className="separator"> - </span>Pomodoros

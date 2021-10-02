@@ -1,4 +1,10 @@
+html, body {
+    height: 100%;
+}
+
 .account-container {
+
+    height: 100%;
 
     #message {
         padding-left: 5vw;
@@ -91,7 +97,9 @@
 
                 padding-top: 1vh;
 
-                border-radius: 5%;
+                border-radius: 2px;
+                
+                padding-left: 1vw;
 
                 .api-preview-container {
 
@@ -129,5 +137,77 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+
+@media (max-width: 991.98px) {
     
+    .account-container {
+
+        .next-step {
+
+            display: flex;
+
+
+            .next-step-title {
+
+                h1 {
+                    font-size: 15pt;
+                }
+
+                h2 {
+                    font-size: 12pt;
+                }
+            }
+
+            .flex-container-change-api-container{
+                .change-api-container {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+
+.account-container.dark-mode-component {
+    background-color: $second-color-dark;
+
+    .next-step {
+
+        .next-step-title {
+            background-color: $lightest-color-dark;
+
+            h1, h2 {
+                color: #ffffff;
+
+                a {
+                    color: $lightest-color;
+                }
+                a:visited {
+                    color: $light-color;
+                }
+            }
+
+            
+        }
+
+        .flex-container-change-api-container {
+
+            .change-api-container {
+
+                background-color: $lightest-color-dark;
+                
+                .api-preview-container {
+
+                    p {
+                        color: rgb(255, 255, 255)
+                    }
+                }
+            }
+        }
+    }
+}
+
+.loading-container.dark-mode-component {
+    background-color: $second-color-dark
 }

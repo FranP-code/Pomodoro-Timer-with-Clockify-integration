@@ -8,6 +8,7 @@
     justify-content: center;
 
     height: 17vh;
+    box-sizing: border-box;
 
     a {
         text-decoration: none;
@@ -69,4 +70,9 @@
             font-size: 13pt;
         }
      }
+ }
+
+ .header-main-page.dark-mode-component {
+     background-color: $main-color-dark;
+     border-bottom: 1px solid #ffffff72;
  }

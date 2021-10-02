@@ -171,6 +171,7 @@ const Identify = (props) => {
 
         if (action === 'clss') {
             signOutFromApp()
+            props.history.push('/')
         }
 
         onAuthStateChanged(auth, (user) => {
@@ -182,7 +183,7 @@ const Identify = (props) => {
 
 
     return (
-        <div className="identify-container">
+        <div className={props.darkMode ? 'identify-container dark-mode-component' : 'identify-container'}>
             <div className="error-message-container">
                 {
                     errorMessage ? <p>{errorMessage}</p> : null

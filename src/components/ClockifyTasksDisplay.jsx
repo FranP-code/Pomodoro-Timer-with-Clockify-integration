@@ -3,7 +3,8 @@ import React, {useState} from 'react'
 import { firebase } from './Firebase/firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
-import loadingGif from './img/loading.gif'
+import loadingGifLightTheme from './img/loading-light-theme.png'
+import loadingGifDarkTheme from './img/loading-dark-theme.png'
 
 const ClockifyTasksDisplay = (props) => {
     
@@ -85,9 +86,9 @@ const ClockifyTasksDisplay = (props) => {
     
             setWorkspacesReady(true)
             setLoading(false)
+
         }
-        
-        
+                
     }
     
     React.useEffect( () => {
@@ -164,22 +165,26 @@ const ClockifyTasksDisplay = (props) => {
         props.setProjectID(e)
     }
 
-    if (loading && userUID !== '' && apiAvailable) {
+    if (loading && userUID) {
 
-        return (
-            <div className="clockify-tasks-display loading-container">
-                <img src={loadingGif} alt=""/>
-            </div>
-        )
+
+        if (!apiAvailable) {
+            return (<div></div>)
+
+        } else {
+
+            return (
+                <div className="clockify-tasks-display loading-container">
+                    <img src={props.darkMode ? loadingGifDarkTheme : loadingGifLightTheme} alt=""/>
+                </div>
+            )
+        }
+
     }
 
-
-    if (!apiAvailable) {
-        return (<div></div>)
-    }
 
     return (
-        <>
+        <div className={props.darkMode ? 'clockify-tasks-display-container dark-mode-container' : 'clockify-tasks-display-container'}>
             {
                 userUID ?
                     <div className={props.timerOn ? 'clockify-tasks-display disabled' : 'clockify-tasks-display'}>
@@ -217,7 +222,7 @@ const ClockifyTasksDisplay = (props) => {
                     </div>
                 : null
             }
-        </>
+        </div>
         
     )
 }

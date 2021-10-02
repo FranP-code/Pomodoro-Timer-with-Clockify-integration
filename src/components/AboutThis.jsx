@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AboutThis = () => {
+const AboutThis = (props) => {
     
     return (
-        <div id="about-this">
+        <div id="about-this" className={props.darkMode ? 'dark-mode-component' : null}>
             <div className="titles">
                 <h3>About<span className="line-through"> us </span>this</h3>
             </div>

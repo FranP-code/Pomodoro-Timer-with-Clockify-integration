@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Credits = () => {
+const Credits = (props) => {
     return (
-        <div id="credits">
+        <div id="credits" className={props.darkMode ? 'dark-mode-component' : null}>
             <div className="titles">
                 <h3>Credits</h3>
             </div>

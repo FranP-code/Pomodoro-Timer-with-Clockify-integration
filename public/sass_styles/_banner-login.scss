@@ -49,8 +49,9 @@
      
 }
 
-.blank {
+.banner-login.blank {
     opacity: 0%;
+
 }
 
 @media (max-width: 918px) {
@@ -95,4 +96,9 @@
             }
         }
     }
+}
+
+.banner-login.blank.dark-mode-component {
+    opacity: 100%;
+    background-color: $main-color-dark;
 }

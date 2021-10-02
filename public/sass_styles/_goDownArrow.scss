@@ -1,6 +1,5 @@
 .go-down {
-    height: 7vh;
-    width: 100%;
+    height: 8vh;
     
     display: flex;
     justify-content: center;
@@ -33,4 +32,18 @@
         border: none;
         border-top: 1px solid rgb(184, 184, 184);
     }
+}
+
+.go-down-separator-line.dark-mode-component {
+    background-color: $main-color-dark;
+}
+
+.go-down.dark-mode-component {
+
+    background-color: $main-color-dark;    
+}
+
+.go-down.dark-mode-component#go-to-credits {
+
+    background-color: $second-color-dark;
 }

@@ -174,3 +174,42 @@
     }
 
 }
+
+.style-selector-container.dark-mode-component {
+
+    .style-selector {
+
+        h2 {
+            color: #ffffff;
+        }
+
+        .style-selection-container {
+        
+        
+            .style-container{
+                
+                label {
+    
+                    .title {
+                        
+                        color: #ffffff;
+                    }
+                    
+                    .times {
+                        color: $lightest-color-dark;
+                    }
+                }
+            }
+
+            .checkbox_control {
+
+                border: 3px solid $lightest-color-dark-darker;
+            }
+            
+            .checkbox__input input:checked + .checkbox_control {
+                
+                background-color: $lightest-color-dark;
+            }
+        }
+    }
+}

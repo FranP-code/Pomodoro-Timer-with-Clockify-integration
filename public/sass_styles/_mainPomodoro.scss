@@ -79,3 +79,29 @@
         }
     }
 }
+
+.main-pomodoro-container.dark-mode-component {
+
+    background-color: $main-color-dark;
+
+    .main-pomodoro {
+
+        .timer {
+
+            color: #ffffff;
+        }
+
+        .style-display {
+
+            h3, h4 {
+
+                color: #ffffff;
+            }
+        }
+
+        .start-pomodoro{
+            background-color: $lightest-color-dark;
+        }
+
+    }
+}

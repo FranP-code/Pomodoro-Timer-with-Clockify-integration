@@ -3,6 +3,11 @@
 
     padding: 0px 3vw;
     padding-top: 5vh;
+    padding-bottom: 5vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 
     .titles {
         
@@ -63,3 +68,28 @@
         padding-bottom: 5vh;
     }
 }
+
+#about-this.dark-mode-component, #credits.dark-mode-component {
+    
+    background-color: $second-color-dark;
+
+    color: #ffffff;
+
+    .information {
+
+        display: flex;
+
+        ul {
+            
+            li {
+
+                p {
+
+                    a {
+                        color: $lightest-color-dark;
+                    }
+                }
+            }
+        }
+    }
+} 

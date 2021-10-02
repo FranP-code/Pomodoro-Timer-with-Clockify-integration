@@ -1,7 +1,17 @@
+html, body  {
+    height: 100%;
+}
+
 .identify-container {
+
+    &:has {
+        height: 100%;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    flex-grow: 1;
     
     .error-message-container {
         width: 70vw;
@@ -94,4 +104,41 @@
     }
 
 
+}
+
+.identify-container.dark-mode-component {
+
+   background-color: $second-color-dark; 
+
+   .identify {
+
+    .options-container {
+
+        .option {
+            background-color: $light-color-dark;
+        }
+
+        .active-option{
+            background-color: $light-color-dark-darker;
+        }
+
+    }
+
+    .form-container {
+
+        form {
+            
+            input {
+
+                color: white;
+
+                background: none;
+            }
+            
+            input[type=submit] {
+                background-color: $main-color-dark;
+            }
+        }
+    }
+}
 }

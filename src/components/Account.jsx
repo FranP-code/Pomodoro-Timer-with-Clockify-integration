@@ -3,9 +3,10 @@ import {firebase} from './Firebase/firebase'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
 import Message from './Account Childrens/Message';
-import loadingGif from './img/loading.gif'
+import loadingGifLightTheme from './img/loading-light-theme.png'
+import loadingGifDarkTheme from './img/loading-dark-theme.png'
 
-const Account = () => {
+const Account = (props) => {
 
     const [signIn, setSignIn] = useState('false')
     const [apiKey, setApiKey] = useState('')
@@ -161,14 +162,14 @@ const Account = () => {
 
     if (loading) {
         return (
-            <div className="loading-container">
-                <img src={loadingGif} alt="" />
+            <div className={props.darkMode ? "loading-container dark-mode-component" : "loading-container"}>
+                <img src={props.darkMode ? loadingGifDarkTheme : loadingGifLightTheme} alt="" />
             </div>
         )
     }
     
     return (
-        <div className="account-container">
+        <div className={props.darkMode ? "account-container dark-mode-component" : "account-container"}>
             {
                 actualState === 'API NOT VALID' || actualState === 'API NOT UPLOADED' || actualState === 'API UPLOADED' ? <Message message={actualState}/> : null
             }

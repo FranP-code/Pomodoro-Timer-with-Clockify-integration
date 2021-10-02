@@ -44,7 +44,7 @@ const MainPomodoro = (props) => {
 
 
     return (
-        <>
+        <div className={props.darkMode ? 'main-pomodoro-container dark-mode-component' : 'main-pomodoro-container'}>
             <div className="main-pomodoro">
 
                 <MainPomodoroTimer
@@ -103,9 +103,9 @@ const MainPomodoro = (props) => {
                 }</button>
             </div>
 
-            <StyleSelector displayHidden={displayHidden} style={style} setStyle={setStyle}/>
-            <PomodoroCounter pomodoros={pomodoros} rests={rests} longRests={longRests}/>
-        </>
+            <StyleSelector displayHidden={displayHidden} style={style} setStyle={setStyle} darkMode={props.darkMode}/>
+            <PomodoroCounter pomodoros={pomodoros} rests={rests} longRests={longRests} darkMode={props.darkMode}/>
+        </div>
         
 
     )

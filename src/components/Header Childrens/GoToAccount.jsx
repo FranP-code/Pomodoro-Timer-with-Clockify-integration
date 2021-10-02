@@ -6,10 +6,10 @@ const GoToAccount = (props) => {
             {
                 props.signIn ? 
                     <>
-                        <a href="/config-account" className="go-to-account">
+                        <a href="/config-account" className={props.darkMode ? 'go-to-account dark-mode-component' : 'go-to-account'}>
                             <div className="go-to-account-text">API</div>
                         </a>
-                        <a href="/identify?act=clss" className="close-session">
+                        <a href="/identify?act=clss" className={props.darkMode ? 'close-session dark-mode-component' : 'close-session'}>
                             <div className="close-session-text">Close session</div>
                         </a>
                     </>

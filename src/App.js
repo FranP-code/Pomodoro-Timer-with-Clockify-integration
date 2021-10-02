@@ -35,6 +35,8 @@ function App() {
   const [workspaceID, setWorspaceID] = useState(0)
   const [projectID, setProjectID] = useState(0)
 
+  const [darkMode, setDarkmode] = useState(false)
+
   const auth = getAuth()
 
   onAuthStateChanged(auth, (user) => {
@@ -46,27 +48,49 @@ function App() {
       }
 
   })
-    
+
+  const root = document.getElementById('root')
+
+  if (window.location.href.split('/')[3].includes('identify') || window.location.href.split('/')[3].includes('config-account')) {
+      
+      root.style.height = '100%'
+      root.style.display = 'flex'
+      root.style.flexDirection ='column'
+      
+  } else {
+      console.log(false)
+  }
+  
   return (
     <Router>
       <>
         <Header 
           signIn={signIn}
+
+          darkMode={darkMode}
+          setDarkmode={setDarkmode}
         />
         
         <Switch>
 
           <Route path="/config-account">
-              <Account />
+              <Account
+              
+                darkMode={darkMode}
+              />
           </Route>
 
           <Route path="/identify">
-            <Identify />
+            <Identify
+
+              darkMode={darkMode}
+            />
           </Route>
 
           <Route path="/">
             <BannerLogin 
               signIn={signIn}
+              darkMode={darkMode}
             />
 
             <ClockifyTasksDisplay
@@ -84,6 +108,8 @@ function App() {
 
               projectID={projectID}
               setProjectID={setProjectID}
+              
+              darkMode={darkMode}
             />
 
             <MainPomodoro 
@@ -102,20 +128,34 @@ function App() {
               projectID={projectID}
               setProjectID={setProjectID}
 
+              darkMode={darkMode}
             />
 
             <GoDownArrow 
               direction={'about-this'}
+              darkMode={darkMode}
+
             />
-            <AboutThis />
+            <AboutThis
+              darkMode={darkMode}
+
+            />
 
             <GoDownArrow 
               direction={'credits'}
+              darkMode={darkMode}
+
             />
-            <Credits />
-            <Footer />
+            <Credits
+              darkMode={darkMode}
+          />
           </Route>
         </Switch>
+
+        <Footer
+          darkMode={darkMode}
+
+        />
       </>
     </Router>
   );

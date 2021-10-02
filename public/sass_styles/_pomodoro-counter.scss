@@ -53,3 +53,19 @@
         padding-bottom: 5vh;
     }
 }
+
+.pomodoro-counter.dark-mode-component {
+    ul {
+
+        li {
+
+            color: #ffffff;
+
+            .quantity {
+
+                color: $lightest-color-dark;
+                background: $second-color-dark;
+            }
+        }
+    }
+}

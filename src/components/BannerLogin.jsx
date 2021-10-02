@@ -16,7 +16,7 @@ const BannerLogin = (props) => {
                             <button className="login" onClick={() => {window.location = '/identify?act=l'}}>Login</button>
                         </div>
                     </div>
-                : <div className="banner-login blank">
+                : <div className={props.darkMode ? 'banner-login blank dark-mode-component' : 'banner-login blank'}>
                     
                 </div>
             }
