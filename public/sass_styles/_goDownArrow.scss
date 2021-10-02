@@ -18,3 +18,19 @@
         }
     }
 }
+
+.go-down-separator-line {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    
+    hr {
+        height: 1px;
+        width: 75%;
+
+        border: none;
+        border-top: 1px solid rgb(184, 184, 184);
+    }
+}

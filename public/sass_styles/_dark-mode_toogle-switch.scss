@@ -44,3 +44,28 @@
         background-color: #b632eb;
     }
 }
+
+@media (max-width: 991.98px) {
+    
+    .dark-mode {
+        position: initial;
+
+    }
+}
+
+
+@media (max-width: 576px) { 
+    .dark-mode {
+        label {
+            width: 50px;
+            height: 20px;
+        }
+    
+        label::after {
+            width: 15px;
+            height: 15px;
+        }
+
+        margin-bottom: 20px;
+    }
+}

@@ -55,3 +55,11 @@
 #credits {
     height: 95vh;
 }
+
+@media (max-width: 918px) {
+    #about-this, #credits {
+        height: auto;
+
+        padding-bottom: 5vh;
+    }
+}

@@ -64,3 +64,18 @@
         color: white;
     }
 }
+
+
+@media (max-width: 576px) {
+
+    .main-pomodoro {
+        
+        .timer {
+            font-size: 80pt;
+        }
+
+        .start-pomodoro {
+            font-size: 13pt;
+        }
+    }
+}

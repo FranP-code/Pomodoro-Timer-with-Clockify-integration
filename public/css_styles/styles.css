@@ -11,7 +11,7 @@
 }
 .header-main-page h1 {
   color: #ffffff;
-  font-size: 7vh;
+  font-size: 3vw;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   margin: 0;
@@ -20,7 +20,7 @@
 }
 .header-main-page h3 {
   color: rgba(255, 255, 255, 0.75);
-  font-size: 2vh;
+  font-size: 1vw;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   margin: 0;
@@ -44,6 +44,18 @@
   color: #000000;
 }
 
+@media (max-width: 991.98px) {
+  .header-main-page {
+    height: auto;
+    padding: 3vw 0px;
+  }
+  .header-main-page h1 {
+    font-size: 26pt;
+  }
+  .header-main-page h3 {
+    font-size: 13pt;
+  }
+}
 .banner-login {
   background-color: #D17262;
   color: white;
@@ -86,6 +98,36 @@
   opacity: 0%;
 }
 
+@media (max-width: 918px) {
+  .banner-login {
+    justify-content: initial;
+    height: auto;
+    padding: 2vh 2vw;
+  }
+  .banner-login p {
+    width: 33.3%;
+  }
+  .banner-login .button-container {
+    width: 66.6%;
+    justify-content: space-around;
+  }
+  .banner-login .button-container button {
+    width: 30%;
+  }
+}
+@media (max-width: 576px) {
+  .banner-login p {
+    width: 50%;
+  }
+  .banner-login .button-container {
+    width: 50%;
+    flex-direction: column;
+  }
+  .banner-login .button-container button {
+    width: 75%;
+    margin: 10px;
+  }
+}
 .main-pomodoro {
   display: flex;
   flex-direction: column;
@@ -137,6 +179,14 @@
   color: white;
 }
 
+@media (max-width: 576px) {
+  .main-pomodoro .timer {
+    font-size: 80pt;
+  }
+  .main-pomodoro .start-pomodoro {
+    font-size: 13pt;
+  }
+}
 .style-selector {
   width: calc(20vw - 1px);
   padding-left: 3vw;
@@ -210,6 +260,47 @@
   pointer-events: none;
 }
 
+@media (max-width: 991.98px) {
+  .style-selector {
+    position: initial;
+    margin: 0 0 5% 0;
+    width: 100%;
+    padding: 0;
+    padding: 0px 5vw;
+    box-sizing: border-box;
+  }
+  .style-selector h2 {
+    text-align: start;
+    margin-left: 0;
+  }
+  .style-selector .style-selection-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .style-selector .style-selection-container .style-container {
+    height: 100%;
+    width: 30%;
+    margin: 1% 10%;
+  }
+}
+@media (max-width: 918px) {
+  .style-selector {
+    margin-bottom: 5vh;
+  }
+  .style-selector .style-selection-container {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  .style-selector .style-selection-container .style-container {
+    width: 60%;
+  }
+}
+@media (max-width: 462px) {
+  .style-selector .style-selection-container .style-container {
+    width: 100%;
+  }
+}
 .go-down {
   height: 7vh;
   width: 100%;
@@ -223,6 +314,18 @@
 }
 .go-down svg path {
   fill: #aaaaaa;
+}
+
+.go-down-separator-line {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.go-down-separator-line hr {
+  height: 1px;
+  width: 75%;
+  border: none;
+  border-top: 1px solid #b8b8b8;
 }
 
 #about-this, #credits {
@@ -275,6 +378,12 @@
   height: 95vh;
 }
 
+@media (max-width: 918px) {
+  #about-this, #credits {
+    height: auto;
+    padding-bottom: 5vh;
+  }
+}
 .history-button {
   background: none;
   border: none;
@@ -343,6 +452,12 @@
   background-color: #9DF3C4;
 }
 
+@media (max-width: 991.98px) {
+  .pomodoro-counter {
+    position: initial;
+    padding-bottom: 5vh;
+  }
+}
 .identify-container {
   display: flex;
   flex-direction: column;
@@ -454,6 +569,24 @@
   background-color: #b632eb;
 }
 
+@media (max-width: 991.98px) {
+  .dark-mode {
+    position: initial;
+  }
+}
+@media (max-width: 576px) {
+  .dark-mode {
+    margin-bottom: 20px;
+  }
+  .dark-mode label {
+    width: 50px;
+    height: 20px;
+  }
+  .dark-mode label::after {
+    width: 15px;
+    height: 15px;
+  }
+}
 .account-container #message {
   padding-left: 5vw;
   background-color: #ff6a6a;
@@ -567,13 +700,14 @@
 .go-to-account .go-to-account-text {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
+  font-size: 1vw;
   text-decoration: none;
   user-select: none;
   color: #ffffff;
 }
 
 .close-session {
-  width: 6vw;
+  width: 7vw;
   height: 3vw;
   position: absolute;
   left: 10vw;
@@ -586,11 +720,41 @@
 .close-session .close-session-text {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
+  font-size: 1vw;
   text-decoration: none;
   user-select: none;
   color: #ffffff;
 }
 
+@media (max-width: 991.98px) {
+  .go-to-account, .close-session {
+    position: initial;
+    padding: 1vw;
+  }
+
+  .go-to-account {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .go-to-account .go-to-account-text {
+    font-size: 9pt;
+  }
+
+  .close-session .close-session-text {
+    font-size: 9pt;
+  }
+}
+@media (max-width: 576px) {
+  .go-to-account, .close-session {
+    width: auto;
+    height: auto;
+  }
+
+  .go-to-account-text, .close-session-text {
+    position: initial;
+    margin: 10px 10px;
+  }
+}
 .clockify-tasks-display {
   width: 20vw;
   position: absolute;
@@ -638,6 +802,41 @@
   opacity: 30%;
 }
 
+@media (max-width: 991.98px) {
+  .clockify-tasks-display {
+    position: initial;
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 5vw;
+  }
+  .clockify-tasks-display.loading-container {
+    width: 90%;
+    height: auto;
+  }
+  .clockify-tasks-display .workspace-selector, .clockify-tasks-display .project-selector, .clockify-tasks-display input[type=text] {
+    width: 20vw;
+    height: 5vw;
+  }
+}
+@media (max-width: 576px) {
+  .clockify-tasks-display {
+    position: initial;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .clockify-tasks-display.loading-container {
+    width: 90%;
+    height: auto;
+  }
+  .clockify-tasks-display .workspace-selector, .clockify-tasks-display .project-selector, .clockify-tasks-display input[type=text] {
+    width: 70%;
+    height: 4vh;
+    margin-top: 1vh;
+  }
+}
 html, body {
   margin: 0;
   padding: 0;

@@ -52,3 +52,47 @@
 .blank {
     opacity: 0%;
 }
+
+@media (max-width: 918px) {
+    .banner-login {
+        justify-content: initial;
+
+        height: auto;
+
+        padding: 2vh 2vw;
+
+        p {
+            width: 33.3%;
+        }
+
+        .button-container {
+            width: 66.6%;
+
+            justify-content: space-around;
+
+            button {
+                width: 30%;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-login {
+
+        p {
+            width: 50%;
+        }
+
+        .button-container {
+            width: 50%;
+
+            flex-direction: column;
+
+            button {
+                width: 75%;
+                margin: 10px;
+            }
+        }
+    }
+}

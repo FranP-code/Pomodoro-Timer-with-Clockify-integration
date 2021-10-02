@@ -3,6 +3,19 @@ import { Link, animateScroll as scroll } from "react-scroll";
 
 const GoDownArrow = (props) => {
 
+        
+        const width = window.screen.width
+
+        console.log(width)
+
+        if (width <= '991.98') {
+            return (
+                <div className="go-down-separator-line">
+                    <hr/>
+                </div>
+            )
+        }
+
     console.log('GO DOWN ARROW DEPLOYED')
 
     return (

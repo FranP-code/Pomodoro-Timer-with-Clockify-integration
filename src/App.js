@@ -66,6 +66,24 @@ function App() {
             <BannerLogin 
               signIn={signIn}
             />
+
+            <ClockifyTasksDisplay
+              signIn={signIn}
+              timerOn={timerOn}
+
+              apiKey={apiKey}
+              setApiKey={setApiKey}
+
+              taskName={taskName}
+              setTaskName={setTaskName}
+
+              workspaceID={workspaceID}
+              setWorspaceID={setWorspaceID}
+
+              projectID={projectID}
+              setProjectID={setProjectID}
+            />
+
             <MainPomodoro 
               signIn={signIn}
               timerOn={timerOn}
@@ -84,22 +102,6 @@ function App() {
 
             />
 
-            <ClockifyTasksDisplay
-              signIn={signIn}
-              timerOn={timerOn}
-
-              apiKey={apiKey}
-              setApiKey={setApiKey}
-
-              taskName={taskName}
-              setTaskName={setTaskName}
-
-              workspaceID={workspaceID}
-              setWorspaceID={setWorspaceID}
-
-              projectID={projectID}
-              setProjectID={setProjectID}
-            />
             <GoDownArrow 
               direction={'about-this'}
             />

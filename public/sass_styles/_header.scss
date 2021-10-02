@@ -16,7 +16,7 @@
     h1 {
         color: #ffffff;
 
-        font-size: 7vh;
+        font-size: 3vw;
         @include titleFont();
         @include normalizeTitle();
     }
@@ -24,7 +24,8 @@
     h3 {
         color: rgba(255, 255, 255, 0.75);
 
-        font-size: 2vh;
+        font-size: 1vw;
+
         @include titleFont();
         @include normalizeTitle();
 
@@ -52,3 +53,20 @@
         }
     }
 }
+
+
+
+
+ @media (max-width: 991.98px) {
+     .header-main-page {
+        height: auto;
+        padding: 3vw 0px;
+        h1 {
+            font-size: 26pt;
+        }
+
+        h3 {
+            font-size: 13pt;
+        }
+     }
+ }

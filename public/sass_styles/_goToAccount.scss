@@ -18,6 +18,8 @@
     .go-to-account-text {
 
         @include titleFont();
+        
+        font-size: 1vw;
         text-decoration: none;
         user-select: none;
 
@@ -26,7 +28,7 @@
 }
 
 .close-session {
-    width: 6vw;
+    width: 7vw;
     height: 3vw;
 
     position: absolute;
@@ -44,10 +46,53 @@
     .close-session-text {
 
         @include titleFont();
+        font-size: 1vw;
+
         text-decoration: none;
 
         user-select: none;
 
         color: #ffffff;
     }
+}
+
+
+@media (max-width: 991.98px) {
+    //! I fucking hate make the responsive design
+    .go-to-account, .close-session {
+       position: initial;
+       padding: 1vw;
+
+    }
+
+    .go-to-account {
+
+        .go-to-account-text {
+            font-size: 9pt;
+            
+        }
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .close-session {
+
+        .close-session-text {
+            font-size: 9pt;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .go-to-account, .close-session {
+        width: auto;
+        height: auto;
+    }
+
+    .go-to-account-text, .close-session-text {
+        position: initial;
+        margin:10px 10px;
+ 
+     }
 }
