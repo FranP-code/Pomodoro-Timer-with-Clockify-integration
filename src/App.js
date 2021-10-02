@@ -21,6 +21,8 @@ import Account from "./components/Account";
 import ClockifyTasksDisplay from './components/ClockifyTasksDisplay';
 import Credits from './components/Credits';
 
+import Footer from './components/Footer';
+
 function App() {
 
   const [timerOn, setTimerOn] = useState(false)
@@ -111,6 +113,7 @@ function App() {
               direction={'credits'}
             />
             <Credits />
+            <Footer />
           </Route>
         </Switch>
       </>
