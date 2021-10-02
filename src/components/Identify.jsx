@@ -38,6 +38,7 @@ const Identify = (props) => {
             const uid = response.user.uid
 
             addNewUserToFirebase(uid)
+            props.history.push('/config-account')
 
         } catch (error) {
             

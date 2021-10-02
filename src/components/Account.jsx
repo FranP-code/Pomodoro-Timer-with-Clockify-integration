@@ -178,7 +178,7 @@ const Account = () => {
                         <div className={actualState === 'API UPLOADED' ? 'disabled' : null}>
                             <div className="next-step-title">
                                 <h1>One more step...</h1>
-                                <h2>Insert your <a href="https://clockify.me/help/faq/where-can-find-api-information">Clockify API</a> here</h2>
+                                <h2>Insert your <a href="https://clockify.me/help/faq/where-can-find-api-information" target="_blank">Clockify API</a> here</h2>
                             </div>
 
                             <form

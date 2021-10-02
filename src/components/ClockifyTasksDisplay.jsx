@@ -18,6 +18,7 @@ const ClockifyTasksDisplay = (props) => {
     const [projectsDone, setProjectsDone] = useState(false)
 
     const [loading, setLoading] = useState(true)
+    const [apiAvailable, setApiAvailable] = useState(false)
 
     const getApiKey = async () => {
 
@@ -30,12 +31,10 @@ const ClockifyTasksDisplay = (props) => {
 
             const dataSnap = await getDoc(reference)
             const result = await dataSnap.data()
-            
-            
-            
 
             if (result.keyClockify) {
-
+                
+                setApiAvailable(true)
                 await generateArrayOfWorkspaces(result.keyClockify)
             }
             
@@ -69,7 +68,6 @@ const ClockifyTasksDisplay = (props) => {
     const generateArrayOfWorkspaces = async (key) => {
 
         const getApiKeyReturn = key
-        
         
 
         const data = await makeRequestWorkspaces(key)
@@ -166,7 +164,8 @@ const ClockifyTasksDisplay = (props) => {
         props.setProjectID(e)
     }
 
-    if (loading && userUID) {
+    if (loading && userUID !== '' && apiAvailable) {
+
         return (
             <div className="clockify-tasks-display loading-container">
                 <img src={loadingGif} alt=""/>
@@ -174,6 +173,10 @@ const ClockifyTasksDisplay = (props) => {
         )
     }
 
+
+    if (!apiAvailable) {
+        return (<div></div>)
+    }
 
     return (
         <>
