@@ -24,8 +24,8 @@ const MainPomodoroTimer = (props) => {
     const setTimeStyle = () => {
 
         if (props.style === 'Can I play, Daddy?') {
-            const minutes = 0
-            const seconds = 10
+            const minutes = 10
+            const seconds = 0
             
             setMinutes(minutes)
             setSeconds(seconds)
