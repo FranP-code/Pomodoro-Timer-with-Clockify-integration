@@ -4,6 +4,9 @@ import uploadToClockifyTimer from '../Clockify/uploadToClockifyTimer'
 import getAndFormatCurrentTime from '../Clockify/getAndFormatCurrentTime'
 import randomText from '../Misc/randomText'
 
+import bell_x2 from '../sounds/bell-x2.mp3'
+import bell_x3 from '../sounds/bell-x3.mp3'
+
 const MainPomodoroTimer = (props) => {
 
     const [minutes, setMinutes] = useState(25)
@@ -245,6 +248,8 @@ const MainPomodoroTimer = (props) => {
                 
                 if (minutes === 0 && seconds === 0) {
                     setTimerActivity(false)
+
+                    playAudio('work')
                     
                     if (restCounter !== 3){
 
@@ -297,6 +302,8 @@ const MainPomodoroTimer = (props) => {
 
                 if (minutes === 0 && seconds === 0) {
                     setTimerActivity(false)
+
+                    playAudio('rest')
                     
                     setTimeout( () => {
 
@@ -404,12 +411,34 @@ const MainPomodoroTimer = (props) => {
         }
     }
     
+    const playAudio = (moment) => {
+
+        if (moment === 'work') {
+            const audio = document.getElementsByClassName('audio-container-work')[0]
+            audio.play()
+
+        }
+
+        if (moment === 'rest') {
+            const audio = document.getElementsByClassName('audio-container-rest')[0]
+            audio.play()
+        }
+        
+    }
 
     return (
-        <div className="timer">
+        <div className="timer" onSelect={playAudio}>
             <div className="minutes">{formatMinutes()}</div>
             <div className="separator">:</div>
             <div className="seconds">{formatSeconds()}</div>
+
+            <audio className="audio-container-work">
+                <source src={bell_x2} type="audio/mp3" autoPlay="true"></source>
+            </audio>
+
+            <audio className="audio-container-rest">
+                <source src={bell_x3} type="audio/mp3" autoPlay="true"></source>
+            </audio>
         </div>
     )
 }
