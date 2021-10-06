@@ -167,7 +167,7 @@ const MainPomodoroTimer = (props) => {
 
     const startTimer = () => {
 
-        document.title = minutes + ':' + seconds
+        //document.title = minutes + ':' + seconds
 
         document.addEventListener('visibilitychange', () => {
 
