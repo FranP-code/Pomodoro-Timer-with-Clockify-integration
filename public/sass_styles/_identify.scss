@@ -13,7 +13,7 @@ html, body  {
 
     flex-grow: 1;
     
-    .error-message-container {
+    .error-message-container, .success-message-container {
         width: 70vw;
 
         background-color: #D17262;
@@ -33,6 +33,17 @@ html, body  {
 
         }
 
+        
+    }
+    
+    .success-message-container {
+
+        background-color: $lightest-color;
+
+        p {
+
+            color: #464646;
+        }
     }
 
     .identify {
@@ -103,6 +114,35 @@ html, body  {
         }
     }
 
+
+}
+
+.loading-container {
+    width: 100%;
+    height: 83vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.dark-mode-component {
+        background-color:$main-color-dark ;
+    }
+}
+
+.reset-password {
+    height: 4vh;
+    width: 60%;
+
+    margin-bottom: 1vh;
+
+    border: none;
+    border-bottom: 1px solid $border-color;
+    outline: none;
+
+    width: 50%;
+    border: $border-color solid 1px;
+    background-color: $main-color;
 
 }
 

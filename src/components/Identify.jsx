@@ -5,8 +5,12 @@ import RegisterForm from './Identify Childrens/RegisterForm'
 import {firebase} from './Firebase/firebase'
 import {withRouter} from 'react-router-dom'
 
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth'
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
+import ResetPassword from './Identify Childrens/ResetPassword'
+
+import loadingGifLightTheme from './img/loading-light-theme.png'
+import loadingGifDarkTheme from './img/loading-dark-theme.png'
 
 
 const Identify = (props) => {
@@ -19,6 +23,8 @@ const Identify = (props) => {
     
     const [message, setMessage] = React.useState('')
     const [errorMessage, setErrorMessage] = React.useState(0)
+    const [successMessage, setSuccessMessage] = React.useState(0)
+    const [loading, setLoading] = useState(false)
 
     const auth = getAuth()
 
@@ -39,10 +45,14 @@ const Identify = (props) => {
 
             addNewUserToFirebase(uid)
             props.history.push('/config-account')
+            setLoading(false)
+
 
         } catch (error) {
             
             setMessage(error.message)
+            setLoading(false)
+
             
         }
     }
@@ -73,15 +83,33 @@ const Identify = (props) => {
 
         try {
             const response = await signInWithEmailAndPassword(auth, email, password)
-            
-            
 
             props.history.push('/config-account')
+            await setLoading(false)
+
 
         } catch (error) {
             
             setErrorMessage('USER OR PASSWORD NOT VALID')
+            setLoading(false)
+
         }
+    }
+
+    const resetPasswordFirestore = async () => {
+
+        try {
+            
+            const response = await sendPasswordResetEmail(auth, email)
+            
+            setSuccessMessage('Recovery email send')
+            setLoading(false)
+
+        } catch (error) {
+            setErrorMessage('There was a problem sending the email.')
+            setLoading(false)
+
+        }        
     }
 
     const defineLogin = () => {
@@ -99,30 +127,46 @@ const Identify = (props) => {
     const sendForm = (e) => {
         e.preventDefault()
 
+        setLoading(true)
+
         if (!email.trim()) {
             setErrorMessage('EMAIL EMPTY')
+            setLoading(false)
+
             return
         }
 
-        if (!password.trim()) {
-            setErrorMessage('PASSWORD EMPTY')
-            return
-        }
+        if (act !== 'i forgor') {
+            
+            if (!password.trim()) {
+                setErrorMessage('PASSWORD EMPTY')
+            setLoading(false)
 
-        if (password.trim().length < 8) {
-            setErrorMessage('PASSWORD TOO SHORT')
-            return
+                return
+            }
+    
+            if (password.trim().length < 8) {
+                setErrorMessage('PASSWORD TOO SHORT')
+            setLoading(false)
+
+                return
+            }
+
         }
 
         if (act === 'register') {
 
             if (!confirmPassword.trim()) {
                 setErrorMessage('CONFIRM PASSWORD PLEASE')
+            setLoading(false)
+
                 return
             }
 
             if (password !== confirmPassword) {
                 setErrorMessage("PASSWORDS DOESN'T MATCH")
+            setLoading(false)
+
                 return                
             }
             register()  
@@ -143,6 +187,18 @@ const Identify = (props) => {
             e.target.reset()
             setEmail('')
             setPassword('')
+            
+            return
+        }
+
+        if (act === 'i forgor') {
+
+            resetPasswordFirestore()
+
+            e.target.reset()
+            setEmail('')
+            setErrorMessage(0)
+
             return
         }
 
@@ -181,12 +237,25 @@ const Identify = (props) => {
         })
     }, [])
 
+    if (loading) {
+
+        return (
+            <div className={props.darkMode ? 'loading-container dark-mode-component' : 'loading-container'} >
+                <img src={props.darkMode ? loadingGifDarkTheme : loadingGifLightTheme} alt=""/>
+            </div>
+        )
+    }
 
     return (
         <div className={props.darkMode ? 'identify-container dark-mode-component' : 'identify-container'}>
             <div className="error-message-container">
                 {
                     errorMessage ? <p>{errorMessage}</p> : null
+                }
+            </div>
+            <div className="success-message-container">
+                {
+                    successMessage ? <p>{successMessage}</p> : null
                 }
             </div>
             <div className="identify">
@@ -225,10 +294,13 @@ const Identify = (props) => {
 
                 <div className="form-container">
                 {
-                    act === 'login' ? <LoginForm setEmail={setEmail} setPassword={setPassword} sendForm={sendForm}/> : null    
+                    act === 'login' ? <LoginForm setEmail={setEmail} setPassword={setPassword} sendForm={sendForm} setAct={setAct}/> : null    
                 }
                 {
                     act === 'register' ? <RegisterForm setEmail={setEmail} setPassword={setPassword} setConfirmPassword={setConfirmPassword} sendForm={sendForm}/> : null
+                }
+                {
+                    act === 'i forgor' ? <ResetPassword setEmail={setEmail} sendForm={sendForm} setAct={setAct}/> : null
                 }
                 </div>
             </div>

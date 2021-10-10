@@ -2,6 +2,7 @@ import React from 'react'
 
 const LoginForm = (props) => {
     return (
+        <>
         <form onSubmit={props.sendForm}>
             <input
                 type="email"
@@ -19,7 +20,13 @@ const LoginForm = (props) => {
                 }}
             />
             <input type="submit" value="Login"></input>
+
+            <button class="reset-password" onClick={() => props.setAct('i forgor')}>Reset Password?</button>
         </form>
+        
+            
+            
+        </>
     )
 }
 

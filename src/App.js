@@ -24,6 +24,7 @@ import ClockifyTasksDisplay from './components/ClockifyTasksDisplay';
 import Credits from './components/Credits';
 
 import Footer from './components/Footer';
+import ResetPassword from './components/Identify Childrens/ResetPassword';
 
 function App() {
 
@@ -78,6 +79,8 @@ function App() {
         />
         
         <Switch>
+
+
 
           <Route path="/config-account">
               <Account
