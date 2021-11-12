@@ -36,7 +36,6 @@ const MainPomodoro = (props) => {
     
             setStartTime('')
             setEndTime('')
-            props.setTaskName('')
         }
     })
 

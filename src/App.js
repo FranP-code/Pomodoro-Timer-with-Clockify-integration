@@ -103,6 +103,9 @@ function App() {
             />
 
             <ClockifyTasksDisplay
+
+              setTimerOn={setTimerOn}
+
               signIn={signIn}
               timerOn={timerOn}
 

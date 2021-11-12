@@ -219,6 +219,14 @@ const ClockifyTasksDisplay = (props) => {
                             value={props.taskName}
                             placeholder="Add task description"
                             className={props.projectID !== 0 ? null: 'disabled'}
+
+                            onKeyPress={event => {
+
+                                if (event.key === 'Enter') {
+
+                                    props.setTimerOn(true)
+                                }
+                            }}
                         />
                     </div>
                 : null
