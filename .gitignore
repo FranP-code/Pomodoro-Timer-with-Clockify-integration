@@ -22,6 +22,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# firebase
+# enviroment
 
-/src/components/Firebase
+.env
+
+# some things
+
+/.firebase
+/.github
+/.vscode
+
+.firebasesrc
+␠netlify.toml
+package-lock.json
