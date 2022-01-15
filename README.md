@@ -14,7 +14,7 @@ This project are developed with **React** and **Sass** principally. In the page 
 
 ## Live Demo
 
-**You can visit it [here](https://clockify-pomodoro-timer.herokuapp.com/)**. I use it daily for tracking my job.
+**You can visit it [here](https://clockify-pomodoro-timer.netlify.app)**. I use it daily for tracking my job.
 
 <!-- ## Previous descriptions
 
