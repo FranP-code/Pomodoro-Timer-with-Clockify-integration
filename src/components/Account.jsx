@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
-import {firebase} from './Firebase/firebase'
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
+import React, { useState } from 'react';
 import Message from './Account Childrens/Message';
-import loadingGifLightTheme from './img/loading-light-theme.png'
-import loadingGifDarkTheme from './img/loading-dark-theme.png'
+import { firebase } from './Firebase/firebase';
+import loadingGifDarkTheme from './img/loading-dark-theme.png';
+import loadingGifLightTheme from './img/loading-light-theme.png';
 
 const Account = (props) => {
 

@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { doc, getFirestore, setDoc } from 'firebase/firestore'
+import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
+import { firebase } from './Firebase/firebase'
 import LoginForm from './Identify Childrens/LoginForm'
 import RegisterForm from './Identify Childrens/RegisterForm'
-
-import {firebase} from './Firebase/firebase'
-import {withRouter} from 'react-router-dom'
-
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth'
-import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
 import ResetPassword from './Identify Childrens/ResetPassword'
-
-import loadingGifLightTheme from './img/loading-light-theme.png'
 import loadingGifDarkTheme from './img/loading-dark-theme.png'
+import loadingGifLightTheme from './img/loading-light-theme.png'
+
+
+
 
 
 const Identify = (props) => {

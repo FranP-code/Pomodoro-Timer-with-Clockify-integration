@@ -32,6 +32,7 @@ yarn-error.log*
 /.github
 /.vscode
 
-.firebasesrc
+.firebaserc
+/firebase.json
 ␠netlify.toml
 package-lock.json

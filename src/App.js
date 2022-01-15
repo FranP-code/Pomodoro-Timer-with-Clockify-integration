@@ -1,30 +1,16 @@
-import React, {useState} from 'react'
-import {firebase} from './components/Firebase/firebase'
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import { doc, updateDoc, getFirestore, collection, getDoc } from "firebase/firestore";
-
-import detectKeys from './components/Misc/detectKeys';
-
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AboutThis from "./components/AboutThis";
-import BannerLogin from "./components/BannerLogin";
-import GoDownArrow from "./components/GoDownArrow";
-import Header from "./components/Header";
-import MainPomodoro from "./components/MainPomodoro";
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-import Identify from "./components/Identify";
 import Account from "./components/Account";
+import BannerLogin from "./components/BannerLogin";
 import ClockifyTasksDisplay from './components/ClockifyTasksDisplay';
 import Credits from './components/Credits';
-
 import Footer from './components/Footer';
-import ResetPassword from './components/Identify Childrens/ResetPassword';
+import GoDownArrow from "./components/GoDownArrow";
+import Header from "./components/Header";
+import Identify from "./components/Identify";
+import MainPomodoro from "./components/MainPomodoro";
 
 function App() {
 

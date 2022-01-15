@@ -56,7 +56,7 @@ const AboutThis = (props) => {
                             You have more projects?
                         </h4>
                         <p>
-                            Yes!, all there are in my <a href="http://franp.xyz">personal website</a>.
+                            Yes!, all there are in my <a target="_blank" href="https://porfolio-franp.netlify.app">personal website</a>.
                         </p>
                     </li>
                 </ul>
