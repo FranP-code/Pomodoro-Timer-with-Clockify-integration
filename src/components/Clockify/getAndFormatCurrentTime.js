@@ -13,13 +13,8 @@ const getAndFormatCurrentTime = (KonamiCodeON) => {
         seconds: data.getSeconds()
     }
 
-    console.log(KonamiCodeON)
-
     if (KonamiCodeON) {
         hour.hours = hour.hours + 3
-
-        console.log(hour.hours)
-        console.log('KONAMI ON')
     }
 
     if (hour.hours === 24) {
@@ -51,7 +46,6 @@ const getAndFormatCurrentTime = (KonamiCodeON) => {
 
     const structuredData = `${date.year}-${date.month}-${date.day}T${hour.hours}:${hour.minutes}:${hour.seconds}Z`
 
-    console.log(structuredData)
     return structuredData
 }
     

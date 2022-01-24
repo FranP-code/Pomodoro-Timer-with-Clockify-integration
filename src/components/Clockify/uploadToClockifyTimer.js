@@ -28,10 +28,7 @@ const uploadToClockifyTimer = async (workspaceID, projectID, start, end, apiKey,
         const result = await fetch(url, request)
         const data = await result.json()
 
-        console.log(data)
-
     } catch (error) {
-        console.log(error)
     }
 }
 

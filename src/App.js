@@ -48,8 +48,6 @@ function App() {
       root.style.display = 'flex'
       root.style.flexDirection ='column'
       
-  } else {
-      console.log(false)
   }
   
   return (

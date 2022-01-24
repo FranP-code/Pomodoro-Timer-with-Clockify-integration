@@ -76,13 +76,11 @@ const MainPomodoroTimer = (props) => {
             if (document.visibilityState === 'hidden') {
 
                 setVelocity(2)
-                console.log(document.visibilityState)
             }
 
             if (document.visibilityState === 'visible') {
 
                 setVelocity(1)
-                console.log(document.visibilityState)
             }
         });
 

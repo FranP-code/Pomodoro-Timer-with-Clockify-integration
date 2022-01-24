@@ -3,9 +3,6 @@ const detectKeys = (setKonamiCodeActive) => {
     let secuencie  = []
 
     window.addEventListener('keydown', (event) => {
-        
-        console.log(event.key)
-
 
         let k = event.key
 
@@ -25,7 +22,6 @@ const detectKeys = (setKonamiCodeActive) => {
             secuencie[10] === 'Enter' 
         ) {
 
-            console.log('TODO BIEN')
             secuencie = []
 
             setKonamiCodeActive(true)
@@ -70,10 +66,7 @@ const detectKeys = (setKonamiCodeActive) => {
 
                 secuencie = []
                 break;
-        }
-
-        console.log(secuencie)
-        
+        }        
     })
 }
 

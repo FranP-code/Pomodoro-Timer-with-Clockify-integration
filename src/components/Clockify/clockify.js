@@ -13,7 +13,6 @@ const makeRequest = async (apiKey) => {
         return await data 
 
     } catch (error) {
-        console.log(error)
     }
 }
 

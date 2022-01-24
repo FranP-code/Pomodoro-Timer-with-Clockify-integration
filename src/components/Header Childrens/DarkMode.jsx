@@ -13,7 +13,6 @@ const DarkMode = (props) => {
         }
 
         const darkModeCache = localStorage.getItem('dark-mode')
-        console.log(darkModeCache)
 
         if (darkModeCache === 'true') {
             props.setDarkmode(true)
