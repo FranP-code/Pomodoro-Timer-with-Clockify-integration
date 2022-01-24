@@ -181,19 +181,20 @@ const MainPomodoroTimer = (props) => {
                 }
                 
                 if (minutes === 0 && seconds === 0) {
-                    setTimerActivity(false)
-
-                    playAudio('work')
-
-                    if (notificationPermission) {
-
-                        new Notification('Pomodoro ended');
-                    }
                     
-                    
-                    if (restCounter !== 3){
+                    setTimeout( () => {
 
-                        setTimeout( () => {
+                        setTimerActivity(false)
+
+                        playAudio('work')
+
+                        if (notificationPermission) {
+
+                            new Notification('Pomodoro ended');
+                        }
+                        
+                        if (restCounter !== 3){
+
                             setPomodoroCounter('Pomodoros')
 
                             setRestCounter((restCounter + 1))
@@ -201,34 +202,30 @@ const MainPomodoroTimer = (props) => {
                             setBreak(1, 0)
                             setWeAreInBreakTime(true)
                             
-                        }, 1000)
+                            
+                        }
                         
-                    }
-
-                    if (restCounter === 3) {
-                        
-                        setTimeout( () => {
+                        if (restCounter === 3) {
+                            
                             setPomodoroCounter('Pomodoros')
                             setRestCounter((restCounter + 1))
 
                             setBreak(0, 1)
-                            setWeAreInBreakTime(true)
+                            setWeAreInBreakTime(true)     
+                        }
+                    
+                        if (!alreadyCountingEnd) {
+                            const time = getAndFormatCurrentTime(props.KonamiCodeActive)
                             
-                        }, 1000)
-                    }
+                            props.setEndTime(time)
+                            setAlreadyCountingEnd(true)
+                            
+                            props.setLetsUpload(true)
 
-                    if (!alreadyCountingEnd) {
-                        const time = getAndFormatCurrentTime(props.KonamiCodeActive)
-
-                        props.setEndTime(time)
-                        setAlreadyCountingEnd(true)
-
-                        props.setLetsUpload(true)
-
-                        document.title = randomText('rest')
-                    }
+                            document.title = randomText('rest')
+                        }
+                    }, 1000)
                 }
-
 
                 if (minutes >= 0 || seconds > 0) {
                 
@@ -241,16 +238,17 @@ const MainPomodoroTimer = (props) => {
                 getFavicon().href = './img/rest favicon.ico'
 
                 if (minutes === 0 && seconds === 0) {
-                    setTimerActivity(false)
-
-                    playAudio('rest')
-
-                    if (notificationPermission) {
-
-                        new Notification('Rest ended');
-                    }
-
+                    
                     setTimeout( () => {
+                    
+                        setTimerActivity(false)
+
+                        playAudio('rest')
+
+                        if (notificationPermission) {
+
+                            new Notification('Rest ended');
+                        }
 
                         if (restCounter === 4) {
                             setPomodoroCounter('Long Rest')
