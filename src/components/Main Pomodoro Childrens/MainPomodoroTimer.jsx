@@ -291,15 +291,26 @@ const MainPomodoroTimer = (props) => {
 
                         if (restCounter !== 3){
 
-                            setTimeout(() => {
+                            setPomodoroCounter('Pomodoros')
+                            setRestCounter((restCounter + 1))
 
-                                setPomodoroCounter('Pomodoros')
+                                if (!alreadyCountingEnd) {
+                                    const time = getAndFormatCurrentTime(props.KonamiCodeActive) 
 
-                                setRestCounter((restCounter + 1))
+                                    props.setEndTime(time)
+                                    setAlreadyCountingEnd(true)
 
-                                setBreak(1, 0)
-                                setWeAreInBreakTime(true)
-                            }, 1)                                                         
+                                    props.setLetsUpload(true)
+                                }
+                            // setTimeout(() => {
+
+                            //     setPomodoroCounter('Pomodoros')
+
+                            //     setRestCounter((restCounter + 1))
+
+                            //     setBreak(1, 0)
+                            //     setWeAreInBreakTime(true)
+                            // }, 1)                                                         
                         }
 
                         if (restCounter === 3) {
