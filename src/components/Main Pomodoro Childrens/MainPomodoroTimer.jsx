@@ -302,15 +302,11 @@ const MainPomodoroTimer = (props) => {
 
                                     props.setLetsUpload(true)
                                 }
-                            // setTimeout(() => {
+                            setTimeout(() => {
 
-                            //     setPomodoroCounter('Pomodoros')
-
-                            //     setRestCounter((restCounter + 1))
-
-                            //     setBreak(1, 0)
-                            //     setWeAreInBreakTime(true)
-                            // }, 1)                                                         
+                                setBreak(1, 0)
+                                setWeAreInBreakTime(true)
+                            }, 10)                                                         
                         }
 
                         if (restCounter === 3) {
