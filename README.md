@@ -1,16 +1,24 @@
-# Pomodoro Timer with Clockify Integration
+<h1 align="center">Pomodoro Clockify Timer</h1>
 
+<p align="center">
+  <img alt="Pomodoro Clockify Timer Demo" src="https://i.ibb.co/qm4kcBr/1-Pomodoro-Clockify-Timer-Video-Edited-Acelerated.gif"/>
+</p>
+
+<p align="center">
+    <img alt="Github stars" src="https://img.shields.io/github/stars/FranP-code/Pomodoro-Timer-with-Clockify-integration">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/FranP-code/Pomodoro-Timer-with-Clockify-integration">
+    <a href="https://github.com/FranP-code/Pomodoro-Timer-with-Clockify-integration/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/FranP-code/Pomodoro-Timer-with-Clockify-integration"></a>
+    <a href="https://github.com/FranP-code/Pomodoro-Timer-with-Clockify-integration/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/FranP-code/Pomodoro-Timer-with-Clockify-integration"></a>
+</p>
+
+## Description
 An Pomodoro Timer deployed to Heroku who allow to the client integrate their Clockify Profile for **sync the worked hours in the Clockify service**.
 
-## Data storage
+## Tech Stack
 
-All the data are stored in **[Firebase](https://firebase.google.com)**, the Google service.
+**Client:** React, Sass.
 
-In some commits the API Key was filtered, so I changed it. No problems about it.
-
-## Technologies
-
-This project are developed with **React** and **Sass** principally. In the page are some adicional credits.
+**Server:** Firebase
 
 ## Live Demo
 
