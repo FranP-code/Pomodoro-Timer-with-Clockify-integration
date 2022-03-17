@@ -6,8 +6,9 @@ const Header = (props) => {
 
     return (
         <header className={props.darkMode ? 'header-main-page dark-mode-component' : 'header-main-page'} >
-            <a href="/"><h1>Pomodoro Timer</h1></a>
-            <h3>Made By <span className="selectable"><a target="_blank" href="https://porfolio-franp.netlify.app" rel="noreferrer">Francisco Pessano</a></span></h3>
+            <a href="/">
+                <h1>Clockify Pomodoro Timer</h1>
+            </a>
             <DarkMode
                 darkMode={props.darkMode} 
                 setDarkmode={props.setDarkmode}
@@ -15,7 +16,7 @@ const Header = (props) => {
             <GoToAccount
                 signIn={props.signIn}
                 darkMode={props.darkMode} 
-                />
+            />
             <div className="konami-code">
                 {props.KonamiCodeActive ? 'Konami Code ON' : null}
             </div>

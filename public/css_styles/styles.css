@@ -2,9 +2,9 @@
   background-color: #62D2A2;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   height: 17vh;
+  padding: 0vh 1vw;
   box-sizing: border-box;
 }
 .header-main-page a {
@@ -19,31 +19,6 @@
   padding: 0;
   user-select: none;
 }
-.header-main-page h3 {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1vw;
-  font-family: "Raleway", sans-serif;
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-  user-select: none;
-}
-.header-main-page h3 .selectable {
-  user-select: all;
-}
-.header-main-page h3 .selectable a,
-.header-main-page h3 .selectable a:link,
-.header-main-page h3 .selectable a:visited,
-.header-main-page h3 .selectable a:hover,
-.header-main-page h3 .selectable a:active {
-  color: inherit;
-  text-decoration: inherit;
-  font-weight: inherit;
-}
-.header-main-page h3 .selectable a::selection {
-  background-color: #ffe83d;
-  color: #000000;
-}
 .header-main-page .konami-code {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
@@ -54,6 +29,7 @@
   .header-main-page {
     height: auto;
     padding: 3vw 0px;
+    align-items: center;
   }
   .header-main-page h1 {
     font-size: 26pt;
@@ -667,6 +643,7 @@ html, body {
 
 .dark-mode {
   position: absolute;
+  top: 1.7vh;
   left: calc(100% - 5vw);
 }
 .dark-mode #dark-mode_toogle-switch {
@@ -736,7 +713,7 @@ html, body {
 }
 
 .account-container {
-  height: 100%;
+  height: 69vh;
 }
 .account-container #message {
   padding-left: 5vw;
@@ -882,7 +859,8 @@ html, body {
   width: 3vw;
   height: 3vw;
   position: absolute;
-  left: 5vw;
+  top: 10.5vh;
+  left: 87vw;
   background-color: #1FAB89;
   display: flex;
   justify-content: center;
@@ -902,7 +880,8 @@ html, body {
   width: 7vw;
   height: 3vw;
   position: absolute;
-  left: 10vw;
+  top: 10.5vh;
+  left: 91vw;
   background-color: #1FAB89;
   display: flex;
   justify-content: center;
