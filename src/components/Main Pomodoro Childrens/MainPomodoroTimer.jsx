@@ -29,25 +29,8 @@ const MainPomodoroTimer = (props) => {
     const [controlKonamiCode, setControlKonamiCode] = useState(true)
     
     const [velocity, setVelocity] = useState(1) 
-    
-    const [notificationPermission, setNotificationPermission] = useState('')
 
     const setTimeStyle = () => setTimeStyleExternal(props, setMinutes, setSeconds, setBreakTime, setActualStyle, breakTime)
-
-    const getPermisionDesktopNotification = async () => {
-            
-        let permission = await Notification.requestPermission();
-
-        if (permission === 'granted') {
-
-            await setNotificationPermission(true)
-        
-        } else {
-
-            setNotificationPermission(false)
-        }
-        
-    }
 
     React.useEffect (() => {
 
@@ -61,10 +44,7 @@ const MainPomodoroTimer = (props) => {
             detectKeys(props.setKonamiCodeActive)
 
             setControlKonamiCode(false)
-        }
-
-        getPermisionDesktopNotification()
-    
+        }    
     })
 
     const startTimer = () => {
@@ -188,7 +168,7 @@ const MainPomodoroTimer = (props) => {
 
                         playAudio('work')
 
-                        if (notificationPermission) {
+                        if (props.notificationPermission) {
 
                             new Notification('Pomodoro ended');
                         }
@@ -245,7 +225,7 @@ const MainPomodoroTimer = (props) => {
 
                         playAudio('rest')
 
-                        if (notificationPermission) {
+                        if (props.notificationPermission) {
 
                             new Notification('Rest ended');
                         }

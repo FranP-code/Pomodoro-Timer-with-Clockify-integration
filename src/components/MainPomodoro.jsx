@@ -20,8 +20,6 @@ const MainPomodoro = (props) => {
 
 
     const showStyles = () => {
-        
-
         setDisplayHidden(!displayHidden)
     }
 
@@ -36,9 +34,6 @@ const MainPomodoro = (props) => {
             setEndTime('')
         }
     })
-
-
-
 
     return (
         <div className={props.darkMode ? 'main-pomodoro-container dark-mode-component' : 'main-pomodoro-container'}>
@@ -85,6 +80,8 @@ const MainPomodoro = (props) => {
 
                 setKonamiCodeActive={props.setKonamiCodeActive}
                 KonamiCodeActive= {props.KonamiCodeActive}
+
+                notificationPermission={props.notificationPermission}
 
                 />
 

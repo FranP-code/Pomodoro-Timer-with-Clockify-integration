@@ -28,6 +28,8 @@ function App() {
 
   const [KonamiCodeActive, setKonamiCodeActive] = useState(false)
 
+  const [notificationPermission, setNotificationPermission] = useState(undefined)
+
   const auth = getAuth()
 
   onAuthStateChanged(auth, (user) => {
@@ -49,6 +51,14 @@ function App() {
       root.style.flexDirection ='column'
       
   }
+
+  React.useEffect(() => {
+    const permission = localStorage.getItem("notification-permission")
+
+    if (permission !== undefined && permission !== null) {
+      setNotificationPermission(permission === "true" ? true : false)      
+    }
+  }, [])
   
   return (
     <Router>
@@ -60,6 +70,9 @@ function App() {
           setDarkmode={setDarkmode}
 
           KonamiCodeActive= {KonamiCodeActive}
+
+          notificationPermission={notificationPermission}
+          setNotificationPermission={setNotificationPermission}
         />
         
         <Switch>
@@ -128,6 +141,8 @@ function App() {
 
               setKonamiCodeActive = {setKonamiCodeActive}
               KonamiCodeActive= {KonamiCodeActive}
+
+              notificationPermission={notificationPermission}
             />
 
             <GoDownArrow 
