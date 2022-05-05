@@ -1,0 +1,127 @@
+.main-pomodoro {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 68vh;
+
+    background-color: var(--main-background-color);
+
+    .timer {
+
+        display: flex;
+        justify-content: center;
+
+        font-weight: bold;
+        font-size: 130pt;
+
+        color: var(--main-text-color);
+    }
+
+    .style-display {
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+        h4 {
+            font-size: 24pt;
+
+            color: var(--main-text-color);
+            user-select: none;
+        }
+
+        h3 {
+            font-size: 30pt;
+            
+            color: var(--main-text-color);
+
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+
+    .start-pomodoro {
+        margin-top: 6vh;
+        width: 30vw;
+        height: 8vh;
+        
+        font-family: var(--title-font);
+        font-weight: 700;
+
+        background: var(--second-color);
+        border-radius: 24px;
+
+        font-size: 5vh;
+        color: white;
+    }
+}
+
+.pomodoro-counter {
+    position: absolute;
+    top: 29vh;
+    color: var(--pomodoro-counter-text-color);
+
+    ul {
+        li {
+            display: flex;
+
+            list-style-type: none;
+            margin-top: 2vh;
+
+            font-size: 15pt;
+
+            .separator {
+                user-select: none;
+                margin: 0px 0.5vw;
+            }
+            
+            .quantity {
+
+                user-select: none;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                background-color: var(--lightest-color);
+                
+                height: 30px;
+                width: 30px;
+
+                border-radius: 100%;
+
+                font-family: var(--title-font);
+                font-weight: 700;
+                color: var(--main-text-color);
+            }
+        }
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    .pomodoro-counter {
+
+        position: initial;
+        padding-bottom: 5vh;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .main-pomodoro {
+
+        height: auto;
+        
+        .timer {
+            font-size: 80pt;
+        }
+
+        .start-pomodoro {
+            font-size: 13pt;
+        }
+    }
+}

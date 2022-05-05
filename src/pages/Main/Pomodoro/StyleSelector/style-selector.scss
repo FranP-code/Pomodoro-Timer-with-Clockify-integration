@@ -1,0 +1,169 @@
+.style-selector{
+
+    width: calc(20vw - 1px);
+    
+    padding-left: 3vw;
+    padding-bottom: 12vh;
+    
+    position: absolute;
+    
+    top: 29vh;
+    left: 75vw;
+    
+    box-shadow: 1px 6px 15px #00000020;
+
+    z-index: 50;
+
+    h2 {
+        color: var(--main-text-color);
+        font-size: 30pt;
+        text-align: center;
+
+        margin-left: -3vw;
+        margin-top: 1vh;
+        margin-bottom: 3vh;
+    }
+
+    .style-selection-container {
+        .style-container{
+            display: flex;
+            height: 10vh;
+
+            align-items: center;
+            
+            label {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                color: var(--second-text-color);
+
+                .title {
+                    font-size: 13pt;
+                }
+                
+                .times {
+                    color: var(--third-text-color);
+                    font-size: 13pt;
+                }
+            }
+        }
+        
+        input {
+            width: 65px;
+            opacity: 0;
+        }
+        
+        .checkbox__input {
+            display: grid;
+            grid-template-areas: "checkbox";
+        
+            > * {
+                grid-area: checkbox;
+            }
+        }
+        
+        
+        .checkbox_control {
+            display: inline-grid;
+            
+            width: 45px;
+            height: 45px;
+        
+            border: 3px solid var(--main-text-color);
+            border-radius: 0.25em;
+            border-radius: 100%;
+
+            transition: ease-in-out 0.2s ;
+        }
+        
+        .checkbox__input input:checked + .checkbox_control {
+            
+            background-color: var(--lightest-color);
+        }
+
+        // CREDITS TO https://moderncss.dev/pure-css-custom-checkbox-style/
+    }
+
+    transition: 0.2s ease-in-out;
+}
+
+.style-selector-show {
+    opacity: 100%;
+    pointer-events: auto;
+}
+
+.style-selector-hidden {
+    opacity: 0%;
+    pointer-events: none;
+}
+
+@media (max-width: 991.98px) {
+    .style-selector {
+        position: initial;
+
+        margin: 0 0 5% 0;
+
+        width: 100%;
+
+        padding: 0;
+        padding: 0px 5vw;
+
+        box-sizing: border-box;
+
+        h2 {
+            text-align: start;
+
+            margin-left: 0;
+            
+        }
+
+        .style-selection-container {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            width: 100%;
+
+            .style-container{
+                height: 100%;
+                width: 30%;
+
+                margin: 1% 10%;
+            }
+        }
+    }
+}
+
+@media (max-width: 918px) {
+
+    .style-selector {
+        
+        .style-selection-container {
+            flex-wrap: nowrap;
+
+            flex-direction: column;
+
+            .style-container {
+                width: 60%  ;
+            }
+        }
+        margin-bottom: 5vh;
+
+    }
+}
+
+@media (max-width: 462px) {
+
+    .style-selector {
+
+        .style-selection-container {
+
+            .style-container{
+                width: 100%;
+            }
+        }
+    }
+
+}

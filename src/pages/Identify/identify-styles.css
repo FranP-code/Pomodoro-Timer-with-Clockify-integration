@@ -1,0 +1,98 @@
+.identify-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+.identify-container:has {
+  height: 100%;
+}
+.identify-container .error-message-container, .identify-container .success-message-container {
+  width: 70vw;
+  background-color: #D17262;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.identify-container .error-message-container p, .identify-container .success-message-container p {
+  margin: 2vw;
+  color: #ffffff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 22pt;
+}
+.identify-container .success-message-container {
+  background-color: var(--lightest-color);
+}
+.identify-container .success-message-container p {
+  color: #464646;
+}
+.identify-container .identify {
+  width: 70vw;
+}
+.identify-container .identify .options-container {
+  display: flex;
+}
+.identify-container .identify .options-container .option {
+  width: 35vw;
+  display: flex;
+  justify-content: space-around;
+  padding: 5vh 0px;
+  background-color: var(--second-color);
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+  filter: brightness(80%);
+}
+.identify-container .identify .options-container .option h2 {
+  color: #ffffff;
+}
+.identify-container .identify .options-container .active-option {
+  cursor: initial;
+  filter: brightness(100%);
+}
+.identify-container .identify .form-container {
+  display: flex;
+  justify-content: center;
+}
+.identify-container .identify .form-container form {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1vh;
+}
+.identify-container .identify .form-container form input {
+  height: 4vh;
+  width: 60%;
+  margin-bottom: 1vh;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  outline: none;
+  background-color: var(--main-background-color);
+  color: var(--second-text-color);
+}
+.identify-container .identify .form-container form input.login {
+  background-color: var(--second-background-color);
+  color: var(--second-text-color);
+}
+.identify-container .identify .form-container form input.register {
+  background-color: var(--second-background-color);
+}
+.identify-container .identify .form-container form input[type=submit] {
+  width: 50%;
+  border: var(--border-color) solid 1px;
+}
+
+.reset-password {
+  height: 4vh;
+  width: 60%;
+  margin-bottom: 1vh;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  outline: none;
+  width: 50%;
+  border: var(--border-color) solid 1px;
+  background-color: var(--lightest-color-darker);
+}/*# sourceMappingURL=identify-styles.css.map */

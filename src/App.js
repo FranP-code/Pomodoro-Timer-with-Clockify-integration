@@ -1,33 +1,24 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import './styles.css'
+
 import React, { useState } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AboutThis from "./components/AboutThis";
-import Account from "./components/Account";
-import BannerLogin from "./components/BannerLogin";
-import ClockifyTasksDisplay from './components/ClockifyTasksDisplay';
-import Credits from './components/Credits';
-import Footer from './components/Footer';
-import GoDownArrow from "./components/GoDownArrow";
-import Header from "./components/Header";
-import Identify from "./components/Identify";
-import MainPomodoro from "./components/MainPomodoro";
+
+//Pages
+import ConfigAccount from "./pages/ConfigAccount/ConfigAccount";
+import Identify from "./pages/Identify/Identify";
+import Main from './pages/Main/Main';
+import AboutThis from "./pages/AboutThis/AboutThis";
+import Credits from './pages/Credits/Credits';
+
+import Footer from './components/Footer/Footer';
+import Header from "./components/Header/Header";
 
 function App() {
 
-  const [timerOn, setTimerOn] = useState(false)
-
-  const [signIn, setSignIn] = useState('')
-
-  const [apiKey, setApiKey] = useState('')
-  const [taskName, setTaskName] = useState('')
-
-  const [workspaceID, setWorspaceID] = useState(0)
-  const [projectID, setProjectID] = useState(0)
-
+  const [signedIn, setSignedIn] = useState('')
   const [darkMode, setDarkmode] = useState(false)
-
-  const [KonamiCodeActive, setKonamiCodeActive] = useState(false)
-
+  const [konamiCodeActive, setKonamiCodeActive] = useState(false)
   const [notificationPermission, setNotificationPermission] = useState(undefined)
 
   const auth = getAuth()
@@ -35,9 +26,9 @@ function App() {
   onAuthStateChanged(auth, (user) => {
 
       if (user) {
-          setSignIn(true)
+        setSignedIn(true)
       } else {
-          setSignIn(false)
+        setSignedIn(false)
       }
 
   })
@@ -64,105 +55,43 @@ function App() {
     <Router>
       <>
         <Header 
-          signIn={signIn}
+          signedIn={signedIn}
 
           darkMode={darkMode}
           setDarkmode={setDarkmode}
 
-          KonamiCodeActive= {KonamiCodeActive}
+          konamiCodeActive={konamiCodeActive}
 
           notificationPermission={notificationPermission}
           setNotificationPermission={setNotificationPermission}
         />
         
         <Switch>
-
-
-
           <Route path="/config-account">
-              <Account
-              
+              <ConfigAccount
                 darkMode={darkMode}
               />
           </Route>
 
           <Route path="/identify">
-            <Identify
-
-              darkMode={darkMode}
-            />
+            <Identify darkMode={darkMode}/>
           </Route>
 
           <Route path="/">
-            <BannerLogin 
-              signIn={signIn}
+            <Main
+              signedIn={signedIn}
               darkMode={darkMode}
-            />
-
-            <ClockifyTasksDisplay
-
-              setTimerOn={setTimerOn}
-
-              signIn={signIn}
-              timerOn={timerOn}
-
-              apiKey={apiKey}
-              setApiKey={setApiKey}
-
-              taskName={taskName}
-              setTaskName={setTaskName}
-
-              workspaceID={workspaceID}
-              setWorspaceID={setWorspaceID}
-
-              projectID={projectID}
-              setProjectID={setProjectID}
               
-              darkMode={darkMode}
-            />
-
-            <MainPomodoro 
-              signIn={signIn}
-              timerOn={timerOn}
-              setTimerOn={setTimerOn}
-              
-              apiKey={apiKey}
-
-              taskName={taskName}
-              setTaskName={setTaskName}
-
-              workspaceID={workspaceID}
-              setWorspaceID={setWorspaceID}
-
-              projectID={projectID}
-              setProjectID={setProjectID}
-
-              darkMode={darkMode}
-
-              setKonamiCodeActive = {setKonamiCodeActive}
-              KonamiCodeActive= {KonamiCodeActive}
-
+              konamiCodeActive={konamiCodeActive}
+              setKonamiCodeActive={setKonamiCodeActive}
               notificationPermission={notificationPermission}
-            />
-
-            <GoDownArrow 
-              direction={'about-this'}
-              darkMode={darkMode}
-
             />
             <AboutThis
               darkMode={darkMode}
-
-            />
-
-            <GoDownArrow 
-              direction={'credits'}
-              darkMode={darkMode}
-
             />
             <Credits
               darkMode={darkMode}
-          />
+            />
           </Route>
         </Switch>
 

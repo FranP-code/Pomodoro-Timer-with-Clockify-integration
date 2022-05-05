@@ -1,0 +1,26 @@
+.go-down {
+  background-color: var(--main-background-color);
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+}
+.go-down svg {
+  height: 6vh;
+  width: 6vh;
+  cursor: pointer;
+}
+.go-down svg path {
+  fill: rgb(170, 170, 170);
+}
+
+.go-down-separator-line {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.go-down-separator-line hr {
+  height: 1px;
+  width: 75%;
+  border: none;
+  border-top: 1px solid rgb(184, 184, 184);
+}/*# sourceMappingURL=go-down-arrow-styles.css.map */

@@ -1,0 +1,50 @@
+#about-this, #credits {
+  height: 83vh;
+  background-color: var(--second-background-color);
+  color: var(--second-text-color);
+  padding: 0px 3vw;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+#about-this .titles, #credits .titles {
+  display: flex;
+}
+#about-this .titles h3, #credits .titles h3 {
+  width: 50%;
+  font-size: 22pt;
+}
+#about-this .titles h3 .line-through, #credits .titles h3 .line-through {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+}
+#about-this .information, #credits .information {
+  display: flex;
+}
+#about-this .information ul, #credits .information ul {
+  width: 50%;
+}
+#about-this .information ul li, #credits .information ul li {
+  margin-top: 3vh;
+}
+#about-this .information ul li h4, #credits .information ul li h4 {
+  font-size: 18pt;
+}
+#about-this .information ul li p, #credits .information ul li p {
+  font-size: 13pt;
+  margin-left: 2vw;
+  margin-top: 1vh;
+}
+
+#credits {
+  height: 95vh;
+}
+
+@media (max-width: 918px) {
+  #about-this, #credits {
+    height: auto;
+    padding-bottom: 5vh;
+  }
+}/*# sourceMappingURL=about-this-styles.css.map */

@@ -1,0 +1,154 @@
+.account-container {
+
+    #message {
+        padding-left: 5vw;
+
+        background-color: #ff6a6a;
+
+        h1 {
+            color: #ffffff;
+            padding: 2vh 0px;
+        }
+    }
+
+    .successfully {
+        background-color: #75b7ff !important;
+        
+        h1 {color: #3a3a3a !important;}
+    }
+
+    .next-step {
+
+        display: flex;
+        align-items: center;
+
+        background-color: var(--second-background-color);
+
+        .disabled {
+            user-select: none;
+            cursor: initial;
+            pointer-events: none;
+            opacity: 30%;
+        }
+        
+        .next-step-title {
+            padding-left: 5vw;
+    
+            padding-top: 5vh;
+    
+            background-color: --light-color;
+    
+            h1, h2 {
+                color: --second-color;
+
+                padding-bottom: 3vh;
+            }
+        }
+
+        form {
+            width: 50vw;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding-top: 1vh;
+
+            
+            input {
+                height: 4vh;
+                width: 60%;
+
+                margin-bottom: 1vh;
+
+                border: none;
+                border-bottom: 1px solid var(--border-color);
+                outline: none;
+            }
+
+            input[type=submit] {
+                width: 50%;
+                border: var(--border-color) solid 1px;
+            }
+        }
+
+        form .disabled {
+            opacity: 0%;
+        }
+
+        .flex-container-change-api-container {
+            padding-left: 5vw;
+
+            .change-api-container {
+                color: var(--second-text-color);
+                background-color: var(--main-background-color);
+
+                display: flex;
+                flex-direction: column;
+
+                padding: 1vh 3vw;
+
+                border-radius: 5px;
+
+                .api-preview-container {
+
+                    .api-preview {
+                        font-weight: bold;
+                    }
+                }
+
+                #change-API-button {
+                    height: 4vh;
+                    width:  20vw;
+
+                    margin: 1vh 0px;
+
+                    border: none;
+                    outline: none;
+
+                    background-color: var(--lightest-color);
+                    border: var(--border-color) solid 1px;
+                }
+            }
+        }
+    }
+}
+
+.loading-container {
+    width: 100%;
+    height: 83vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media (max-width: 991.98px) {
+    
+    .account-container {
+
+        .next-step {
+
+            display: flex;
+
+
+            .next-step-title {
+
+                h1 {
+                    font-size: 15pt;
+                }
+
+                h2 {
+                    font-size: 12pt;
+                }
+            }
+
+            .flex-container-change-api-container{
+                .change-api-container {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
