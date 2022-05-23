@@ -27,18 +27,19 @@ const Pomodoro = (props) => {
     
             async function uploadToClockifyTimer() {
 
-                if (!props.workspaceID && !props.projectID) {
+                if (!props.clockifyData.workspaceID && !props.clockifyData.projectID) {
                     return
                 } 
             
                 try {
-                    const url = `https://api.clockify.me/api/v1/workspaces/${props.workspaceID}/time-entries`
+                    const url = `https://api.clockify.me/api/v1/workspaces/${props.clockifyData.workspaceID}/time-entries`
             
                     const body = {
                         start: startTime,
                         end: endTime,
-                        projectId: props.projectID,
-                        description: props.taskName
+                        description: props.clockifyData.description,
+                        projectId: props.clockifyData.projectID,
+                        taskId: props.clockifyData.taskID ? props.clockifyData.taskID : "",
                     }
             
                     const headers = {
@@ -55,6 +56,7 @@ const Pomodoro = (props) => {
                     await fetch(url, request)
             
                 } catch (error) {
+                    console.log(error);
                 }
             }
 
@@ -68,7 +70,7 @@ const Pomodoro = (props) => {
     })
 
     return (
-        <div className={props.darkMode ? 'main-pomodoro-container dark-mode-component' : 'main-pomodoro-container'}>
+        <div className='main-pomodoro-container' >
             <div className="main-pomodoro">
 
                 <PomodoroTimer
@@ -79,14 +81,6 @@ const Pomodoro = (props) => {
                     
                     stats={stats}
                     setStats={setStats}
-
-                    workspaceID={props.workspaceID}
-                    setWorkspaceID={props.setWorkspaceID}
-
-                    projectID={props.projectID}
-                    setProjectID={props.setProjectID}
-
-                    apiKey={props.apiKey}
                     
                     startTime={startTime}
                     setStartTime={setStartTime}

@@ -5,7 +5,7 @@
   position: absolute;
   top: 29vh;
   left: 75vw;
-  box-shadow: 1px 6px 15px #00000020;
+  box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.1254901961);
   z-index: 50;
   transition: 0.2s ease-in-out;
 }
@@ -109,6 +109,4 @@
   .style-selector .style-selection-container .style-container {
     width: 100%;
   }
-}
-
-/*# sourceMappingURL=style-selector.css.map */
+}/*# sourceMappingURL=style-selector.css.map */

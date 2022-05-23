@@ -7,10 +7,15 @@ const Main = ({signedIn, darkMode, setKonamiCodeActive, KonamiCodeActive, notifi
 
     const [timerOn, setTimerOn] = useState(false)
     const [apiKey, setApiKey] = useState('')
-    const [taskName, setTaskName] = useState('')
 
-    const [workspaceID, setWorkspaceID] = useState(0)
-    const [projectID, setProjectID] = useState(0)
+    const [clockifyData, setClockifyData] = useState({})
+
+    function changeClockifyData(obj) {
+        setClockifyData(clockifyData => ({
+            ...clockifyData,
+            ...obj
+          }))
+    }
 
     return (
         <>
@@ -24,16 +29,8 @@ const Main = ({signedIn, darkMode, setKonamiCodeActive, KonamiCodeActive, notifi
                 apiKey={apiKey}
                 setApiKey={setApiKey}
 
-                taskName={taskName}
-                setTaskName={setTaskName}
-
-                workspaceID={workspaceID}
-                setWorkspaceID={setWorkspaceID}
-
-                projectID={projectID}
-                setProjectID={setProjectID}
-                
-                darkMode={darkMode}
+                clockifyData={clockifyData}
+                changeClockifyData={changeClockifyData}
             />
             <Pomodoro
                 signedIn={signedIn}
@@ -42,16 +39,7 @@ const Main = ({signedIn, darkMode, setKonamiCodeActive, KonamiCodeActive, notifi
                 
                 apiKey={apiKey}
 
-                taskName={taskName}
-                setTaskName={setTaskName}
-
-                workspaceID={workspaceID}
-                setWorkspaceID={setWorkspaceID}
-
-                projectID={projectID}
-                setProjectID={setProjectID}
-
-                darkMode={darkMode}
+                clockifyData={clockifyData}
 
                 setKonamiCodeActive = {setKonamiCodeActive}
                 KonamiCodeActive= {KonamiCodeActive}

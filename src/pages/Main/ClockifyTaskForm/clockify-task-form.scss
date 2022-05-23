@@ -6,28 +6,42 @@
     top: 60vh;
     left: 2.5vw;
 
+    select, select option, input, input::placeholder {   
+        font-family: 'Arial', sans-serif;
+    }
+
     &.loading-container {
         width: 20vw;
         height: auto;
         background: none;
     }
-
-    &.disabled {
-        user-select: none;
-        cursor: initial;
-        pointer-events: none;
-        opacity: 30%;
-    }
     
     .workspace-selector, .project-selector {
         width: 15vw;
-        height: 3vw;
+        height: 5vh;
+    }
 
-        &.disabled {
-            user-select: none;
-            cursor: initial;
-            pointer-events: none;
-            opacity: 30%;
+    .add-task {
+        width: 3.5vh;
+        height: 3.5vh;
+
+        margin-left: 0.5vh;
+
+        display: inline;
+
+        background-color: var(--main-text-color);
+        border-radius: 100%;
+
+        color: #fff;
+
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(90%);
+        }
+
+        &:active {
+            filter: brightness(110%);
         }
     }
 
@@ -47,13 +61,13 @@
         padding: 1px 2px;
 
         box-sizing: border-box;
+    }
 
-        &.disabled {
-            user-select: none;
-            cursor: initial;
-            pointer-events: none;
-            opacity: 30%;
-        }
+    .disabled {
+        user-select: none;
+        cursor: initial;
+        pointer-events: none;
+        opacity: 0.3;
     }
 }
 
