@@ -116,7 +116,6 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
             const response = await fetch(`https://api.clockify.me/api/v1/workspaces/${e}/projects`, request)
             const data = await response.json()
 
-            console.log(data);
             changeClockifyData({projects: data})
 
         } catch (error) {
@@ -127,8 +126,6 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
     async function getTasks(projectID) {
 
         if (projectID === "0") {
-            changeClockifyData({projectID: undefined})
-            changeClockifyData({tasks: undefined})
             return
         }
 
@@ -226,13 +223,7 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                                 </select>
 
                                 <select
-                                    onChange={(e) => {
-                                        if (e.target.value === "0") {
-                                            changeClockifyData({taskID: undefined})
-                                        } else {
-                                            changeClockifyData({taskID: e.target.value})
-                                        }
-                                    }}
+                                    onChange={(e) => changeClockifyData({taskID: e.target.value})}
                                     className={`project-selector ${(!clockifyData.projectID || (clockifyData.tasks && clockifyData.tasks.length === 0)) && 'disabled'}`}
                                 >
                                     <option value="0">Select a Task</option>

@@ -11,6 +11,34 @@ const Main = ({signedIn, darkMode, setKonamiCodeActive, KonamiCodeActive, notifi
     const [clockifyData, setClockifyData] = useState({})
 
     function changeClockifyData(obj) {
+
+        //* Module for clean the children propierties if father propierty changes
+        
+        // Select all propierties of user
+        const propierties = ["workspaces", "workspaceID", "projects", "projectID", "tasks", "taskID"]
+
+        propierties.forEach((propierty, index) => {
+            
+            // If obj have some of the propierties, create a subarray selecting all childrens
+            if (obj.hasOwnProperty(propierty)) {
+                
+                const subArray = propierties.slice(index + 1)
+
+                // Undefine all childrens
+                subArray.forEach(subPropierty => {
+                    obj[subPropierty] = undefined
+                })
+            }
+        })
+
+        //* Module for undefine the propierty if value is "0": string
+
+        propierties.forEach(propierty => {
+            if (obj[propierty] === "0") {
+                obj[propierty] = undefined
+            }
+        })
+
         setClockifyData(clockifyData => ({
             ...clockifyData,
             ...obj
