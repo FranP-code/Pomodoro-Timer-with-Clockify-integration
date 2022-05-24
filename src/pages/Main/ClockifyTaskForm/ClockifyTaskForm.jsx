@@ -54,15 +54,15 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                 if (user && user.uid) {
 
                     await getApiKey(user.uid)
-                    setLoading(false)
                     
                 } else {
-                    return (<></>)
+                    return(<></>)
                 }
+                setLoading(false)
 
             })
         } else {
-            setLoading(false)
+            
         }
         
     }, [signedIn])
@@ -178,118 +178,115 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
     }
 
     return (
-        <>
+        <div className='clockify-tasks-display-container'>
             {
-                loading ?
-                    <Loading />
-                :
-                <div className={darkMode ? 'clockify-task-form-container dark-mode-container' : 'clockify-tasks-display-container'}>
-                    {
-                        clockifyData.workspaces ?
-                            <div className={`clockify-task-form ${(timerOn || !clockifyData.workspaces) && "disabled"}`}>
-                                
-                                <select
-                                    onChange={(e) => {
-                                        changeClockifyData({workspaceID: e.target.value})
-                                        getProjects(e.target.value)
-                                    }}
-                                    className='workspace-selector'
-                                >
-                                    <option value="0">Select a Workspace</option>
-                                    {
-                                        clockifyData.workspaces &&
-                                            clockifyData.workspaces.map((workspace) => {
-                                                return <option value={workspace.id} key={workspace.id}>{workspace.name}</option>
-                                            })
-                                    }
-                                </select>
+                loading &&
+                    <Loading width={"20vw"} height={"initial"}/>
+            }
+            {
+                clockifyData.workspaces ?
+                    <div className={`clockify-task-form ${(timerOn || !clockifyData.workspaces) && "disabled"}`}>
+                        
+                        <select
+                            onChange={(e) => {
+                                changeClockifyData({workspaceID: e.target.value})
+                                getProjects(e.target.value)
+                            }}
+                            className='workspace-selector'
+                        >
+                            <option value="0">Select a Workspace</option>
+                            {
+                                clockifyData.workspaces &&
+                                    clockifyData.workspaces.map((workspace) => {
+                                        return <option value={workspace.id} key={workspace.id}>{workspace.name}</option>
+                                    })
+                            }
+                        </select>
 
-                                <select
-                                    onChange={(e) => {
-                                        changeClockifyData({projectID: e.target.value})
-                                        getTasks(e.target.value)
-                                    }}
-                                    className={`project-selector ${(!clockifyData.workspaceID) && 'disabled'}`}
-                                >
-                                    <option value="0">Select a Project</option>
-                                    {
-                                        clockifyData.projects &&
-                                            clockifyData.projects.map((project) => (
-                                                !project.archived ?
-                                                    <option value={project.id} key={project.id} style={{color: project.color}}>{project.name}</option>
-                                                : null
-                                            ))
-                                    }
-                                </select>
+                        <select
+                            onChange={(e) => {
+                                changeClockifyData({projectID: e.target.value})
+                                getTasks(e.target.value)
+                            }}
+                            className={`project-selector ${(!clockifyData.workspaceID) && 'disabled'}`}
+                        >
+                            <option value="0">Select a Project</option>
+                            {
+                                clockifyData.projects &&
+                                    clockifyData.projects.map((project) => (
+                                        !project.archived ?
+                                            <option value={project.id} key={project.id} style={{color: project.color}}>{project.name}</option>
+                                        : null
+                                    ))
+                            }
+                        </select>
 
-                                <select
-                                    onChange={(e) => changeClockifyData({taskID: e.target.value})}
-                                    className={`project-selector ${(!clockifyData.projectID || (clockifyData.tasks && clockifyData.tasks.length === 0)) && 'disabled'}`}
-                                >
-                                    <option value="0">Select a Task</option>
-                                    {
-                                        clockifyData.tasks &&
-                                            clockifyData.tasks.map((task) => (
-                                                task.status !== "DONE" &&
-                                                    <option value={task.id} key={task.id} >{task.name}</option>
-                                            ))
-                                    }
-                                </select>
-                                <button
-                                    className={`add-task ${!clockifyData.projectID && 'disabled'}`}
-                                    onClick={() => {
+                        <select
+                            onChange={(e) => changeClockifyData({taskID: e.target.value})}
+                            className={`project-selector ${(!clockifyData.projectID || (clockifyData.tasks && clockifyData.tasks.length === 0)) && 'disabled'}`}
+                        >
+                            <option value="0">Select a Task</option>
+                            {
+                                clockifyData.tasks &&
+                                    clockifyData.tasks.map((task) => (
+                                        task.status !== "DONE" &&
+                                            <option value={task.id} key={task.id} >{task.name}</option>
+                                    ))
+                            }
+                        </select>
+                        <button
+                            className={`add-task ${!clockifyData.projectID && 'disabled'}`}
+                            onClick={() => {
 
-                                        if (addingNewTask === "loading") {
-                                            return
-                                        }
-
-                                        if (!addingNewTask) {
-                                            setAddingNewTask(true)
-                                            return
-                                        } else {
-                                            addNewTask()
-                                        }
-                                    }}
-                                >
-                                    {
-                                        addingNewTask === false ?
-                                            <FontAwesomeIcon icon={faPlus} />
-                                        : addingNewTask === true ?
-                                            <FontAwesomeIcon icon={faCheck} />
-                                        : addingNewTask === "loading" &&
-                                            <Ring size={20} color="#fff" />
-                                    }
-
-                                </button>
-                                <>
-                                {
-                                    addingNewTask &&
-                                        <input
-                                            type="text"
-                                            ref={newTask}
-                                            placeholder="Set new task name"
-                                        />
+                                if (addingNewTask === "loading") {
+                                    return
                                 }
-                                </>
 
+                                if (!addingNewTask) {
+                                    setAddingNewTask(true)
+                                    return
+                                } else {
+                                    addNewTask()
+                                }
+                            }}
+                        >
+                            {
+                                addingNewTask === false ?
+                                    <FontAwesomeIcon icon={faPlus} />
+                                : addingNewTask === true ?
+                                    <FontAwesomeIcon icon={faCheck} />
+                                : addingNewTask === "loading" &&
+                                    <Ring size={20} color="#fff" />
+                            }
+
+                        </button>
+                        <>
+                        {
+                            addingNewTask &&
                                 <input
                                     type="text"
-                                    ref={descriptionInput}
-                                    onChange={(e) => changeClockifyData({description: e.target.value})}
-                                    placeholder="Add task description"
-                                    className={!clockifyData.projectID && 'disabled'}
-                                    onKeyPress={event => {
-                                        if (event.key === 'Enter') {
-                                            setTimerOn(true)
-                                        }
-                                    }}
+                                    ref={newTask}
+                                    placeholder="Set new task name"
                                 />
-                            </div>
-                        : null
-                    }
-                </div>
+                        }
+                        </>
+
+                        <input
+                            type="text"
+                            ref={descriptionInput}
+                            onChange={(e) => changeClockifyData({description: e.target.value})}
+                            placeholder="Add task description"
+                            className={!clockifyData.projectID && 'disabled'}
+                            onKeyPress={event => {
+                                if (event.key === 'Enter') {
+                                    setTimerOn(true)
+                                }
+                            }}
+                        />
+                    </div>
+                : null
             }
-        </>   
+        </div> 
     )
 }
 

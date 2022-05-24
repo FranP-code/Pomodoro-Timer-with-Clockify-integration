@@ -1,28 +1,28 @@
-.clockify-task-form {
+.clockify-tasks-display-container {
   width: 20vw;
   position: absolute;
   top: 60vh;
   left: 2.5vw;
 }
-.clockify-task-form input::-moz-placeholder {
+.clockify-tasks-display-container .clockify-task-form input::-moz-placeholder {
   font-family: "Arial", sans-serif;
 }
-.clockify-task-form input:-ms-input-placeholder {
+.clockify-tasks-display-container .clockify-task-form input:-ms-input-placeholder {
   font-family: "Arial", sans-serif;
 }
-.clockify-task-form select, .clockify-task-form select option, .clockify-task-form input, .clockify-task-form input::placeholder {
+.clockify-tasks-display-container .clockify-task-form select, .clockify-tasks-display-container .clockify-task-form select option, .clockify-tasks-display-container .clockify-task-form input, .clockify-tasks-display-container .clockify-task-form input::placeholder {
   font-family: "Arial", sans-serif;
 }
-.clockify-task-form.loading-container {
+.clockify-tasks-display-container .clockify-task-form.loading-container {
   width: 20vw;
   height: auto;
   background: none;
 }
-.clockify-task-form .workspace-selector, .clockify-task-form .project-selector {
+.clockify-tasks-display-container .clockify-task-form .workspace-selector, .clockify-tasks-display-container .clockify-task-form .project-selector {
   width: 15vw;
   height: 5vh;
 }
-.clockify-task-form .add-task {
+.clockify-tasks-display-container .clockify-task-form .add-task {
   width: 3.5vh;
   height: 3.5vh;
   margin-left: 0.5vh;
@@ -32,18 +32,18 @@
   color: #fff;
   cursor: pointer;
 }
-.clockify-task-form .add-task:hover {
+.clockify-tasks-display-container .clockify-task-form .add-task:hover {
   filter: brightness(90%);
 }
-.clockify-task-form .add-task:active {
+.clockify-tasks-display-container .clockify-task-form .add-task:active {
   filter: brightness(110%);
 }
-.clockify-task-form select {
+.clockify-tasks-display-container .clockify-task-form select {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.clockify-task-form input[type=text] {
+.clockify-tasks-display-container .clockify-task-form input[type=text] {
   width: 15vw;
   height: 3vw;
   font-size: 12pt;
@@ -51,7 +51,7 @@
   padding: 1px 2px;
   box-sizing: border-box;
 }
-.clockify-task-form.disabled, .clockify-task-form .disabled {
+.clockify-tasks-display-container .clockify-task-form.disabled, .clockify-tasks-display-container .clockify-task-form .disabled {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -60,37 +60,36 @@
   pointer-events: none;
   opacity: 0.3;
 }
-
 @media (max-width: 991.98px) {
-  .clockify-tasks-display {
+  .clockify-tasks-display-container .clockify-tasks-display {
     position: initial;
     width: auto;
     display: flex;
     justify-content: space-around;
     padding: 3vh 5vw;
   }
-  .clockify-tasks-display.loading-container {
+  .clockify-tasks-display-container .clockify-tasks-display.loading-container {
     width: 90%;
     height: auto;
   }
-  .clockify-tasks-display .workspace-selector, .clockify-tasks-display .project-selector, .clockify-tasks-display input[type=text] {
+  .clockify-tasks-display-container .clockify-tasks-display .workspace-selector, .clockify-tasks-display-container .clockify-tasks-display .project-selector, .clockify-tasks-display-container .clockify-tasks-display input[type=text] {
     width: 20vw;
     height: 5vw;
   }
 }
 @media (max-width: 576px) {
-  .clockify-tasks-display {
+  .clockify-tasks-display-container .clockify-tasks-display {
     position: initial;
     width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .clockify-tasks-display.loading-container {
+  .clockify-tasks-display-container .clockify-tasks-display.loading-container {
     width: 90%;
     height: auto;
   }
-  .clockify-tasks-display .workspace-selector, .clockify-tasks-display .project-selector, .clockify-tasks-display input[type=text] {
+  .clockify-tasks-display-container .clockify-tasks-display .workspace-selector, .clockify-tasks-display-container .clockify-tasks-display .project-selector, .clockify-tasks-display-container .clockify-tasks-display input[type=text] {
     width: 70%;
     height: 4vh;
     margin-top: 1vh;

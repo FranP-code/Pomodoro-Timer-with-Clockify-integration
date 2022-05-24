@@ -1,119 +1,120 @@
-.clockify-task-form {
-
+.clockify-tasks-display-container {
     width: 20vw;
     position: absolute;
 
     top: 60vh;
     left: 2.5vw;
 
-    select, select option, input, input::placeholder {   
-        font-family: 'Arial', sans-serif;
-    }
-
-    &.loading-container {
-        width: 20vw;
-        height: auto;
-        background: none;
-    }
-    
-    .workspace-selector, .project-selector {
-        width: 15vw;
-        height: 5vh;
-    }
-
-    .add-task {
-        width: 3.5vh;
-        height: 3.5vh;
-
-        margin-left: 0.5vh;
-
-        display: inline;
-
-        background-color: var(--main-text-color);
-        border-radius: 100%;
-
-        color: #fff;
-
-        cursor: pointer;
-
-        &:hover {
-            filter: brightness(90%);
+    .clockify-task-form {
+        select, select option, input, input::placeholder {   
+            font-family: 'Arial', sans-serif;
         }
-
-        &:active {
-            filter: brightness(110%);
-        }
-    }
-
-    select {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    input[type=text] {
-        width: 15vw;
-        height: 3vw;
-
-        font-size: 12pt;
-
-        outline: none;
-        padding: 1px 2px;
-
-        box-sizing: border-box;
-    }
-
-    &.disabled, .disabled {
-        user-select: none;
-        cursor: initial;
-        pointer-events: none;
-        opacity: 0.3;
-    }
-}
-
-@media (max-width: 991.98px) {
-
-    .clockify-tasks-display {
-        position: initial;
-        width: auto;
-
-        display: flex;
-        justify-content:space-around;
-
-        padding: 3vh 5vw;
 
         &.loading-container {
-            width: 90%;
-            height: auto;
-        }
-
-        .workspace-selector, .project-selector, input[type=text] {
             width: 20vw;
-            height: 5vw;
-        }
-    
-    }
-}
-
-@media (max-width: 576px) {
-
-    .clockify-tasks-display {
-        position: initial;
-        width: auto;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        &.loading-container {
-            width: 90%;
             height: auto;
+            background: none;
+        }
+        
+        .workspace-selector, .project-selector {
+            width: 15vw;
+            height: 5vh;
         }
 
-        .workspace-selector, .project-selector, input[type=text] {
-            width: 70%;
-            height: 4vh;
-            margin-top: 1vh;
+        .add-task {
+            width: 3.5vh;
+            height: 3.5vh;
+
+            margin-left: 0.5vh;
+
+            display: inline;
+
+            background-color: var(--main-text-color);
+            border-radius: 100%;
+
+            color: #fff;
+
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(90%);
+            }
+
+            &:active {
+                filter: brightness(110%);
+            }
+        }
+
+        select {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        input[type=text] {
+            width: 15vw;
+            height: 3vw;
+
+            font-size: 12pt;
+
+            outline: none;
+            padding: 1px 2px;
+
+            box-sizing: border-box;
+        }
+
+        &.disabled, .disabled {
+            user-select: none;
+            cursor: initial;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+
+        .clockify-tasks-display {
+            position: initial;
+            width: auto;
+
+            display: flex;
+            justify-content:space-around;
+
+            padding: 3vh 5vw;
+
+            &.loading-container {
+                width: 90%;
+                height: auto;
+            }
+
+            .workspace-selector, .project-selector, input[type=text] {
+                width: 20vw;
+                height: 5vw;
+            }
+        
+        }
+    }
+
+    @media (max-width: 576px) {
+
+        .clockify-tasks-display {
+            position: initial;
+            width: auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &.loading-container {
+                width: 90%;
+                height: auto;
+            }
+
+            .workspace-selector, .project-selector, input[type=text] {
+                width: 70%;
+                height: 4vh;
+                margin-top: 1vh;
+            }
         }
     }
 }
