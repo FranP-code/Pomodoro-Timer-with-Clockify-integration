@@ -63,7 +63,7 @@
         box-sizing: border-box;
     }
 
-    .disabled {
+    &.disabled, .disabled {
         user-select: none;
         cursor: initial;
         pointer-events: none;
