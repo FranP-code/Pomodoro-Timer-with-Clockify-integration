@@ -263,7 +263,7 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                             }
                         </select>
                         <button
-                            className={`add-task ${!clockifyData.projectID && 'disabled'}`}
+                            className={`add-task ${!clockifyData.projectID && 'disabled'} ${addingNewTask === true && "adding-new-task"}`}
                             onClick={() => {
 
                                 if (addingNewTask === "loading") {
@@ -295,6 +295,7 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                                     type="text"
                                     ref={newTask}
                                     placeholder="Set new task name"
+                                    className='new-task'
                                 />
                         }
                         </>

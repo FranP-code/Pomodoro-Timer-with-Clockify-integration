@@ -38,78 +38,19 @@
 .header-main-page .buttons-container a, .header-main-page .buttons-container label {
   margin-right: 1vw;
 }
-.header-main-page .buttons-container a {
-  text-decoration: none;
-}
-.header-main-page .buttons-container .go-to-account {
-  width: 3vw;
-  height: 3vw;
+.header-main-page .buttons-container button {
+  padding: 2vh 3vw;
   background-color: var(--second-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-}
-.header-main-page .buttons-container .go-to-account .go-to-account-text {
-  font-size: 1vw;
-  text-decoration: none;
+  font-size: 1.1em;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   color: #ffffff;
-}
-.header-main-page .buttons-container .close-session {
-  width: 7vw;
-  height: 3vw;
-  background-color: var(--second-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 5%;
 }
-.header-main-page .buttons-container .close-session .close-session-text {
-  font-size: 1vw;
-  text-decoration: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  color: #ffffff;
-}
-
-@media (max-width: 991.98px) {
-  .go-to-account, .close-session {
-    position: initial;
-    padding: 1vw;
-  }
-
-  .go-to-account {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .go-to-account .go-to-account-text {
-    font-size: 9pt;
-  }
-
-  .close-session .close-session-text {
-    font-size: 9pt;
-  }
-}
-@media (max-width: 576px) {
-  .go-to-account, .close-session {
-    width: auto;
-    height: auto;
-  }
-
-  .go-to-account-text, .close-session-text {
-    position: initial;
-    margin: 10px 10px;
-  }
-}
-.notification-select {
+.header-main-page .notification-select {
   width: 100%;
-  height: 3vh;
   background-color: var(--second-color);
   display: flex;
   align-items: flex-end;
@@ -117,17 +58,17 @@
   margin-top: auto;
   box-sizing: border-box;
 }
-.notification-select p {
+.header-main-page .notification-select p {
   display: inline-block;
   align-self: center;
   color: #fff;
   padding: 0;
   margin: 0;
+  margin-top: 1vh;
   margin-right: 1vw;
 }
-.notification-select button {
-  height: 80%;
-  width: 5%;
+.header-main-page .notification-select button {
+  margin-top: 0.5vh;
   margin-right: 0.5vw;
   border: none;
   border-radius: 2px;
@@ -136,14 +77,52 @@
   font-weight: bold;
   cursor: pointer;
 }
-.notification-select button.yes {
+.header-main-page .notification-select button.yes {
   background-color: rgb(76, 175, 80);
 }
-.notification-select button.no {
+.header-main-page .notification-select button.no {
   background-color: rgb(211, 47, 47);
+}
+.header-main-page .banner-login {
+  width: 100%;
+  background-color: #D17262;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 5vw;
+}
+.header-main-page .banner-login p {
+  color: #fff;
+}
+.header-main-page .banner-login .button-container {
+  width: 20vw;
+  display: flex;
+  justify-content: space-around;
+}
+.header-main-page .banner-login .button-container button {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #ffffff;
+  height: 6vh;
+  cursor: pointer;
+}
+.header-main-page .banner-login .button-container .register {
+  border: solid 1px #ffffff;
+  border-radius: 24px;
+}
+.header-main-page .banner-login .button-container .login {
+  background-color: rgba(0, 0, 0, 0.3411764706);
+  border-radius: 24px;
+}
+.header-main-page .banner-login.blank {
+  opacity: 0%;
 }
 
 @media (max-width: 991.98px) {
+  .header-main-page {
+    height: auto;
+    row-gap: 1vh;
+  }
   .header-main-page h1 {
     font-size: 26pt;
   }
@@ -165,44 +144,7 @@
     width: 20%;
     margin-bottom: 1vh;
   }
-}
-.banner-login {
-  width: 100%;
-  background-color: #D17262;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 5vw;
-}
-.banner-login p {
-  color: #fff;
-}
-.banner-login .button-container {
-  width: 20vw;
-  display: flex;
-  justify-content: space-around;
-}
-.banner-login .button-container button {
-  font-size: 12pt;
-  font-weight: bold;
-  color: #ffffff;
-  height: 6vh;
-  cursor: pointer;
-}
-.banner-login .button-container .register {
-  border: solid 1px #ffffff;
-  border-radius: 24px;
-}
-.banner-login .button-container .login {
-  background-color: rgba(0, 0, 0, 0.3411764706);
-  border-radius: 24px;
-}
 
-.banner-login.blank {
-  opacity: 0%;
-}
-
-@media (max-width: 918px) {
   .banner-login {
     justify-content: initial;
     height: auto;
@@ -220,14 +162,22 @@
   }
 }
 @media (max-width: 576px) {
-  .banner-login p {
+  .header-main-page .notification-select {
+    -moz-column-gap: 1vw;
+         column-gap: 1vw;
+    padding: 0px 1vw;
+  }
+  .header-main-page .notification-select button {
+    flex-grow: 1;
+  }
+  .header-main-page .banner-login p {
     width: 50%;
   }
-  .banner-login .button-container {
+  .header-main-page .banner-login .button-container {
     width: 50%;
     flex-direction: column;
   }
-  .banner-login .button-container button {
+  .header-main-page .banner-login .button-container button {
     width: 75%;
     margin: 10px;
   }

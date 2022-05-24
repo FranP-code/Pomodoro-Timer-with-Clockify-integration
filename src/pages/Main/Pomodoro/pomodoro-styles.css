@@ -91,6 +91,7 @@
 @media (max-width: 576px) {
   .main-pomodoro {
     height: auto;
+    margin: 3vh 0px;
   }
   .main-pomodoro .timer {
     font-size: 80pt;

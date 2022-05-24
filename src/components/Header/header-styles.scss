@@ -50,149 +50,130 @@
         a, label {
             margin-right: 1vw;
         }
-        
-        a {
-            text-decoration: none;
-        }
-    
-        .go-to-account {
-            
-            width: 3vw;
-            height: 3vw;
-    
+
+        button {
+            padding: 2vh 3vw;
+
             background-color: var(--second-color);
-    
-            display: flex;
-            justify-content: center;
-            align-items: center;
-    
-            border-radius: 100%;
-    
-            .go-to-account-text {
-                font-size: 1vw;
-                text-decoration: none;
-                user-select: none;
-    
-                color: #ffffff;
-            }
+        
+            font-size: 1.1em;
+            user-select: none;
+
+            color: #ffffff;
+
+            border-radius: 5%;
+        }
+    }
+
+    .notification-select {
+
+        width: 100%;
+
+        background-color: var(--second-color);
+        
+        display: flex;
+        align-items: flex-end;
+        
+        padding-left: 1vw;
+        margin-top: auto;
+
+        box-sizing: border-box;
+
+        p { 
+            display: inline-block;
+
+            align-self: center;
+
+            color: #fff;
+
+            padding: 0;
+
+            margin: 0;
+            margin-top: 1vh;
+            margin-right: 1vw;
         }
 
-        .close-session {
-            width: 7vw;
-            height: 3vw;
+        button {
+            margin-top: 0.5vh;
+            margin-right: 0.5vw;
+            
+            border: none;
+            border-radius: 2px;
+
+            align-self: center;
+
+            color: #fff;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button.yes {
+            background-color: rgb(76, 175, 80);
+        }
+
+        button.no {
+            background-color: rgb(211, 47, 47);
+        }
+    }
+
+    .banner-login {
+
+        width: 100%;
     
-            background-color: var(--second-color);
+        background-color: #D17262;
+    
+        p {
+            color: #fff;
+        }
+    
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        padding: 0px 5vw;
+    
+        .button-container {
+    
+            width: 20vw;
     
             display: flex;
-            justify-content: center;
-            align-items: center;
-    
-            border-radius: 5%;
-    
-            .close-session-text {
-                font-size: 1vw;
-    
-                text-decoration: none;
-                user-select: none;
-    
+            justify-content: space-around;
+        
+            button {
+                font-size: 12pt;
+                font-weight: bold;
                 color: #ffffff;
+    
+                height: 6vh;
+                cursor: pointer;
+            }
+    
+            .register {
+                border: solid 1px  #ffffff;
+                border-radius: 24px;
+            }
+    
+            .login {
+                background-color: #00000057;
+                border-radius: 24px;
             }
         }
+    }
+    
+    .banner-login.blank {
+        opacity: 0%;
     }
 }
 
 
 @media (max-width: 991.98px) {
     //! I fucking hate make the responsive design
-    .go-to-account, .close-session {
-       position: initial;
-       padding: 1vw;
 
-    }
-    .go-to-account {
-        .go-to-account-text {
-            font-size: 9pt;
-        }
-
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .close-session {
-        .close-session-text {
-            font-size: 9pt;
-        }
-    }
-}
-
-@media (max-width: 576px) {
-    .go-to-account, .close-session {
-        width: auto;
-        height: auto;
-    }
-
-    .go-to-account-text, .close-session-text {
-        position: initial;
-        margin:10px 10px;
- 
-     }
-}
-.notification-select {
-
-    width: 100%;
-    height: 3vh;
-
-    background-color: var(--second-color);
-    
-    display: flex;
-    align-items: flex-end;
-    
-    padding-left: 1vw;
-    margin-top: auto;
-
-    box-sizing: border-box;
-
-    p { 
-        display: inline-block;
-
-        align-self: center;
-
-        color: #fff;
-
-        padding: 0;
-
-        margin: 0;
-        margin-right: 1vw;
-    }
-
-    button {
-        height: 80%;
-        width: 5%;
-
-        margin-right: 0.5vw;
-        
-        border: none;
-        border-radius: 2px;
-
-        align-self: center;
-
-        color: #fff;
-        font-weight: bold;
-
-        cursor: pointer;
-    }
-
-    button.yes {
-        background-color: rgb(76, 175, 80);
-    }
-
-    button.no {
-        background-color: rgb(211, 47, 47);
-    }
-}
-
-@media (max-width: 991.98px) {
     .header-main-page {
+        
+        height: auto;
+        row-gap: 1vh;
         
         h1 {
             font-size: 26pt;
@@ -219,56 +200,8 @@
             margin-bottom: 1vh;
         }
     }
-}
-.banner-login {
 
-    width: 100%;
 
-    background-color: #D17262;
-
-    p {
-        color: #fff;
-    }
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0px 5vw;
-
-    .button-container {
-
-        width: 20vw;
-
-        display: flex;
-        justify-content: space-around;
-    
-        button {
-            font-size: 12pt;
-            font-weight: bold;
-            color: #ffffff;
-
-            height: 6vh;
-            cursor: pointer;
-        }
-
-        .register {
-            border: solid 1px  #ffffff;
-            border-radius: 24px;
-        }
-
-        .login {
-            background-color: #00000057;
-            border-radius: 24px;
-        }
-    }
-}
-
-.banner-login.blank {
-    opacity: 0%;
-}
-
-@media (max-width: 918px) {
     .banner-login {
         justify-content: initial;
 
@@ -293,20 +226,33 @@
 }
 
 @media (max-width: 576px) {
-    .banner-login {
 
-        p {
-            width: 50%;
+    .header-main-page {
+
+        .notification-select {
+            column-gap: 1vw;
+
+            padding: 0px 1vw;
+            button {
+                flex-grow: 1;
+            }
         }
 
-        .button-container {
-            width: 50%;
+        .banner-login {
 
-            flex-direction: column;
+            p {
+                width: 50%;
+            }
 
-            button {
-                width: 75%;
-                margin: 10px;
+            .button-container {
+                width: 50%;
+
+                flex-direction: column;
+
+                button {
+                    width: 75%;
+                    margin: 10px;
+                }
             }
         }
     }

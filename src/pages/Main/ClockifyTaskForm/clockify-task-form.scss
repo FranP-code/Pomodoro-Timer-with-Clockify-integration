@@ -36,7 +36,7 @@
 
             display: inline;
 
-            background-color: var(--main-text-color);
+            background-color: var(--second-color);
             border-radius: 100%;
 
             color: #fff;
@@ -77,51 +77,67 @@
             opacity: 0.3;
         }
     }
+}
 
-    @media (max-width: 991.98px) {
+@media (max-width: 991.98px) {
 
-        .clockify-tasks-display {
-            position: initial;
-            width: auto;
+    .clockify-tasks-display-container {
+        position: static;
+        width: 100%;
 
+        padding-top: 2vh;
+
+        .clockify-task-form {   
             display: flex;
-            justify-content:space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content:space-between;
 
-            padding: 3vh 5vw;
-
-            &.loading-container {
-                width: 90%;
-                height: auto;
-            }
+            padding: 0px 3vw;
 
             .workspace-selector, .project-selector, input[type=text] {
-                width: 20vw;
+                width: 33vw;
+                min-width: 120px;
                 height: 5vw;
+                min-height: 30px;
             }
-        
+
+            button.add-task {
+                margin-right: auto;
+            }
+
+            button.adding-new-task {
+                margin-right: 0;
+            }
+
+            input.new-task {
+                width: 10vw;
+                margin-right: auto;
+                margin-left: 1vw;
+            }
         }
     }
+}
 
-    @media (max-width: 576px) {
+@media (max-width: 576px) {
 
-        .clockify-tasks-display {
-            position: initial;
-            width: auto;
+    .clockify-tasks-display {
+        position: initial;
+        width: auto;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-            &.loading-container {
-                width: 90%;
-                height: auto;
-            }
+        &.loading-container {
+            width: 90%;
+            height: auto;
+        }
 
-            .workspace-selector, .project-selector, input[type=text] {
-                width: 70%;
-                height: 4vh;
-                margin-top: 1vh;
-            }
+        .workspace-selector, .project-selector, input[type=text] {
+            width: 70%;
+            height: 4vh;
+            margin-top: 1vh;
         }
     }
 }

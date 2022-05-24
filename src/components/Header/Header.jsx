@@ -2,6 +2,7 @@ import './header-styles.css'
 
 import React from 'react'
 import ThemeSwitch from './ThemeSwitch/ThemeSwitch'
+import { Link } from 'react-router-dom'
 
 const Header = (props) => {
 
@@ -19,17 +20,17 @@ const Header = (props) => {
 
     return (
         <header className={props.darkMode ? 'header-main-page dark-mode-component' : 'header-main-page'} >
-            <h1 className='title-link'><a href="/">Clockify Pomodoro Timer</a></h1>
+            <h1 className='title-link'><Link to="/">Clockify Pomodoro Timer</Link></h1>
             <div className="buttons-container">
                 {
                     props.signedIn ? 
                         <>
-                            <a href="/config-account" className={props.darkMode ? 'go-to-account dark-mode-component' : 'go-to-account'}>
-                                <div className="go-to-account-text">API</div>
-                            </a>
-                            <a href="/identify?act=clss" className={props.darkMode ? 'close-session dark-mode-component' : 'close-session'}>
-                                <div className="close-session-text">Close session</div>
-                            </a>
+                            <Link to="/config-account">
+                                <button>API</button>
+                            </Link>
+                            <Link to="/identify?act=clss">
+                                <button>Close session</button>
+                            </Link>
                         </>
                     : null
                 }

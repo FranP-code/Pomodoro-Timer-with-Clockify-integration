@@ -9,6 +9,7 @@
 .theme-switch label {
   display: block;
   width: 4vw;
+  min-width: 80px;
   height: 4vh;
   background-color: var(--lightest-color);
   border-radius: 100px;
@@ -16,6 +17,14 @@
   cursor: pointer;
   transition: 0.5s;
   box-shadow: 0 0 20px rgba(71, 122, 133, 0.3137254902);
+}
+.theme-switch label:hover {
+  filter: brightness(90%);
+  transition: none;
+}
+.theme-switch label:active {
+  filter: brightness(105%);
+  transition: none;
 }
 .theme-switch label::after {
   content: "";

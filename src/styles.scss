@@ -35,7 +35,15 @@ body {
 button {
     background: none;
     border: none;
-    width: 8vw;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(90%);
+}
+
+button:active {
+    filter: brightness(105%);
 }
 
 h1, h2, h3, h4, h5, h6, p {

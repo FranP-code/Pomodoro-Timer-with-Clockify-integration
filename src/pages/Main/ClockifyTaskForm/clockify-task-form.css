@@ -33,7 +33,7 @@
   height: 3.5vh;
   margin-left: 0.5vh;
   display: inline;
-  background-color: var(--main-text-color);
+  background-color: var(--second-color);
   border-radius: 100%;
   color: #fff;
   cursor: pointer;
@@ -66,36 +66,51 @@
   pointer-events: none;
   opacity: 0.3;
 }
+
 @media (max-width: 991.98px) {
-  .clockify-tasks-display-container .clockify-tasks-display {
-    position: initial;
-    width: auto;
+  .clockify-tasks-display-container {
+    position: static;
+    width: 100%;
+    padding-top: 2vh;
+  }
+  .clockify-tasks-display-container .clockify-task-form {
     display: flex;
-    justify-content: space-around;
-    padding: 3vh 5vw;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0px 3vw;
   }
-  .clockify-tasks-display-container .clockify-tasks-display.loading-container {
-    width: 90%;
-    height: auto;
-  }
-  .clockify-tasks-display-container .clockify-tasks-display .workspace-selector, .clockify-tasks-display-container .clockify-tasks-display .project-selector, .clockify-tasks-display-container .clockify-tasks-display input[type=text] {
-    width: 20vw;
+  .clockify-tasks-display-container .clockify-task-form .workspace-selector, .clockify-tasks-display-container .clockify-task-form .project-selector, .clockify-tasks-display-container .clockify-task-form input[type=text] {
+    width: 33vw;
+    min-width: 120px;
     height: 5vw;
+    min-height: 30px;
+  }
+  .clockify-tasks-display-container .clockify-task-form button.add-task {
+    margin-right: auto;
+  }
+  .clockify-tasks-display-container .clockify-task-form button.adding-new-task {
+    margin-right: 0;
+  }
+  .clockify-tasks-display-container .clockify-task-form input.new-task {
+    width: 10vw;
+    margin-right: auto;
+    margin-left: 1vw;
   }
 }
 @media (max-width: 576px) {
-  .clockify-tasks-display-container .clockify-tasks-display {
+  .clockify-tasks-display {
     position: initial;
     width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .clockify-tasks-display-container .clockify-tasks-display.loading-container {
+  .clockify-tasks-display.loading-container {
     width: 90%;
     height: auto;
   }
-  .clockify-tasks-display-container .clockify-tasks-display .workspace-selector, .clockify-tasks-display-container .clockify-tasks-display .project-selector, .clockify-tasks-display-container .clockify-tasks-display input[type=text] {
+  .clockify-tasks-display .workspace-selector, .clockify-tasks-display .project-selector, .clockify-tasks-display input[type=text] {
     width: 70%;
     height: 4vh;
     margin-top: 1vh;

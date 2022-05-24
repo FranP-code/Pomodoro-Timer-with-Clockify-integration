@@ -11,6 +11,7 @@
     label {
         display: block;
         width: 4vw;
+        min-width: 80px;
         height: 4vh;
         background-color: var(--lightest-color);
         border-radius: 100px;
@@ -18,6 +19,16 @@
         cursor: pointer;
         transition: 0.5s;
         box-shadow: 0 0 20px #477a8550;
+    }
+
+    label:hover {
+        filter: brightness(90%);
+        transition: none;
+    }
+    
+    label:active {
+        filter: brightness(105%);
+        transition: none;
     }
 
     label::after {
