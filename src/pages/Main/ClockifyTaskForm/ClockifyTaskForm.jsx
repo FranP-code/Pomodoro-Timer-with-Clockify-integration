@@ -116,6 +116,19 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
             const response = await fetch(`https://api.clockify.me/api/v1/workspaces/${e}/projects`, request)
             const data = await response.json()
 
+            data.forEach((project, index) => {
+                if (project.clientName !== "" && !project.archived) {
+                    
+                    if (!data.clients) {
+                        data.clients = {[project.clientName]: [project]}
+                    } else {
+                        data.clients[project.clientName].push(project)
+                    }
+
+                    project.archived = true
+                }
+            })
+
             changeClockifyData({projects: data})
 
         } catch (error) {
@@ -217,6 +230,21 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                                         !project.archived ?
                                             <option value={project.id} key={project.id} style={{color: project.color}}>{project.name}</option>
                                         : null
+                                    ))
+                            }
+                            {
+                                (clockifyData.projects && clockifyData.projects.clients) &&
+                                    Object.keys(clockifyData.projects.clients).map((client, index) => (
+                                        <>
+                                        {index === 0 && <optgroup label='---' />}
+                                        <optgroup label={client} key={client}>
+                                            {
+                                                clockifyData.projects.clients[client].map(project => (
+                                                    <option value={project.id} key={project.id} style={{color: project.color}}>{project.name}</option>
+                                                ))
+                                            }
+                                        </optgroup>
+                                        </>
                                     ))
                             }
                         </select>

@@ -19,6 +19,13 @@
         .workspace-selector, .project-selector {
             width: 15vw;
             height: 5vh;
+        
+            optgroup {
+                color: grey;
+                font-style: inherit;
+                font-weight: 300;
+                text-shadow: none;
+            }
         }
 
         .add-task {

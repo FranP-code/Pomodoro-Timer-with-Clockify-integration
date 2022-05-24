@@ -22,6 +22,12 @@
   width: 15vw;
   height: 5vh;
 }
+.clockify-tasks-display-container .clockify-task-form .workspace-selector optgroup, .clockify-tasks-display-container .clockify-task-form .project-selector optgroup {
+  color: grey;
+  font-style: inherit;
+  font-weight: 300;
+  text-shadow: none;
+}
 .clockify-tasks-display-container .clockify-task-form .add-task {
   width: 3.5vh;
   height: 3.5vh;
