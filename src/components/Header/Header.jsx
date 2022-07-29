@@ -23,7 +23,7 @@ const Header = (props) => {
             <h1 className='title-link'><Link to="/">Clockify Pomodoro Timer</Link></h1>
             <div className="buttons-container">
                 {
-                    props.signedIn ? 
+                    props.signedIn || process.env?.REACT_APP_ENVIRONMENT === "development" ? 
                         <>
                             <Link to="/config-account">
                                 <button>API</button>
@@ -43,7 +43,7 @@ const Header = (props) => {
                 {props.KonamiCodeActive ? 'Konami Code ON' : null}
             </div>
             {
-                props.notificationPermission === undefined || process.env.REACT_APP_ENVIROMENT !== "production" ?
+                props.notificationPermission === undefined || process.env.REACT_APP_ENVIROMENT === "development" ?
                     <div className={props.darkMode ? 'notification-select dark-mode-component' : 'notification-select'}>
                         <p>Do you want to recibe a notification when a Pomodoro cicle ends?</p>
                         <button className="yes" onClick={getPermisionDesktopNotification}>YES</button>
