@@ -20,28 +20,33 @@ const Header = (props) => {
 
     return (
         <header className={props.darkMode ? 'header-main-page dark-mode-component' : 'header-main-page'} >
-            <h1 className='title-link'><Link to="/">Clockify Pomodoro Timer</Link></h1>
-            <div className="buttons-container">
-                {
-                    props.signedIn || process.env?.REACT_APP_ENVIRONMENT === "development" ? 
-                        <>
-                            <Link to="/config-account">
-                                <button>API</button>
-                            </Link>
-                            <Link to="/identify?act=clss">
-                                <button>Close session</button>
-                            </Link>
-                        </>
-                    : null
-                }
-                <ThemeSwitch
-                    darkMode={props.darkMode} 
-                    setDarkmode={props.setDarkmode}
-                />
+            <div className="main-title">
+                <h1 className='title-link'><Link to="/">Clockify Pomodoro Timer</Link></h1>
+                <div className="buttons-container">
+                    {
+                        props.signedIn || process.env?.REACT_APP_ENVIRONMENT === "development" ? 
+                            <>
+                                <Link to="/config-account">
+                                    <button>API</button>
+                                </Link>
+                                <Link to="/identify?act=clss">
+                                    <button>Close session</button>
+                                </Link>
+                            </>
+                        : null
+                    }
+                    <ThemeSwitch
+                        darkMode={props.darkMode} 
+                        setDarkmode={props.setDarkmode}
+                    />
+                </div>
             </div>
-            <div className="konami-code">
-                {props.KonamiCodeActive ? 'Konami Code ON' : null}
-            </div>
+            {
+                props.KonamiCodeActive &&
+                    <div className="konami-code">
+                        Konami Code ON
+                    </div>
+            }
             {
                 props.notificationPermission === undefined || process.env.REACT_APP_ENVIROMENT === "development" ?
                     <div className={props.darkMode ? 'notification-select dark-mode-component' : 'notification-select'}>
@@ -66,7 +71,6 @@ const Header = (props) => {
                 : null
             }
         </header>
-
     )
 }
 

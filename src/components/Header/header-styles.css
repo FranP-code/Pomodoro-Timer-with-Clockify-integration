@@ -6,7 +6,13 @@
   height: 24vh;
   box-sizing: border-box;
 }
-.header-main-page .title-link {
+.header-main-page .main-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1vh 0px;
+}
+.header-main-page .main-title .title-link {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -20,25 +26,22 @@
   align-items: center;
   flex-grow: 1;
 }
-.header-main-page .title-link a {
+.header-main-page .main-title .title-link a {
   color: #ffffff;
   font-family: var(--title-font);
   text-decoration: none;
   cursor: pointer;
 }
-.header-main-page .konami-code {
-  color: #4c8ad5;
-}
-.header-main-page .buttons-container {
+.header-main-page .main-title .buttons-container {
   display: flex;
   align-items: center;
   margin-top: auto;
   margin-bottom: auto;
 }
-.header-main-page .buttons-container a, .header-main-page .buttons-container label {
+.header-main-page .main-title .buttons-container a, .header-main-page .main-title .buttons-container label {
   margin-right: 1vw;
 }
-.header-main-page .buttons-container button {
+.header-main-page .main-title .buttons-container button {
   padding: 2vh 3vw;
   background-color: var(--second-color);
   font-size: 1.1em;
@@ -49,12 +52,16 @@
   color: #ffffff;
   border-radius: 5%;
 }
+.header-main-page .konami-code {
+  color: #4c8ad5;
+}
 .header-main-page .notification-select {
   width: 100%;
+  min-height: 36px;
   background-color: var(--second-color);
   display: flex;
   align-items: flex-end;
-  padding-left: 1vw;
+  padding: 2vh 0px 2vh 1.5vw;
   margin-top: auto;
   box-sizing: border-box;
 }
@@ -70,8 +77,9 @@
 .header-main-page .notification-select button {
   margin-top: 0.5vh;
   margin-right: 0.5vw;
+  padding: 1vh 1vw;
   border: none;
-  border-radius: 2px;
+  border-radius: 4px;
   align-self: center;
   color: #fff;
   font-weight: bold;
@@ -85,11 +93,13 @@
 }
 .header-main-page .banner-login {
   width: 100%;
+  height: 10vh;
+  max-height: 75px;
   background-color: #D17262;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 5vw;
+  padding: 0px 1.5vw;
 }
 .header-main-page .banner-login p {
   color: #fff;
@@ -98,8 +108,11 @@
   width: 20vw;
   display: flex;
   justify-content: space-around;
+  -moz-column-gap: 3vh;
+       column-gap: 3vh;
 }
 .header-main-page .banner-login .button-container button {
+  width: 100%;
   font-size: 12pt;
   font-weight: bold;
   color: #ffffff;
@@ -129,7 +142,6 @@
   .header-main-page h3 {
     font-size: 13pt;
   }
-
   .notification-select {
     height: auto;
     flex-wrap: wrap;
@@ -144,7 +156,6 @@
     width: 20%;
     margin-bottom: 1vh;
   }
-
   .banner-login {
     justify-content: initial;
     height: auto;

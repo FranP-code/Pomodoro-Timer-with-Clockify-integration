@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 68vh;
+  min-height: 480px;
   background-color: var(--main-background-color);
 }
 .main-pomodoro .timer {
