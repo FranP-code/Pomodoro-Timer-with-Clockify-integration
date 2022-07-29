@@ -62,7 +62,7 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
 
             })
         } else {
-            
+            setLoading(false)
         }
         
     }, [signedIn])
