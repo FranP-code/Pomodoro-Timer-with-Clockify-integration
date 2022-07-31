@@ -1,5 +1,4 @@
 .header-main-page {
-  background-color: var(--main-color);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -11,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   padding: 1vh 0px;
+  background-color: var(--main-color);
 }
 .header-main-page .main-title .title-link {
   width: -webkit-fit-content;
