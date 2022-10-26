@@ -118,13 +118,14 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
 
             data.forEach((project, index) => {
                 if (project.clientName !== "" && !project.archived) {
-                    
                     if (!data.clients) {
                         data.clients = {[project.clientName]: [project]}
                     } else {
+                        if (!data.clients[project.clientName]) {
+                            data.clients[project.clientName] = []
+                        }
                         data.clients[project.clientName].push(project)
                     }
-
                     project.archived = true
                 }
             })
