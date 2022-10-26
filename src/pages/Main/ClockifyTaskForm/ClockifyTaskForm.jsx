@@ -102,9 +102,7 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
             changeClockifyData({workspaces: workspaces})
         }
     }
-
     const getProjects = async (e) => {
-
         try {
             const request = {
                 method: "GET",
@@ -115,27 +113,22 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
             }
             const response = await fetch(`https://api.clockify.me/api/v1/workspaces/${e}/projects`, request)
             const data = await response.json()
-
-            data.forEach((project, index) => {
-                if (project.clientName !== "" && !project.archived) {
-                    
-                    if (!data.clients) {
-                        data.clients = {[project.clientName]: [project]}
-                    } else {
-                        data.clients[project.clientName].push(project)
+            data.clients = {}
+            data.forEach((project) => {  
+                if (project.clientName.length && !project.archived) {
+                    const isClientDefined = !!data.clients[project.clientName]
+                    if (!isClientDefined) {
+                        data.clients[project.clientName] = []
                     }
-
-                    project.archived = true
+                    data.clients[project.clientName].push(project)
+                    project.hide = true
                 }
             })
-
             changeClockifyData({projects: data})
-
         } catch (error) {
             console.log(error);
         }
     }
-
     async function getTasks(projectID) {
 
         if (projectID === "0") {
@@ -227,9 +220,8 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                             {
                                 clockifyData.projects &&
                                     clockifyData.projects.map((project) => (
-                                        !project.archived ?
+                                        !project.archived && !project.hide &&
                                             <option value={project.id} key={project.id} style={{color: project.color}}>{project.name}</option>
-                                        : null
                                     ))
                             }
                             {
