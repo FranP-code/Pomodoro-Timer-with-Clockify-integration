@@ -108,14 +108,14 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                 method: "GET",
                 headers: {
                     'X-Api-Key': apiKey,
-                    "content-type": "application/json"
+                    'content-type': "application/json"
                 }
             }
-            const response = await fetch(`https://api.clockify.me/api/v1/workspaces/${e}/projects`, request)
+            const response = await fetch(`https://api.clockify.me/api/v1/workspaces/${e}/projects?archived=false&page-size=5000`, request)
             const data = await response.json()
             data.clients = {}
             data.forEach((project) => {  
-                if (project.clientName.length && !project.archived) {
+                if (project.clientName.length) {
                     const isClientDefined = !!data.clients[project.clientName]
                     if (!isClientDefined) {
                         data.clients[project.clientName] = []
@@ -220,7 +220,7 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                             {
                                 clockifyData.projects &&
                                     clockifyData.projects.map((project) => (
-                                        !project.archived && !project.hide &&
+                                        !project.hide &&
                                             <option value={project.id} key={project.id} style={{color: project.color}}>{project.name}</option>
                                     ))
                             }
