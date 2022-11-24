@@ -18,6 +18,7 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
     const descriptionInput = useRef("")
 
     const [loading, setLoading] = useState(true)
+    const [suggestProjectName, setSuggestProjectName] = useState()
 
     let newTask = useRef("")
     const [addingNewTask, setAddingNewTask] = useState(false)
@@ -242,7 +243,10 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                         </select>
 
                         <select
-                            onChange={(e) => changeClockifyData({taskID: e.target.value})}
+                            onChange={(e) => {
+                                setSuggestProjectName(e.target.options[e.target.selectedIndex].text)
+                                changeClockifyData({taskID: e.target.value})
+                            }}
                             className={`project-selector ${(!clockifyData.projectID || (clockifyData.tasks && clockifyData.tasks.length === 0)) && 'disabled'}`}
                         >
                             <option value="0">Select a Task</option>
@@ -296,13 +300,24 @@ const ClockifyTaskForm = ({timerOn, setTimerOn, signedIn, apiKey, setApiKey, tas
                             type="text"
                             ref={descriptionInput}
                             onChange={(e) => changeClockifyData({description: e.target.value})}
-                            placeholder="Add task description"
-                            className={!clockifyData.projectID && 'disabled'}
-                            onKeyPress={event => {
+                            placeholder={suggestProjectName ? false : "Add task description"}
+                            disabled={!clockifyData.projectID }
+                            className={suggestProjectName && 'suggestion-placeholder'}
+                            onKeyDown={event => {
                                 if (event.key === 'Enter') {
+                                    if (event.target.value === suggestProjectName) {
+                                        setSuggestProjectName(undefined)
+                                    }
                                     setTimerOn(true)
+                                    event.target.blur()
+                                    return
+                                }
+                                if (suggestProjectName) {
+                                    event.target.value = ''
+                                    setSuggestProjectName(undefined)
                                 }
                             }}
+                            value={suggestProjectName}
                         />
                     </div>
                 : null

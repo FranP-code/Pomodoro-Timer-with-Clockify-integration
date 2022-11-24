@@ -57,7 +57,11 @@
   padding: 1px 2px;
   box-sizing: border-box;
 }
-.clockify-tasks-display-container .clockify-task-form.disabled, .clockify-tasks-display-container .clockify-task-form .disabled {
+.clockify-tasks-display-container .clockify-task-form input[type=text].suggestion-placeholder {
+  color: #bbb;
+  font-weight: bold;
+}
+.clockify-tasks-display-container .clockify-task-form.disabled, .clockify-tasks-display-container .clockify-task-form .disabled, .clockify-tasks-display-container .clockify-task-form *:disabled {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
