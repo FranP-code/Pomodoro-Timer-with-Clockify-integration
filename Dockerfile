@@ -13,7 +13,7 @@ WORKDIR /usr/src
 
 RUN yarn
 RUN yarn build
-RUN if [[ DEPLOY_SERVICE !== caprover ]]; then echo '/* https://clockify-pomodoro-timer.franp.site 200' | cat >build/_redirects fi
+RUN if [[ DEPLOY_SERVICE !== caprover ]]; then echo '/* https://clockify-pomodoro-timer.franp.site 200' | cat >build/_redirects; fi
 
 FROM nginx:1.23.1-alpine
 EXPOSE 80
