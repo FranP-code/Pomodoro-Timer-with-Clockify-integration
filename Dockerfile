@@ -1,5 +1,9 @@
 FROM alpine:latest as build
 
+ENV REACT_APP_FIREBASE_API_KEY
+ENV REACT_APP_FIREBASE_APP_ID
+ENV REACT_APP_ENVIRONMENT
+
 RUN apk add --update nodejs npm
 RUN npm install --global yarn
 
