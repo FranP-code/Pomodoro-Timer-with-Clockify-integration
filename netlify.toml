@@ -2,3 +2,4 @@
   from = "/*"
   to = "https://clockify-pomodoro-timer.franp.site"
   status = 200
+  force = true
