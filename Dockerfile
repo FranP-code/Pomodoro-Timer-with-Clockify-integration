@@ -3,7 +3,7 @@ FROM alpine:latest as build
 RUN apk add --update nodejs npm
 RUN npm install --global yarn
 
-COPY ['.', '/usr/src']
+COPY [".", "/usr/src"]
 WORKDIR /usr/src
 
 RUN yarn
