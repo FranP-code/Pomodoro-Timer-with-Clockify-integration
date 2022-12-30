@@ -33,22 +33,13 @@ const Identify = (props) => {
 
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password)
-            
-            
-
             const uid = response.user.uid
-
             addNewUserToFirebase(uid)
             props.history.push('/config-account')
             setLoading(false)
-
-
         } catch (error) {
-            
             setMessage(error.message)
             setLoading(false)
-
-            
         }
     }
 
